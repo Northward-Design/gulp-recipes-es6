@@ -43,7 +43,7 @@ Index
 
 ### Ingredients
 
-- [Base]()
+- [Base](ingredients/base/README.md)
 - [Clean]()
 - HTML
 	- [Lint HTML]()

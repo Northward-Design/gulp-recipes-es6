@@ -10,7 +10,7 @@ Recipes
 Ingredients
 --------------------------------------------------------------------------------
 
-- [ ] [Base]()
+- [x] [Base](https://github.com/itrusler/gulp-recipes-es6/issues/3)
 - [ ] [Clean]()
 - HTML
 	- [ ] [Lint]()
