@@ -44,7 +44,7 @@ Index
 ### Ingredients
 
 - [Base](ingredients/base/README.md)
-- [Clean]()
+- [Clean](ingredients/clean/README.md)
 - HTML
 	- [Lint HTML]()
 	- [Minify HTML]()

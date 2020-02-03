@@ -4,14 +4,14 @@ To Do
 Recipes
 --------------------------------------------------------------------------------
 
-- [] [Basic Web (HTML, CSS, and JS)]()
-- [] [Modern Web (HTML, SCSS, and TS)]()
+- [ ] [Basic Web (HTML, CSS, and JS)]()
+- [ ] [Modern Web (HTML, SCSS, and TS)]()
 
 Ingredients
 --------------------------------------------------------------------------------
 
 - [x] [Base](https://github.com/itrusler/gulp-recipes-es6/issues/3)
-- [ ] [Clean]()
+- [x] [Clean](https://github.com/itrusler/gulp-recipes-es6/issues/5)
 - HTML
 	- [ ] [Lint]()
 	- [ ] [Minify / Uglify]()
@@ -42,7 +42,7 @@ Ingredients
 		- [ ] [Sourcemaps]()
 	- [ ] [Babel]()
 		- [ ] [Sourcemaps]()
-		[ ] [Browserify & Babelify]()
+	- [ ] [Browserify & Babelify]()
 	- [ ] [Watch JS]()
 	- [ ] [Inject JS]()
 	- [ ] [BrowserSync JS]()
