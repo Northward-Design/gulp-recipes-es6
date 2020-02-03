@@ -46,7 +46,7 @@ Index
 - [Base](ingredients/base/README.md)
 - [Clean](ingredients/clean/README.md)
 - HTML
-	- [Lint HTML]()
+	- [Lint HTML](ingredients/html/lint-html/README.md)
 	- [Minify HTML]()
 	- [Watch HTML]()
 	- [BrowserSync HTML]()

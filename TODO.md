@@ -13,7 +13,7 @@ Ingredients
 - [x] [Base](https://github.com/itrusler/gulp-recipes-es6/issues/3)
 - [x] [Clean](https://github.com/itrusler/gulp-recipes-es6/issues/5)
 - HTML
-	- [ ] [Lint]()
+	- [x] [Lint](https://github.com/itrusler/gulp-recipes-es6/issues/7)
 	- [ ] [Minify / Uglify]()
 	- [ ] [Watch]()
 	- [ ] [BrowserSync HTML]()
