@@ -44,12 +44,13 @@ Index
 ### Ingredients
 
 - [Base]()
-- [HTML]()
+- [Clean]()
+- HTML
 	- [Lint HTML]()
 	- [Minify HTML]()
 	- [Watch HTML]()
 	- [BrowserSync HTML]()
-- [CSS]()
+- CSS
 	- [Lint CSS]()
 	- [Autoprefix CSS]()
 	- [Autoprefix CSS with Sourcemaps]()
@@ -59,7 +60,7 @@ Index
 	- [Inject CSS]()
 	- [Purge CSS]()
 	- [BrowserSync CSS]()
-- [SASS]()
+- SASS
 	- [Lint SASS]()
 	- [Compile SASS]()
 	- [Compile SASS with Sourcemaps]()
@@ -67,7 +68,7 @@ Index
 	- [Minify SASS with Sourcemaps]()
 	- [Watch SASS]()
 	- [BrowserSync SASS]()
-- [JS]()
+- JS
 	- [Lint JS]()
 	- [Minify JS]()
 	- [Browserify JS]()
@@ -78,7 +79,7 @@ Index
 	- [Watch JS]()
 	- [Inject JS]()
 	- [BrowserSync JS]()
-- [TS]()
+- TS
 	- [Lint TS]()
 	- [Compile TS]()
 	- [Compile TS with Sourcemaps]()
@@ -87,9 +88,8 @@ Index
 	- [Browserify TS]()
 	- [Watch TS]()
 	- [BrowserSync TS]()
-- [PHP]
+- PHP
 	- [Connect and BrowserSync PHP]()
 - Images
 	- [Optimize Images]()
 	- [Watch Images]()
-- [Clean]()
