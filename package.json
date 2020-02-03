@@ -1,0 +1,19 @@
+{
+  "name": "gulp-recipes-es6",
+  "version": "0.0.0",
+  "description": "A Collection of Gulp.js Recipes in ES6",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/itrusler/gulp-recipes-es6.git"
+  },
+  "author": "Iain Trusler <gisconsulting@iaintrusler.com> (github.com/ivan8four)",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/itrusler/gulp-recipes-es6/issues"
+  },
+  "homepage": "https://github.com/itrusler/gulp-recipes-es6#readme"
+}
