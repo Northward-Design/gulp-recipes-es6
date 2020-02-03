@@ -48,7 +48,7 @@ Index
 - HTML
 	- [Lint HTML](ingredients/html/lint-html/README.md)
 	- [Minify HTML](ingredients/html/minify-html/README.md)
-	- [Watch HTML]()
+	- [Watch HTML](ingredients/html/watch-html/README.md)
 	- [BrowserSync HTML]()
 - CSS
 	- [Lint CSS]()
