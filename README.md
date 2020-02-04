@@ -58,7 +58,7 @@ Index
 	- [Minfy CSS with Sourcemaps](ingredients/css/minify-css-source-maps)
 	- [Watch CSS](ingredients/css/watch-css)
 	- [Inject CSS](ingredients/css/inject-css)
-	- [Purge CSS]()
+	- [Purge CSS](ingredients/css/purge-css)
 	- [BrowserSync CSS]()
 - SASS
 	- [Lint SASS]()
