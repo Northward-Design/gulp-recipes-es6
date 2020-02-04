@@ -62,7 +62,7 @@ Index
 	- [BrowserSync CSS](ingredients/css/browsersync-css)
 - SASS
 	- [Lint SASS](ingredients/sass/lint-sass)
-	- [Compile SASS]()
+	- [Compile SASS](ingredients/sass/compile-sass)
 	- [Compile SASS with Sourcemaps]()
 	- [Minify SASS]()
 	- [Minify SASS with Sourcemaps]()
