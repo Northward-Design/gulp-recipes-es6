@@ -61,7 +61,7 @@ Index
 	- [Purge CSS](ingredients/css/purge-css)
 	- [BrowserSync CSS](ingredients/css/browsersync-css)
 - SASS
-	- [Lint SASS]()
+	- [Lint SASS](ingredients/sass/lint-sass)
 	- [Compile SASS]()
 	- [Compile SASS with Sourcemaps]()
 	- [Minify SASS]()

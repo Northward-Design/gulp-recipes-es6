@@ -28,7 +28,7 @@ Ingredients
 	- [x] [Purge CSS](https://github.com/itrusler/gulp-recipes-es6/issues/22)
 	- [x] [BrowserSync CSS](https://github.com/itrusler/gulp-recipes-es6/issues/23)
 - SASS
-	- [ ] [Lint]()
+	- [x] [Lint](https://github.com/itrusler/gulp-recipes-es6/issues/35)
 	- [ ] [Compile]()
 		- [ ] [Sourcemaps]()
 	- [ ] [Minify]()
