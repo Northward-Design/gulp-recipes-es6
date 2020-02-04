@@ -55,7 +55,7 @@ Index
 	- [Autoprefix CSS](ingredients/css/autoprefix-css)
 	- [Autoprefix CSS with Sourcemaps](ingredients/css/autoprefix-css-source-maps)
 	- [Minfy CSS](ingredients/css/minify-css)
-	- [Minfy CSS with Sourcemaps]()
+	- [Minfy CSS with Sourcemaps](ingredients/css/minify-css-source-maps)
 	- [Watch CSS]()
 	- [Inject CSS]()
 	- [Purge CSS]()

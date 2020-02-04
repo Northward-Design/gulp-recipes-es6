@@ -22,7 +22,7 @@ Ingredients
 	- [x] [Autoprefixer](https://github.com/itrusler/gulp-recipes-es6/issues/16)
 		- [x] [Sourcemaps](https://github.com/itrusler/gulp-recipes-es6/issues/17)
 	- [x] [Minfy](https://github.com/itrusler/gulp-recipes-es6/issues/18)
-		- [ ] [Sourcemaps]()
+		- [x] [Sourcemaps](https://github.com/itrusler/gulp-recipes-es6/issues/19)
 	- [ ] [Watch]()
 	- [ ] [Inject CSS]()
 	- [ ] [Purge CSS]()
