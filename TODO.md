@@ -19,7 +19,7 @@ Ingredients
 	- [x] [BrowserSync HTML](https://github.com/itrusler/gulp-recipes-es6/issues/11)
 - CSS
 	- [x] [Lint](https://github.com/itrusler/gulp-recipes-es6/issues/15)
-	- [ ] [Autoprefixer]()
+	- [x] [Autoprefixer](https://github.com/itrusler/gulp-recipes-es6/issues/16)
 		- [ ] [Sourcemaps]()
 	- [ ] [Minfy]()
 		- [ ] [Sourcemaps]()
