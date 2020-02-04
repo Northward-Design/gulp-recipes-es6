@@ -49,7 +49,7 @@ Index
 	- [Lint HTML](ingredients/html/lint-html/README.md)
 	- [Minify HTML](ingredients/html/minify-html/README.md)
 	- [Watch HTML](ingredients/html/watch-html/README.md)
-	- [BrowserSync HTML]()
+	- [BrowserSync HTML](ingredients/html/browsersync-html/README.md)
 - CSS
 	- [Lint CSS]()
 	- [Autoprefix CSS]()
