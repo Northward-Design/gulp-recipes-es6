@@ -45,18 +45,18 @@ Index
 
 - [Base](ingredients/base)
 - [Clean](ingredients/clean)
-- [HTML](ingredients/html)
+- HTML
 	- [Lint HTML](ingredients/html/lint-html)
 	- [Minify HTML](ingredients/html/minify-html)
 	- [Watch HTML](ingredients/html/watch-html)
 	- [BrowserSync HTML](ingredients/html/browsersync-html)
-- [CSS](ingredients/css)
+- CSS
 	- [Lint CSS](ingredients/css/lint-css)
 	- [Autoprefix CSS](ingredients/css/autoprefix-css)
 	- [Autoprefix CSS with Sourcemaps](ingredients/css/autoprefix-css-source-maps)
 	- [Minfy CSS](ingredients/css/minify-css)
 	- [Minfy CSS with Sourcemaps](ingredients/css/minify-css-source-maps)
-	- [Watch CSS]()
+	- [Watch CSS](ingredients/css/watch-css)
 	- [Inject CSS]()
 	- [Purge CSS]()
 	- [BrowserSync CSS]()
