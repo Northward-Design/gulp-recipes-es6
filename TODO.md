@@ -44,7 +44,7 @@ Ingredients
 		- [ ] [Sourcemaps]()
 	- [ ] [Browserify & Babelify]()
 	- [ ] [Watch JS]()
-	- [ ] [Inject JS]()
+	- [x] [Inject JS](https://github.com/itrusler/gulp-recipes-es6/issues/21)
 	- [ ] [BrowserSync JS]()
 - TS
 	- [ ] [Lint]()
