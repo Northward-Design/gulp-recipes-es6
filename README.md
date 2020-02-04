@@ -51,7 +51,7 @@ Index
 	- [Watch HTML](ingredients/html/watch-html/README.md)
 	- [BrowserSync HTML](ingredients/html/browsersync-html/README.md)
 - CSS
-	- [Lint CSS]()
+	- [Lint CSS](ingredients/css/lint-css/README.md)
 	- [Autoprefix CSS]()
 	- [Autoprefix CSS with Sourcemaps]()
 	- [Minfy CSS]()
