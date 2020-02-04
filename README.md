@@ -59,7 +59,7 @@ Index
 	- [Watch CSS](ingredients/css/watch-css)
 	- [Inject CSS](ingredients/css/inject-css)
 	- [Purge CSS](ingredients/css/purge-css)
-	- [BrowserSync CSS]()
+	- [BrowserSync CSS](ingredients/css/browsersync-css)
 - SASS
 	- [Lint SASS]()
 	- [Compile SASS]()
