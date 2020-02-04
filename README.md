@@ -43,18 +43,18 @@ Index
 
 ### Ingredients
 
-- [Base](ingredients/base/README.md)
-- [Clean](ingredients/clean/README.md)
-- HTML
-	- [Lint HTML](ingredients/html/lint-html/README.md)
-	- [Minify HTML](ingredients/html/minify-html/README.md)
-	- [Watch HTML](ingredients/html/watch-html/README.md)
-	- [BrowserSync HTML](ingredients/html/browsersync-html/README.md)
-- CSS
-	- [Lint CSS](ingredients/css/lint-css/README.md)
+- [Base](ingredients/base)
+- [Clean](ingredients/clean)
+- [HTML](ingredients/html)
+	- [Lint HTML](ingredients/html/lint-html)
+	- [Minify HTML](ingredients/html/minify-html)
+	- [Watch HTML](ingredients/html/watch-html)
+	- [BrowserSync HTML](ingredients/html/browsersync-html)
+- [CSS](ingredients/css)
+	- [Lint CSS](ingredients/css/lint-css)
 	- [Autoprefix CSS](ingredients/css/autoprefix-css)
 	- [Autoprefix CSS with Sourcemaps](ingredients/css/autoprefix-css-source-maps)
-	- [Minfy CSS]()
+	- [Minfy CSS](ingredients/css/minify-css)
 	- [Minfy CSS with Sourcemaps]()
 	- [Watch CSS]()
 	- [Inject CSS]()
