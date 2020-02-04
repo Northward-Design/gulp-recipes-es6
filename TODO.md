@@ -30,7 +30,7 @@ Ingredients
 - SASS
 	- [x] [Lint](https://github.com/itrusler/gulp-recipes-es6/issues/35)
 	- [x] [Compile](https://github.com/itrusler/gulp-recipes-es6/issues/36)
-		- [ ] [Sourcemaps]()
+		- [x] [Sourcemaps](https://github.com/itrusler/gulp-recipes-es6/issues/37)
 	- [ ] [Minify]()
 		- [ ] [Sourcemaps]()
 	- [ ] [Watch]()

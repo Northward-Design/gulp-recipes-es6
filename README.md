@@ -63,7 +63,7 @@ Index
 - SASS
 	- [Lint SASS](ingredients/sass/lint-sass)
 	- [Compile SASS](ingredients/sass/compile-sass)
-	- [Compile SASS with Sourcemaps]()
+	- [Compile SASS with Sourcemaps](ingredients/sass/compile-sass-source-maps)
 	- [Minify SASS]()
 	- [Minify SASS with Sourcemaps]()
 	- [Watch SASS]()
