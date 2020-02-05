@@ -69,7 +69,7 @@ Index
 	- [Watch SASS](ingredients/sass/watch-sass)
 	- [BrowserSync SASS](ingredients/sass/browsersync-sass)
 - JS
-	- [Lint JS]()
+	- [Lint JS](ingredients/js/lint-js)
 	- [Minify JS]()
 	- [Browserify JS]()
 	- [Browserify JS with Source Maps]()
