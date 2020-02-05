@@ -66,7 +66,7 @@ Index
 	- [Compile SASS with Source Maps](ingredients/sass/compile-sass-source-maps)
 	- [Minify SASS](ingredients/sass/minify-sass)
 	- [Minify SASS with Source Maps](ingredients/sass/minify-sass-source-maps)
-	- [Watch SASS]()
+	- [Watch SASS](ingredients/sass/watch-sass)
 	- [BrowserSync SASS]()
 - JS
 	- [Lint JS]()
