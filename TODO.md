@@ -32,7 +32,7 @@ Ingredients
 	- [x] [Compile](https://github.com/itrusler/gulp-recipes-es6/issues/36)
 		- [x] [Source Maps](https://github.com/itrusler/gulp-recipes-es6/issues/37)
 	- [x] [Minify](https://github.com/itrusler/gulp-recipes-es6/issues/38)
-		- [ ] [Source Maps]()
+		- [x] [Source Maps](https://github.com/itrusler/gulp-recipes-es6/issues/39)
 	- [ ] [Watch]()
 	- [ ] [BrowserSync SASS]()
 -	JS
