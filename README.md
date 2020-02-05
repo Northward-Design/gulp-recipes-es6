@@ -70,7 +70,7 @@ Index
 	- [BrowserSync SASS](ingredients/sass/browsersync-sass)
 - JS
 	- [Lint JS](ingredients/js/lint-js)
-	- [Minify JS]()
+	- [Minify JS](ingredients/js/minify-js)
 	- [Browserify JS]()
 	- [Browserify JS with Source Maps]()
 	- [Babel JS]()
