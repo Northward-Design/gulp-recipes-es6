@@ -50,7 +50,7 @@ Ingredients
 - TS
 	- [x] [Lint](https://github.com/itrusler/gulp-recipes-es6/issues/69)
 	- [x] [Compile](https://github.com/itrusler/gulp-recipes-es6/issues/70)
-		- [ ] [Source Maps]()
+		- [x] [Source Maps](https://github.com/itrusler/gulp-recipes-es6/issues/71)
 	- [ ] [Minify]()
 		- [ ] [Source Maps]()
 	- [ ] [Browserify]()

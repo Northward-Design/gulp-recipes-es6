@@ -83,7 +83,7 @@ Index
 - TS
 	- [Lint TS](ingredients/ts/lint-ts)
 	- [Compile TS](ingredients/ts/compile-ts)
-	- [Compile TS with Source Maps]()
+	- [Compile TS with Source Maps](ingredients/ts/compile-ts-source-maps)
 	- [Minify TS]()
 	- [Minify TS with Source Maps]()
 	- [Browserify TS]()
