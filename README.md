@@ -82,7 +82,7 @@ Index
 	- [BrowserSync JS](ingredients/js/browsersync-js)
 - TS
 	- [Lint TS](ingredients/ts/lint-ts)
-	- [Compile TS]()
+	- [Compile TS](ingredients/ts/compile-ts)
 	- [Compile TS with Source Maps]()
 	- [Minify TS]()
 	- [Minify TS with Source Maps]()

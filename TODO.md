@@ -49,7 +49,7 @@ Ingredients
 	- [x] [BrowserSync JS](https://github.com/itrusler/gulp-recipes-es6/issues/57)
 - TS
 	- [x] [Lint](https://github.com/itrusler/gulp-recipes-es6/issues/69)
-	- [ ] [Compile]()
+	- [x] [Compile](https://github.com/itrusler/gulp-recipes-es6/issues/70)
 		- [ ] [Source Maps]()
 	- [ ] [Minify]()
 		- [ ] [Source Maps]()
