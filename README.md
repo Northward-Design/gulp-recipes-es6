@@ -77,8 +77,8 @@ Index
 	- [Babel JS](ingredients/js/babel-js)
 	- [Babel JS with Source Maps](ingredients/js/babel-js-source-maps)
 	- [Browserify and Babelify JS](browserify-babelify-js)
-	- [Watch JS]()
 	- [Inject JS](ingredients/js/inject-js)
+	- [Watch JS](ingredients/js/watch-js)
 	- [BrowserSync JS]()
 - TS
 	- [Lint TS]()
