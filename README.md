@@ -81,7 +81,7 @@ Index
 	- [Watch JS](ingredients/js/watch-js)
 	- [BrowserSync JS](ingredients/js/browsersync-js)
 - TS
-	- [Lint TS]()
+	- [Lint TS](ingredients/ts/lint-ts)
 	- [Compile TS]()
 	- [Compile TS with Source Maps]()
 	- [Minify TS]()
