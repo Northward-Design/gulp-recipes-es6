@@ -79,7 +79,7 @@ Index
 	- [Browserify and Babelify JS](browserify-babelify-js)
 	- [Inject JS](ingredients/js/inject-js)
 	- [Watch JS](ingredients/js/watch-js)
-	- [BrowserSync JS]()
+	- [BrowserSync JS](ingredients/js/browsersync-js)
 - TS
 	- [Lint TS]()
 	- [Compile TS]()
