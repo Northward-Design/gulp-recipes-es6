@@ -72,7 +72,7 @@ Index
 	- [Lint JS](ingredients/js/lint-js)
 	- [Minify JS](ingredients/js/minify-js)
 	- [Browserify JS](ingredients/js/browserify-js)
-	- [Browserify JS with Source Maps]()
+	- [Browserify JS with Source Maps](ingredients/js/browserify-js-source-maps)
 	- [Babel JS]()
 	- [Babel JS with Source Maps]()
 	- [Browserify and Babelify JS]()
