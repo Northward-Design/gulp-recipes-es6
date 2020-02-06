@@ -74,7 +74,7 @@ Index
 	- [Minify JS with Source Maps](ingredients/js/minify-js-source-maps)
 	- [Browserify JS](ingredients/js/browserify-js)
 	- [Browserify JS with Source Maps](ingredients/js/browserify-js-source-maps)
-	- [Babel JS]()
+	- [Babel JS](ingredients/js/babel-js)
 	- [Babel JS with Source Maps]()
 	- [Browserify and Babelify JS]()
 	- [Watch JS]()
