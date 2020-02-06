@@ -38,7 +38,7 @@ Ingredients
 -	JS
 	- [x] [Lint](https://github.com/itrusler/gulp-recipes-es6/issues/49)
 	- [x] [Minify](https://github.com/itrusler/gulp-recipes-es6/issues/50)
-	- [ ] [Browserify]()
+	- [x] [Browserify](https://github.com/itrusler/gulp-recipes-es6/issues/51)
 		- [ ] [Source Maps]()
 	- [ ] [Babel]()
 		- [ ] [Source Maps]()
