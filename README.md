@@ -86,7 +86,7 @@ Index
 	- [Compile TS with Source Maps](ingredients/ts/compile-ts-source-maps)
 	- [Minify TS](ingredients/ts/minify-ts)
 	- [Minify TS with Source Maps](ingredients/ts/minify-ts-source-maps)
-	- [Browserify TS]()
+	- [Browserify TS](ingredients/ts/browserify-ts)
 	- [Watch TS]()
 	- [BrowserSync TS]()
 - PHP
