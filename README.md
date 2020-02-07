@@ -91,7 +91,7 @@ Index
 	- [Watch TS](ingredients/ts/watch-ts)
 	- [BrowserSync TS](ingredients/ts/browsersync-ts)
 - PHP
-	- [Connect and BrowserSync PHP]()
+	- [Connect and BrowserSync PHP](ingredients/connect-browsersync-php)
 - Images
 	- [Optimize Images]()
 	- [Watch Images]()
