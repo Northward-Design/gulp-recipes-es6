@@ -85,7 +85,7 @@ Index
 	- [Compile TS](ingredients/ts/compile-ts)
 	- [Compile TS with Source Maps](ingredients/ts/compile-ts-source-maps)
 	- [Minify TS](ingredients/ts/minify-ts)
-	- [Minify TS with Source Maps]()
+	- [Minify TS with Source Maps](ingredients/ts/minify-ts-source-maps)
 	- [Browserify TS]()
 	- [Watch TS]()
 	- [BrowserSync TS]()
