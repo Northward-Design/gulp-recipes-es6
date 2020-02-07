@@ -1,0 +1,26 @@
+--- 
+extends: "tslint:recommended"
+jsRules: 
+  max-line-length: 
+    options: 
+      - 120
+rules: 
+  max-line-length: 
+    options: 
+      - 120
+  new-parens: true
+  no-arg: true
+  no-bitwise: true
+  no-conditional-assignment: true
+  no-consecutive-blank-lines: false
+  no-console:
+    options: 
+      - debug
+      - info
+      # - log # edit
+      - time
+      - timeEnd
+      - trace
+    severity: warning
+  max-classes-per-file: false #edit
+...
