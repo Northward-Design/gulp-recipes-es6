@@ -89,7 +89,7 @@ Index
 	- [Browserify TS](ingredients/ts/browserify-ts)
 	- [Browserify TS with Source Maps](ingredients/ts/browserify-ts-source-maps)
 	- [Watch TS](ingredients/ts/watch-ts)
-	- [BrowserSync TS]()
+	- [BrowserSync TS](ingredients/ts/browsersync-ts)
 - PHP
 	- [Connect and BrowserSync PHP]()
 - Images
