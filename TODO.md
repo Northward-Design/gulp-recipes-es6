@@ -54,7 +54,7 @@ Ingredients
 	- [x] [Minify](https://github.com/itrusler/gulp-recipes-es6/issues/72)
 		- [x] [Source Maps](https://github.com/itrusler/gulp-recipes-es6/issues/73)
 	- [x] [Browserify](https://github.com/itrusler/gulp-recipes-es6/issues/74)
-		- [ ] [Source Maps]()
+		- [x] [Source Maps](https://github.com/itrusler/gulp-recipes-es6/issues/84)
 	- [x] [Watch TS](https://github.com/itrusler/gulp-recipes-es6/issues/75)
 	- [ ] [BrowserSync TS]()
 - PHP
