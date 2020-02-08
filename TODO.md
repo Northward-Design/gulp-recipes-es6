@@ -60,6 +60,6 @@ Ingredients
 - PHP
 	- [x] [Connect and BrowserSync PHP](https://github.com/itrusler/gulp-recipes-es6/issues/87)
 - Images
-	- [ ] [Optimize Images]()
+	- [x] [Optimize Images](https://github.com/itrusler/gulp-recipes-es6/issues/88)
 	- [ ] [Watch Images]()
 

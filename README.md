@@ -93,5 +93,5 @@ Index
 - PHP
 	- [Connect and BrowserSync PHP](ingredients/connect-browsersync-php)
 - Images
-	- [Optimize Images]()
+	- [Optimize Images](ingredients/images/optimize-images)
 	- [Watch Images]()
