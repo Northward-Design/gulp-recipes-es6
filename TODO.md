@@ -15,18 +15,19 @@ Ingredients
 - HTML
 	- [x] [Lint](https://github.com/itrusler/gulp-recipes-es6/issues/7)
 	- [x] [Minify](https://github.com/itrusler/gulp-recipes-es6/issues/9)
+	- [x] [Gzip](https://github.com/itrusler/gulp-recipes-es6/issues/97)
 	- [x] [Watch](https://github.com/itrusler/gulp-recipes-es6/issues/10)
 	- [x] [BrowserSync HTML](https://github.com/itrusler/gulp-recipes-es6/issues/11)
-	- [x] [Gzip](https://github.com/itrusler/gulp-recipes-es6/issues/97)
 - CSS
 	- [x] [Lint](https://github.com/itrusler/gulp-recipes-es6/issues/15)
 	- [x] [Autoprefixer](https://github.com/itrusler/gulp-recipes-es6/issues/16)
 		- [x] [Source Maps](https://github.com/itrusler/gulp-recipes-es6/issues/17)
 	- [x] [Minify](https://github.com/itrusler/gulp-recipes-es6/issues/18)
 		- [x] [Source Maps](https://github.com/itrusler/gulp-recipes-es6/issues/19)
-	- [x] [Watch](https://github.com/itrusler/gulp-recipes-es6/issues/20)
+	- [x] [Gzip](https://github.com/itrusler/gulp-recipes-es6/issues/99)
 	- [x] [Inject CSS](https://github.com/itrusler/gulp-recipes-es6/issues/21)
 	- [x] [Purge CSS](https://github.com/itrusler/gulp-recipes-es6/issues/22)
+	- [x] [Watch](https://github.com/itrusler/gulp-recipes-es6/issues/20)
 	- [x] [BrowserSync CSS](https://github.com/itrusler/gulp-recipes-es6/issues/23)
 - SASS
 	- [x] [Lint](https://github.com/itrusler/gulp-recipes-es6/issues/35)

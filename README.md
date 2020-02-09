@@ -48,18 +48,19 @@ Index
 - HTML
 	- [Lint HTML](ingredients/html/lint-html)
 	- [Minify HTML](ingredients/html/minify-html)
+	- [Gzip HTML](ingredients/html/gzip-html)
 	- [Watch HTML](ingredients/html/watch-html)
 	- [BrowserSync HTML](ingredients/html/browsersync-html)
-	- [Gzip HTML](ingredients/html/gzip-html)
 - CSS
 	- [Lint CSS](ingredients/css/lint-css)
 	- [Autoprefix CSS](ingredients/css/autoprefix-css)
 	- [Autoprefix CSS with Source Maps](ingredients/css/autoprefix-css-source-maps)
 	- [Minify CSS](ingredients/css/minify-css)
 	- [Minify CSS with Source Maps](ingredients/css/minify-css-source-maps)
-	- [Watch CSS](ingredients/css/watch-css)
+	- [Gzip CSS](ingredients/css/minify-css)
 	- [Inject CSS](ingredients/css/inject-css)
 	- [Purge CSS](ingredients/css/purge-css)
+	- [Watch CSS](ingredients/css/watch-css)
 	- [BrowserSync CSS](ingredients/css/browsersync-css)
 - SASS
 	- [Lint SASS](ingredients/sass/lint-sass)
