@@ -65,4 +65,5 @@ Ingredients
 - Images
 	- [x] [Optimize Images](https://github.com/itrusler/gulp-recipes-es6/issues/88)
 	- [x] [Watch Images](https://github.com/itrusler/gulp-recipes-es6/issues/89)
+- [x] [Sitemap Generator](https://github.com/itrusler/gulp-recipes-es6/issues/103)
 

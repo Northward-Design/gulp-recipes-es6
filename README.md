@@ -98,3 +98,4 @@ Index
 - Images
 	- [Optimize Images](ingredients/images/optimize-images)
 	- [Watch Images](ingredients/images/watch-images)
+- [Sitemap Generator](ingredients/sitemap-generator)
