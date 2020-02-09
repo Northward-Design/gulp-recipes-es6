@@ -57,7 +57,7 @@ Index
 	- [Autoprefix CSS with Source Maps](ingredients/css/autoprefix-css-source-maps)
 	- [Minify CSS](ingredients/css/minify-css)
 	- [Minify CSS with Source Maps](ingredients/css/minify-css-source-maps)
-	- [Gzip CSS](ingredients/css/minify-css)
+	- [Gzip CSS](ingredients/css/gzip-css)
 	- [Inject CSS](ingredients/css/inject-css)
 	- [Purge CSS](ingredients/css/purge-css)
 	- [Watch CSS](ingredients/css/watch-css)
@@ -68,6 +68,7 @@ Index
 	- [Compile SASS with Source Maps](ingredients/sass/compile-sass-source-maps)
 	- [Minify SASS](ingredients/sass/minify-sass)
 	- [Minify SASS with Source Maps](ingredients/sass/minify-sass-source-maps)
+	- [Gzip JS](ingredients/js/gzip-js)
 	- [Watch SASS](ingredients/sass/watch-sass)
 	- [BrowserSync SASS](ingredients/sass/browsersync-sass)
 - JS

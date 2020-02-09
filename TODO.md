@@ -46,6 +46,7 @@ Ingredients
 	- [x] [Babel](https://github.com/itrusler/gulp-recipes-es6/issues/53)
 		- [x] [Source Maps](https://github.com/itrusler/gulp-recipes-es6/issues/54)
 	- [x] [Browserify & Babelify](https://github.com/itrusler/gulp-recipes-es6/issues/55)
+	- [x] [Gzip](https://github.com/itrusler/gulp-recipes-es6/issues/101)
 	- [x] [Inject JS](https://github.com/itrusler/gulp-recipes-es6/issues/21)
 	- [x] [Watch JS](https://github.com/itrusler/gulp-recipes-es6/issues/56)
 	- [x] [BrowserSync JS](https://github.com/itrusler/gulp-recipes-es6/issues/57)
