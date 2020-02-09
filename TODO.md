@@ -17,11 +17,12 @@ Ingredients
 	- [x] [Minify](https://github.com/itrusler/gulp-recipes-es6/issues/9)
 	- [x] [Watch](https://github.com/itrusler/gulp-recipes-es6/issues/10)
 	- [x] [BrowserSync HTML](https://github.com/itrusler/gulp-recipes-es6/issues/11)
+	- [x] [Gzip](https://github.com/itrusler/gulp-recipes-es6/issues/97)
 - CSS
 	- [x] [Lint](https://github.com/itrusler/gulp-recipes-es6/issues/15)
 	- [x] [Autoprefixer](https://github.com/itrusler/gulp-recipes-es6/issues/16)
 		- [x] [Source Maps](https://github.com/itrusler/gulp-recipes-es6/issues/17)
-	- [x] [Minfy](https://github.com/itrusler/gulp-recipes-es6/issues/18)
+	- [x] [Minify](https://github.com/itrusler/gulp-recipes-es6/issues/18)
 		- [x] [Source Maps](https://github.com/itrusler/gulp-recipes-es6/issues/19)
 	- [x] [Watch](https://github.com/itrusler/gulp-recipes-es6/issues/20)
 	- [x] [Inject CSS](https://github.com/itrusler/gulp-recipes-es6/issues/21)
