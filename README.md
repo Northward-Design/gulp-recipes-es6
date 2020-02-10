@@ -59,6 +59,7 @@ Index
 	- [Minify CSS with Source Maps](ingredients/css/minify-css-source-maps)
 	- [Gzip CSS](ingredients/css/gzip-css)
 	- [Inject CSS](ingredients/css/inject-css)
+	- [Critical CSS](ingredients/css/critical-css)
 	- [Purge CSS](ingredients/css/purge-css)
 	- [Watch CSS](ingredients/css/watch-css)
 	- [BrowserSync CSS](ingredients/css/browsersync-css)
