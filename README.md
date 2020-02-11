@@ -61,6 +61,7 @@ Index
 	- [Inject CSS](ingredients/css/inject-css)
 	- [Critical CSS](ingredients/css/critical-css)
 	- [Purge CSS](ingredients/css/purge-css)
+	- [PostCSS Assets](ingredients/css/post-assets-css)
 	- [Watch CSS](ingredients/css/watch-css)
 	- [BrowserSync CSS](ingredients/css/browsersync-css)
 - SASS
