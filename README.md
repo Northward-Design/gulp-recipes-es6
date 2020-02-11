@@ -98,5 +98,6 @@ Index
 	- [Connect and BrowserSync PHP](ingredients/connect-browsersync-php)
 - Images
 	- [Optimize Images](ingredients/images/optimize-images)
+	- [Responsive Images](ingredients/images/responsive-images)
 	- [Watch Images](ingredients/images/watch-images)
 - [Sitemap Generator](ingredients/sitemap-generator)
