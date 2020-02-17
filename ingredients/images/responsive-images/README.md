@@ -3,9 +3,10 @@ Responsive Image Ingredient
 
 A Responsive Image Task.
 
-- Resizes all `.jpg`, `.jpeg`, `.png`, `.tiff`, and `.webP` images from `src/images` to `dist/images`.
+- Resizes all `.jpg`, `.jpeg`, `.png`, and `.tiff` images from `src/images` to `dist/images`.
 - Creates multiple sizes, and suffixes them.
-- Reduces only, does not enlarge. Settings for `.tiff` and `.webP` not included
+- Converts `.jpg` and `.jpeg` to `.jpg` and `.webp` formats.
+- Reduces only, does not enlarge. Settings for `.tiff` not included
 
 Usage
 --------------------------------------------------------------------------------
@@ -18,19 +19,36 @@ import { default as responsive } from 'gulp-responsive';
 
 export default function responsiveImg() {
   return pump(
-    src('src/images/**/*.{png,jpg,jpeg,tiff,webP}'),
+    src('src/images/**/*.{png,jpg,jpeg}'),
     responsive({
       '*.{jpg,jpeg}': [
         {
-          width: 150,
+          width: 50,
           rename: {
-            suffix: '-150w'
+            suffix: '-50w',
+            extname: '.jpg'
           }
         },
         {
-          width: 300,
+          width: 800,
           rename: {
-            suffix: '-300w'
+            suffix: '-800w',
+            extname: '.jpg'
+          }
+        },
+        {
+          width: 800 * 2,
+          rename: {
+            suffix: '-800w@x2',
+            extname: '.jpg'
+          }
+        },
+        ...
+        {
+          width: 1600 * 2,
+          rename: {
+            suffix: '-1600w@x2',
+            extname: '.webp'
           }
         }
       ],
@@ -42,10 +60,12 @@ export default function responsiveImg() {
       }
     },
     {
-      quality: 100,
-      compressionLevel: 1,
+      progressive: true,
+      quality: 60,
+      compressionLevel: 9,
       errorOnUnusedConfig: false,
-      errorOnUnusedImage: false
+      errorOnUnusedImage: false,
+      errorOnEnlargement: false
     }),
     dest('dist/images')
   );

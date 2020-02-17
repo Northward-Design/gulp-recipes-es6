@@ -20,7 +20,7 @@ config.files.node_modules = resolve(config.root, 'node_modules');
 
 config.src = {};
 config.src.root = resolve(config.root, 'src');
-config.src.img = resolve(config.src.root, 'images/**/*.{png,jpg,jpeg,tiff,webP}');
+config.src.img = resolve(config.src.root, 'images/**/*.{png,jpg,jpeg}');
 
 config.dist = {};
 config.dist.root = resolve(config.root, 'dist');
@@ -30,14 +30,52 @@ config.clean = {};
 config.clean.dist = config.dist.root;
 
 config.plugins = {};
+config.plugins.srcset = {};
+config.plugins.srcset.mini = '50';
+config.plugins.srcset.sm = '800';
+config.plugins.srcset.md = '1200';
+config.plugins.srcset.lg = '1600'; //Source jpg or jpeg Image MUST be >= twice this width
 config.plugins.resp = {};
 config.plugins.resp.jpgSet = [
   { 
-    width: 150,
-    rename: {suffix: '-150w'}
+    width: config.plugins.srcset.mini,
+    rename: {suffix: `-${config.plugins.srcset.mini}w`, extname: '.jpg'}
+  },{ 
+    width: config.plugins.srcset.sm,
+    rename: {suffix: `-${config.plugins.srcset.sm}w`, extname: '.jpg'}
+  }, { 
+    width: config.plugins.srcset.sm * 2,
+    rename: {suffix: `-${config.plugins.srcset.sm}w@x2`, extname: '.jpg'}
   }, {
-    width: 300,
-    rename: {suffix: '-300w'}
+    width: config.plugins.srcset.md,
+    rename: {suffix: `-${config.plugins.srcset.md}w`, extname: '.jpg'}
+  }, { 
+    width: config.plugins.srcset.md * 2,
+    rename: {suffix: `-${config.plugins.srcset.md}w@x2`, extname: '.jpg'}
+  }, {
+    width: config.plugins.srcset.lg,
+    rename: {suffix: `-${config.plugins.srcset.lg}w`, extname: '.jpg'}
+  }, { 
+    width: config.plugins.srcset.lg * 2,
+    rename: {suffix: `-${config.plugins.srcset.lg}w@x2`, extname: '.jpg'}
+  }, { 
+    width: config.plugins.srcset.sm,
+    rename: {suffix: `-${config.plugins.srcset.sm}w`, extname: '.webp'}
+  }, { 
+    width: config.plugins.srcset.sm * 2,
+    rename: {suffix: `-${config.plugins.srcset.sm}w@x2`, extname: '.webp'}
+  }, {
+    width: config.plugins.srcset.md,
+    rename: {suffix: `-${config.plugins.srcset.md}w`, extname: '.webp'}
+  }, { 
+    width: config.plugins.srcset.md * 2,
+    rename: {suffix: `-${config.plugins.srcset.md}w@x2`, extname: '.webp'}
+  }, {
+    width: config.plugins.srcset.lg,
+    rename: {suffix: `-${config.plugins.srcset.lg}w`, extname: '.webp'}
+  }, { 
+    width: config.plugins.srcset.lg * 2,
+    rename: {suffix: `-${config.plugins.srcset.lg}w@x2`, extname: '.webp'}
   }
 ];
 config.plugins.resp.pngSet = {
@@ -49,10 +87,12 @@ config.plugins.resp.settings = {
   '*.png': config.plugins.resp.pngSet
 };
 config.plugins.resp.options = {
-  quality: 100,
-  compressionLevel: 1,
+  progressive: true,
+  quality: 60,
+  compressionLevel: 9,
   errorOnUnusedConfig: false,
-  errorOnUnusedImage: false
+  errorOnUnusedImage: false,
+  errorOnEnlargement: false
 };
 
 export default function responsiveImg() {
