@@ -100,5 +100,6 @@ Index
 - Images
 	- [Optimize Images](ingredients/images/optimize-images)
 	- [Responsive Images](ingredients/images/responsive-images)
+	- [Inject Images](ingredients/images/inject-images)
 	- [Watch Images](ingredients/images/watch-images)
 - [Sitemap Generator](ingredients/sitemap-generator)
