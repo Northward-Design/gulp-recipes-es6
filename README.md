@@ -48,6 +48,7 @@ Index
 - HTML
 	- [Lint HTML](ingredients/html/lint-html)
 	- [Minify HTML](ingredients/html/minify-html)
+	- [Inject HTML](ingredients/html/inject-html)
 	- [Gzip HTML](ingredients/html/gzip-html)
 	- [Watch HTML](ingredients/html/watch-html)
 	- [BrowserSync HTML](ingredients/html/browsersync-html)
@@ -70,7 +71,6 @@ Index
 	- [Compile SASS with Source Maps](ingredients/sass/compile-sass-source-maps)
 	- [Minify SASS](ingredients/sass/minify-sass)
 	- [Minify SASS with Source Maps](ingredients/sass/minify-sass-source-maps)
-	- [Gzip JS](ingredients/js/gzip-js)
 	- [Watch SASS](ingredients/sass/watch-sass)
 	- [BrowserSync SASS](ingredients/sass/browsersync-sass)
 - JS
@@ -83,6 +83,7 @@ Index
 	- [Babel JS with Source Maps](ingredients/js/babel-js-source-maps)
 	- [Browserify and Babelify JS](browserify-babelify-js)
 	- [Inject JS](ingredients/js/inject-js)
+	- [Gzip JS](ingredients/js/gzip-js)
 	- [Watch JS](ingredients/js/watch-js)
 	- [BrowserSync JS](ingredients/js/browsersync-js)
 - TS
