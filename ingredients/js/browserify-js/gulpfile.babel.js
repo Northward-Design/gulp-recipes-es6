@@ -33,11 +33,12 @@ config.clean.dist = config.dist.root;
 config.plugins = {};
 config.plugins.browserify = {};
 config.plugins.browserify.entries = [config.src.js];
+config.plugins.source = 'index.js';
 
 export default function buildJs() {
   return pump(
     browserify(config.plugins.browserify).bundle(),
-    source('index.js'),
+    source(config.plugins.source),
     dest(config.dist.js)
   )
 }
