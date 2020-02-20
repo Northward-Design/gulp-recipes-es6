@@ -33,10 +33,9 @@ config.clean.dist = config.dist.root;
 
 config.plugins = {};
 config.plugins.postcss = {};
-config.plugins.assets = {
-  loadPaths: [config.dist.img],
-  relative: true
-};
+config.plugins.assets = {};
+config.plugins.assets.loadPaths = [config.dist.img];
+config.plugins.assets.relative = config.dist.css;
 
 export default function buildCss() {
   return pump(

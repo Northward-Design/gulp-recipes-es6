@@ -18,14 +18,14 @@ import assets from 'postcss-assets';
 
 export default function buildCss() {
   return pump(
-      src('src/css/**/*.css'),
-      postcss([
-      	assets({
-      		loadPaths: ['dist/images'],
-      		relative: true
-      	})
-      ]),	
-      dest('dist/styles')
+    src('src/css/**/*.css'),
+    postcss([
+      assets({
+        loadPaths: ['dist/images'],
+        relative: 'dist/styles'
+      })
+    ]),	
+    dest('dist/styles')
   );
 }
 ```
