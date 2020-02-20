@@ -81,7 +81,7 @@ Index
 	- [Browserify JS with Source Maps](ingredients/js/browserify-js-source-maps)
 	- [Babel JS](ingredients/js/babel-js)
 	- [Babel JS with Source Maps](ingredients/js/babel-js-source-maps)
-	- [Browserify and Babelify JS](browserify-babelify-js)
+	- [Browserify and Babelify JS](ingredients/js/browserify-babelify-js)
 	- [Inject JS](ingredients/js/inject-js)
 	- [Gzip JS](ingredients/js/gzip-js)
 	- [Watch JS](ingredients/js/watch-js)
