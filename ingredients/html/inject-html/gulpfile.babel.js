@@ -31,27 +31,27 @@ config.clean = {};
 config.clean.dist = config.dist.root;
 
 config.plugins = {};
-config.plugins.inject1 = {};
-config.plugins.inject2 = {};
-config.plugins.inject3 = {};
-config.plugins.inject1.removeTags = true;
-config.plugins.inject2.removeTags = true;
-config.plugins.inject3.removeTags = true;
-config.plugins.inject1.name = 'head';
-config.plugins.inject2.name = 'header';
-config.plugins.inject3.name = 'footer';
-config.plugins.inject1.transform = (filepath, file) => {
+config.plugins.injectHead = {};
+config.plugins.injectHeader = {};
+config.plugins.injectFooter = {};
+config.plugins.injectHead.removeTags = true;
+config.plugins.injectHeader.removeTags = true;
+config.plugins.injectFooter.removeTags = true;
+config.plugins.injectHead.name = 'head';
+config.plugins.injectHeader.name = 'header';
+config.plugins.injectFooter.name = 'footer';
+config.plugins.injectHead.transform = (filepath, file) => {
   return file.contents.toString('utf8');
 };
-config.plugins.inject2.transform = config.plugins.inject1.transform;
-config.plugins.inject3.transform = config.plugins.inject1.transform;
+config.plugins.injectHeader.transform = config.plugins.injectHead.transform;
+config.plugins.injectFooter.transform = config.plugins.injectHead.transform;
 
 export default function injection() {
   return pump(
     src(config.src.html),
-    inject(src([`${config.src.partials}/${config.plugins.inject1.name}.html`]), config.plugins.inject1),
-    inject(src([`${config.src.partials}/${config.plugins.inject2.name}.html`]), config.plugins.inject2),
-    inject(src([`${config.src.partials}/${config.plugins.inject3.name}.html`]), config.plugins.inject3),
+    inject(src([`${config.src.partials}/${config.plugins.injectHead.name}.html`]), config.plugins.injectHead),
+    inject(src([`${config.src.partials}/${config.plugins.injectHeader.name}.html`]), config.plugins.injectHeader),
+    inject(src([`${config.src.partials}/${config.plugins.injectFooter.name}.html`]), config.plugins.injectFooter),
     dest(config.dist.html)
   );
 }
