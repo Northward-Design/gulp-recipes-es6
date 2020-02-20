@@ -37,9 +37,9 @@ config.plugins.rename = {suffix: '.min'};
 
 export default function buildCss() {
   return pump(
-      src(config.src.css),
-      cleancss(config.plugins.cleancss),
-      rename(config.plugins.rename),
-      dest(config.dist.css)
+    src(config.src.css),
+    cleancss(config.plugins.cleancss),
+    rename(config.plugins.rename),
+    dest(config.dist.css)
   );
 }
