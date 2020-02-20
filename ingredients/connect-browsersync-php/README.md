@@ -3,7 +3,7 @@ PHP BrowserSync Ingredient
 
 A PHP BrowserSync, and Watch Task.
 
-- Synchronizes the Browser to `dist/index.php`. 
+- Synchronizes the Browser to `dist/index.php`, and updates on any change.
 - Watches all `PHP` files in `dist`. 
 
 Usage
@@ -41,6 +41,7 @@ Install the required plugins with `npm`.
 Includes
 --------------------------------------------------------------------------------
 
+- Additional Configuration for PHP sources in `dist`.
 - A default `syncPhp` Task. 
 
 Dependencies

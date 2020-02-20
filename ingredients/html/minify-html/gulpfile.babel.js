@@ -32,6 +32,7 @@ config.clean.dist = config.dist.root;
 config.plugins = {};
 config.plugins.htmlmin = {};
 config.plugins.htmlmin.collapseWhitespace = true;
+config.plugins.htmlmin.removeComments = true;
 
 export default function buildHtml() {
   return pump(

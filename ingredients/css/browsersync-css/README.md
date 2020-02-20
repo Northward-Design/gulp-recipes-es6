@@ -1,9 +1,9 @@
-BrowserSync CSS
+BrowserSync CSS Ingredient
 ================================================================================
 
-A CSS BrowserSync, Watch, Lint, Autoprefixer, and Minify task with Source Maps.
+A CSS BrowserSync, Watch, Lint, Autoprefixer, and Minification Task with Source Maps.
 
-- Synchronizes the Browser to `dist/styles` and updates on any change. 
+- Synchronizes the browser to `dist/styles` and updates on any change.
 - Watches all `css` files in `src/css`.
 - Lints, Prefixes, and Minifies all `.css` files from `src/css` to `dist/styles`.
 - Renames files to `*.min.css`.
@@ -32,9 +32,10 @@ export function lintCss() {
   return pump(
     src('src/css/**/*.css'),
     stylelint({
-        reporters: [
-          {formatter: 'verbose', console: true}
-        ]
+      reporters: [{
+        formatter: 'verbose',
+        console: true
+      }]
     })
   );
 }
@@ -68,6 +69,9 @@ export const all = series(css, serve, watch);
 
 export default all;
 ```
+
+Notes:
+- Errors or warnings reported by Stylelint will not halt remaining tasks in a series.
 
 Installation
 --------------------------------------------------------------------------------

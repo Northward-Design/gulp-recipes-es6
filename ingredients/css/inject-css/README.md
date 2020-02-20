@@ -1,10 +1,9 @@
-Inject Ingredient
+Inject CSS Ingredient
 ================================================================================
 
-An Injection Task
+A CSS Injection Task
 
-- Injects file contents from `dist/styles/index.css` into all `.html` files in `src/html`,
-and Outputs the file to `dist`.
+- Injects file contents from `dist/styles/index.css` into all `.html` files from `src/html` to `dist`.
 
 Usage
 --------------------------------------------------------------------------------
@@ -20,7 +19,7 @@ export default function injection() {
     src('src/html/**/*.html'),
     inject(src(['dist/styles/index.css']), {
     	removeTags: true,
-    	transform: function(filePath, file) {
+        transform: (filePath, file) => {
     		return file.contents.toString();
     	};
     }),
@@ -48,8 +47,8 @@ Install the required plugins with `npm`.
 Includes
 --------------------------------------------------------------------------------
 
-### Tasks
-
+- Additional Configuration for HTML sources in `src/html`.
+- Additional Configuration for CSS sources in `dist/styles`.
 - A default `injection` Task.
 
 Dependencies

@@ -37,6 +37,7 @@ config.plugins.htmllint = {};
 config.plugins.htmllint.failOnError = true;
 config.plugins.htmlmin = {};
 config.plugins.htmlmin.collapseWhitespace = true;
+config.plugins.htmlmin.removeComments = true;
 config.plugins.browsersync = {};
 config.plugins.browsersync.server = {};
 config.plugins.browsersync.server.baseDir = 'dist';

@@ -1,10 +1,10 @@
-Minify CSS
+Minify CSS Ingredient
 ================================================================================
 
-A CSS Minification task.
+A CSS Minification Task.
 
-Minifies all `.css` files in `src/css` to `dist/styles` using [gulp-clean-css](https://www.npmjs.com/package/gulp-clean-css).
-Renames files to `*.min.css` using [gulp-rename](https://www.npmjs.com/package/gulp-rename).
+- Minifies all `.css` files from `src/css` to `dist/styles`.
+- Renames files to `*.min.css`.
 
 Usage
 --------------------------------------------------------------------------------

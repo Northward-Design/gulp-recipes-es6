@@ -70,8 +70,8 @@ Install the required plugins with `npm`.
 Includes
 --------------------------------------------------------------------------------
 
-- Additional Configuration for HTML sources in src/html.
-- Additional Configuration for HTML sources in src/partials.
+- Additional Configuration for HTML sources in `src/html`.
+- Additional Configuration for HTML sources in `src/partials`.
 - A default `injection` Task.
 
 Dependencies

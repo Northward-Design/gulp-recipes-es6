@@ -17,7 +17,7 @@ import { default as tslint } from 'gulp-tslint';
 export default function lintTs() {
   return pump(
     src('src/ts/**/*.ts'),
-    tslint(),
+    tslint({ formatter: 'verbose' }),
     tslint.report()
    );
 }

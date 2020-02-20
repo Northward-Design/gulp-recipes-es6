@@ -37,7 +37,7 @@ Includes
 --------------------------------------------------------------------------------
 
 - Additional Configuration for JS sources in `src/js`.
-- A `buildJs` Task.
+- A default `buildJs` Task.
 
 Dependencies
 --------------------------------------------------------------------------------

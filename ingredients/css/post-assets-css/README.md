@@ -1,7 +1,7 @@
 PostCSS Assets Ingredient
 ================================================================================
 
-A PostCSS Assets task.
+A PostCSS Assets Task.
 
 - Images from `dest/images` relative paths and sizes are in-lined into all `.css` files from `src/css` to `dist/styles`.
 

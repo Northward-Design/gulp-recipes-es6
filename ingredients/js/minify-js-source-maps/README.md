@@ -5,7 +5,7 @@ A JavaScript Minification Task with Source Maps
 
 - Minifies all `.js` files from `src/js` to `dist/scripts`.
 - Renames files to `*.min.js`
-- Creates an in-line Source Map in all the `.js` files.
+- Creates an in-line Source Map in each `.min.js` file.
 
 Usage
 --------------------------------------------------------------------------------
@@ -38,7 +38,7 @@ Includes
 --------------------------------------------------------------------------------
 
 - Additional Configuration for JS sources in `src/js`.
-- A `buildJs` Task.
+- A default `buildJs` Task.
 
 Dependencies
 --------------------------------------------------------------------------------

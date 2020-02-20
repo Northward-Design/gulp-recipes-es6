@@ -1,9 +1,9 @@
-Minify HTML
+Minify HTML Ingredient
 ================================================================================
 
-An HTML Minification task.
+An HTML Minification Task.
 
-Copies all `.html` files from `src/html` to `dist` in a minified format using [gulp-htmlmin](https://www.npmjs.com/package/gulp-htmlmin)
+- Minifies all `.html` files from `src/html` to `dist`.
 
 Usage
 --------------------------------------------------------------------------------
@@ -17,7 +17,10 @@ import htmlmin from 'gulp-htmlmin';
 export default function buildHtml() {
   return pump(
     src('src/html/**/*.html'),
-    htmlmin({collapseWhitespace: true}),
+    htmlmin({
+      collapseWhitespace: true,
+      removeComments: true
+    }),
     dest('dist')
   );
 }
@@ -35,7 +38,7 @@ Includes
 --------------------------------------------------------------------------------
 
 - Additional Configuration for HTML sources in `src/html`.
-- A default `buildhtml` Task.
+- A default `buildHtml` Task.
 
 Dependencies
 --------------------------------------------------------------------------------

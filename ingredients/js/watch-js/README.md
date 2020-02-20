@@ -1,12 +1,12 @@
 Watch JS Ingredient
 ================================================================================
 
-A JS Watch, Lint, Browserify, Babelify and Minify task with Source Maps.
+A JS Watch, Lint, Browserify, Babelify and Minification Task with Source Maps.
 
 - Watches all `.js` files in `src/js`.
 - Lints, Bundles, Transpiles and Minifies all `.js` files from `src/js` to `dist/scripts`.
 - Renames file to `*.min.js`.
-- Creates an in-line Source Map in the `.js` file.
+- Creates an in-line Source Map in the `.min.js` file.
 
 Usage
 --------------------------------------------------------------------------------

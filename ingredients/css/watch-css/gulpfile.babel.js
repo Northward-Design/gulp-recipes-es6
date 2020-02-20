@@ -1,6 +1,6 @@
 import { resolve } from 'path';
 
-import { src, dest, series, watch } from 'gulp';
+import { src, dest, series, watch as watchfiles } from 'gulp';
 import { default as pump } from 'pump-promise';
 import rename from 'gulp-rename';
 
@@ -62,10 +62,10 @@ export function buildCss() {
 }
 
 
-export function watchCss() {
-  watch(config.src.css, css);
+export function watch() {
+  watchfiles(config.src.css, css);
 }
 
-export const all = series(css, watchCss);
+export const all = series(css, watch);
 
 export default all;

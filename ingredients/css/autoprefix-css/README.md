@@ -1,9 +1,9 @@
-Autoprefix CSS
+Autoprefix CSS Ingredient
 ================================================================================
 
-A CSS Autoprefixer task.
+A CSS Autoprefixer Task.
 
-Prefixes all `.css` files in `src/css` and pipes them to `dist/styles` using [gulp-autoprefixer](https://www.npmjs.com/package/gulp-autoprefixer).
+- Prefixes all `.css` files from `src/css` to `dist/styles`.
 
 Usage
 --------------------------------------------------------------------------------

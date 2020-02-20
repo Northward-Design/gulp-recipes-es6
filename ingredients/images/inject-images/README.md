@@ -4,7 +4,7 @@ Inject Images Ingredient
 An Inject Image Task.
 
 - Copies `.jpg` and `.jpeg` file names from `src/images`.
-- Interpolates file names in a long html string.
+- Interpolates file names and image widths in a large string.
 - Injects string(s) (based on the number of image files) into `.html` from `src/html` to `dist`.
 
 Usage

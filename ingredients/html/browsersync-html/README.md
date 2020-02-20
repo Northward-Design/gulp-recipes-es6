@@ -1,11 +1,11 @@
 BrowserSync HTML Ingredient
 ================================================================================
 
-An HTML BrowserSync, Lint, Minify and Watch task.
+An HTML BrowserSync, Lint, Minification and Watch Task.
 
-Synchronizes the Browser to `dist` and updates on any change to `.html` using [browser-sync](https://www.npmjs.com/package/browser-sync).
-Watches all `.html` files in `src/html`. 
-Lints and Copies all `.html` files from `src/html` to `dist` in a minified format.
+- Synchronizes the browser to `dist` and updates on any change to all `.html` files.
+- Watches all `.html` files in `src/html`.
+- Lints and Minifies all `.html` files from `src/html` to `dist`.
 
 Usage
 --------------------------------------------------------------------------------
@@ -34,8 +34,12 @@ export function lintHtml() {
 export function buildHtml() {
 	return pump(
 		src('src/html/**/*.html'),
-		htmlmin({collapseWhitespace: true}),
-		dest('dist')
+		htmlmin({
+      collapseWhitespace: true,
+      removeComments: true
+    }),
+		dest('dist'),
+    sync.stream()
 	);
 }
 
@@ -72,9 +76,9 @@ Includes
 - A `lintHtml` Task.
 - A `buildHtml` Task.
 - A `serve` Task.
-- An `html` Task that calls `lintHtml` and `buildHtml` in a series
+- An `html` Task that uses `lintHtml` and `buildHtml`.
 - A `watch` Task.
-- A default `all` Task that calls `html`, `serve`, and `refresh` in a series 
+- A default `all` Task that uses `html`, `serve` and `watch`.
 - An `.htmllintrc` file for configuring `htmllint`.
 
 Dependencies

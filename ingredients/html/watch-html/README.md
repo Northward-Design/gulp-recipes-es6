@@ -1,16 +1,16 @@
 Watch HTML Ingredient
 ================================================================================
 
-An HTML Lint and Minify task.
+An HTML Watch, Lint and Minification Task.
 
-Watches all `.html` files in `src/html`. 
-Lints and Copies all `.html` files from  to `dist` in a minified format.
+- Watches all `.html` files in `src/html`.
+- Lints and Minifies all `.html` files from `src/html` to `dist`.
 
 Usage
 --------------------------------------------------------------------------------
 
 ```javascript
-import { src, dest, series, watch } from 'gulp';
+import { src, dest, series, watch as watchfiles } from 'gulp';
 import { default as pump } from 'pump-promise';
 
 import htmllint from 'gulp-htmllint';
@@ -26,20 +26,23 @@ export function lintHtml() {
 export function buildHtml() {
 	return pump(
 		src('src/html/**/*.html'),
-		htmlmin({collapseWhitespace: true}),
+		htmlmin({
+			collapseWhitespace: true,
+			removeComments: true
+		}),
 		dest('dist')
 	);
 }
 
 export const html = series(lintHtml, buildHtml);
 
-export function watchHtml() {
-	watch('src/html/**/*.html', html);
+export function watch() {
+	watchfiles('src/html/**/*.html', html);
 }
 
-export const buildAndWatchHtml = series(html, watchHtml);
+export const all = series(html, watch);
 
-export default buildAndWatchHtml;
+export default all;
 ```
 
 Installation
@@ -56,8 +59,8 @@ Includes
 - A `lintHtml` Task.
 - A `buildHtml` Task.
 - An `html` Task that uses `lintHtml` and `buildHtml`.
-- A `watchHtml` Task.
-- A default `buildAndWatchHtml` Task.
+- A `watch` Task.
+- A default `all` Task that uses `html` and `watch`.
 - An `.htmllintrc` file for configuring `htmllint`.
 
 Dependencies

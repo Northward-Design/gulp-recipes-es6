@@ -1,9 +1,9 @@
 Compile SASS Ingredient with Source Maps
 ================================================================================
 
-An SASS Compilation Task.
+A SASS Compilation Task.
 
-- Compiles all `.scss` files from `src/sass` to `dist/styles` using [gulp-sass](https://www.npmjs.com/package/gulp-sass).
+- Compiles all `.scss` files from `src/sass` to `dist/styles`.
 - Creates an in-line Source Map in the `.css` file.
 
 Usage

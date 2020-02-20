@@ -1,10 +1,10 @@
-Minify CSS with Sourcemaps
+Minify CSS Ingredient with Source Maps
 ================================================================================
 
-A CSS Minification Task with Sourcemaps.
+A CSS Minification Task with Source Maps.
 
-- Minifies all `.css` files in `src/css` to `dist/styles` using [gulp-clean-css](https://www.npmjs.com/package/gulp-clean-css).
-- Renames files to `*.min.css` using [gulp-rename](https://www.npmjs.com/package/gulp-rename).
+- Minifies all `.css` files from `src/css` to `dist/styles`.
+- Renames files to `*.min.css`.
 - Creates an in-line Source Map in each `.min.css` file.
 
 Usage

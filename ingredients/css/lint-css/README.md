@@ -1,9 +1,9 @@
-Lint CSS
+Lint CSS Ingredient
 ================================================================================
 
-An CSS Lint task.
+A CSS Lint Task.
 
-Lints all `.css` files in `src/css`, with [gulp-stylelint](https://www.npmjs.com/package/stylelint).
+- Lints all `.css` files in `src/css`.
 
 Usage
 --------------------------------------------------------------------------------
@@ -18,13 +18,17 @@ export default function lintCss() {
   return pump(
     src('src/css/**/*.css'),
     stylelint({
-    	reporters: [
-    		{formatter: 'verbose', console: true}
-			]
+      reporters: [{
+        formatter: 'verbose',
+        console: true
+      }]
 		})
    );
 }
 ```
+
+Notes:
+- Errors or warnings reported by Stylelint will not halt remaining tasks in a series.
 
 Installation
 --------------------------------------------------------------------------------

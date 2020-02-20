@@ -1,13 +1,13 @@
 BrowserSync SASS Ingredient
 ================================================================================
 
-A SASS BrowserSync, Watch, Lint, Compile, Autoprefix and Minify Task with Source Maps.
+A SASS BrowserSync, Watch, Lint, Compile, Autoprefix and Minification Task with Source Maps.
 
-- Synchronizes the Browser to `dist/styles` and updates on any change. 
+- Synchronizes the browser to `dist/styles` and updates on any change.
 - Watches all `.scss` files in `src/sass`.
 - Lints, Compiles, Autoprefixes, and Minifies all `.scss` files from `src/sass` to `dist/styles`.
 - Renames file to `*.min.css`.
-- Creates an in-line Source Map in the `.css` file.
+- Creates an in-line Source Map in the `.min.css` file.
 
 Usage
 --------------------------------------------------------------------------------
@@ -32,9 +32,10 @@ export function lintSass() {
   return pump(
     src('src/sass/**/*.scss'),
     stylelint({
-      reporters: [
-        {formatter: 'verbose', console: true}
-      ]
+      reporters: [{
+        formatter: 'verbose',
+        console: true
+      }]
     })
   );
 }
@@ -42,7 +43,10 @@ export function lintSass() {
 export function buildSass() {
   return pump(
     src('src/sass/**/*.scss', {sourcemaps: true}),
-    sass({errorLogToConsole: true, outputStyle: 'compressed'}),
+    sass({
+      errorLogToConsole: true,
+      outputStyle: 'compressed'
+    }),
     autoprefixer(),
     rename({suffix: '.min'}),
     dest('dist/styles', {sourcemaps: true})
@@ -51,7 +55,11 @@ export function buildSass() {
 }
 
 export function serve(done) {
-  sync.init(config.plugins.browsersync);
+  sync.init({
+    server: {
+      baseDir: 'dist'
+    }
+  });
   done();
 }
 
@@ -64,6 +72,9 @@ export const all = series(sassy, serve, watch);
 
 export default all;
 ```
+
+Notes:
+- Errors or warnings reported by Stylelint will not halt remaining tasks in a series.
 
 Installation
 --------------------------------------------------------------------------------
@@ -82,7 +93,7 @@ Includes
 - A `serve` Task.
 - A `watch` Task.
 - A default `all` Task that uses `sassy`, `serve`, and `watch`.
-- An `.stylelintrc.yaml` file for configuring `stylelint`.
+- A `.stylelintrc.yaml` file for configuring `stylelint`.
 
 Dependencies
 --------------------------------------------------------------------------------

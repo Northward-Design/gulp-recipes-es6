@@ -3,9 +3,9 @@ Minify SASS Ingredient with Source Maps
 
 A SASS Compilation and Minification Task with Source Maps.
 
-- Compiles and Minifies SASS files from `src/sass` to `dist/styles` using [gulp-sass](https://www.npmjs.com/package/gulp-sass).
-- Renames files to `*.min.css` using [gulp-rename](https://www.npmjs.com/package/gulp-rename).
-- Creates an in-line Source Map in the `.css` file.
+- Compiles and Minifies all `.scss` files from `src/sass` to `dist/styles`.
+- Renames files to `*.min.css`.
+- Creates an in-line Source Map in the `.min.css` file.
 
 Usage
 --------------------------------------------------------------------------------

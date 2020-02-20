@@ -1,11 +1,11 @@
-Minify TS with Source Maps
+Minify TS Ingredient with Source Maps
 ================================================================================
 
 A TypesScript Compilation and Minification Task with Source Maps.
 
 - Compiles and Minifies all `.ts` files from `src/ts` to `dist/scripts`.
 - Renames files to `*.min.js` 
-- Creates in-line Source Maps in all `.js` files.
+- Creates in-line Source Maps in each `.min.js` file.
 
 Usage
 --------------------------------------------------------------------------------
@@ -41,6 +41,7 @@ Includes
 
 - Additional Configuration for TS sources in `src/ts`.
 - A default `buildTs` Task.
+- A `tsconfig.json` file for configuring TS compiling options.
 
 Dependencies
 --------------------------------------------------------------------------------

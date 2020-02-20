@@ -3,7 +3,7 @@ Browserify and Babilify JS Ingredient
 
 A JS Browserify and Babelify Task. 
 
-- Bundles `index.js` in `src/js` with required files to `dist/styles/index.js`. 
+- Bundles `index.js` from `src/js` with required files to `dist/styles/index.js`.
 - Converts bundled `.js` file from ES6+ to ES5.
 
 Usage

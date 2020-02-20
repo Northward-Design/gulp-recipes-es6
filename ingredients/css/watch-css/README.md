@@ -1,10 +1,10 @@
 Watch CSS Ingredient
 ================================================================================
 
-A CSS Watch, Lint, Autoprefixer, and Minify Task with Source Maps.
+A CSS Watch, Lint, Autoprefixer, and Minification Task with Source Maps.
 
 - Watches all `css` files in `src/css`.
-- Lints, Prefixes, and minifies all `.css` files from `src/css` to `dist/styles`.
+- Lints, Prefixes, and Minifies all `.css` files from `src/css` to `dist/styles`.
 - Renames files to `*.min.css`
 - Creates an in-line Source Map in each `.min.css` file. 
 
@@ -12,7 +12,7 @@ Usage
 --------------------------------------------------------------------------------
 
 ```javascript
-import { src, dest, series } from 'gulp';
+import { src, dest, series, watch as watchfiles } from 'gulp';
 import { default as pump } from 'pump-promise';
 import rename from 'gulp-rename';
 
@@ -26,9 +26,10 @@ export function lintCss() {
   return pump(
     src('src/css/**/*.css'),
     stylelint({
-        reporters: [
-          {formatter: 'verbose', console: true}
-        ]
+      reporters: [{
+        formatter: 'verbose',
+        console: true
+      }]
     })
   );
 }
@@ -43,14 +44,17 @@ export function buildCss() {
   );
 }
 
-export function watchCss() {
-  watch('src/**/*.css', css);
+export function watch() {
+  watchfiles('src/**/*.css', css);
 }
 
-export const all = series(css, watchCss);
+export const all = series(css, watch);
 
 export default all;
 ```
+
+Notes:
+- Errors or warnings reported by Stylelint will not halt remaining tasks in a series.
 
 Installation
 --------------------------------------------------------------------------------
@@ -66,8 +70,8 @@ Includes
 - A `lintCss` Task.
 - A `buildCss` Task.
 - A `css` Task that uses `lintCss` and `buildCss`.
-- A `watchCss` Task.
-- A default `all` Task.
+- A `watch` Task.
+- A default `all` Task that uses `css` and `watch`.
 - An `.stylelintrc.yaml` file for configuring `stylelint`.
 
 Dependencies

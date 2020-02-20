@@ -3,8 +3,7 @@ Inject JS Ingredient
 
 An Injection Task
 
-- Injects file contents from `dist/scripts/index.js` into all `.html` files in `src/html`,
-and Outputs the file to `dist`.
+- Injects file contents from `dist/scripts/index.js` into all `.html` files from `src/html` to `dist`.
 
 Usage
 --------------------------------------------------------------------------------
@@ -19,10 +18,10 @@ export default function injection() {
   return pump(
     src('src/html/**/*.html'),
     inject(src(['dist/scripts/index.js']), {
-    	removeTags: true,
-    	transform: function(filePath, file) {
-    		return file.contents.toString();
-    	};
+      removeTags: true,
+      transform: (filePath, file) => {
+      	return file.contents.toString();
+      };
     }),
     dest('dist')
   );
@@ -48,8 +47,8 @@ Install the required plugins with `npm`.
 Includes
 --------------------------------------------------------------------------------
 
-### Tasks
-
+- Additional Configuration for HTML sources in `src/html`.
+- Additional Configuration for JS sources in `dist/scripts`.
 - A default `injection` Task.
 
 Dependencies

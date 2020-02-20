@@ -20,10 +20,10 @@ config.files.node_modules = resolve(config.root, 'node_modules');
 
 config.src = {};
 config.src.root = resolve(config.root, 'src');
-config.src.html = resolve(config.src.root, 'html/**/*.html');
 
 config.dist = {};
 config.dist.root = resolve(config.root, 'dist');
+config.dist.htmlsrc = resolve(config.dist.root, '*.html'); 
 
 config.clean = {};
 config.clean.dist = config.dist.root;
@@ -34,7 +34,7 @@ config.plugins.sitemap.siteUrl = 'http://www.example-site.com';
 
 export default function buildSitemap() {
   return pump(
-    src(config.src.html, {read: false}),
+    src(config.dist.htmlsrc, {read: false}),
     sitemap(config.plugins.sitemap),
     dest(config.dist.root)
   );

@@ -1,4 +1,4 @@
-Browserify TS with Sourcemaps
+Browserify TS Ingredient with Source Maps
 ================================================================================
 
 A Browserify TS Task with Source Maps.
@@ -46,6 +46,7 @@ Includes
 
 - Additional Configuration for TS sources in `src/ts`.
 - A default `buildTs` Task.
+- A `tsconfig.json` file for configuring TS compiling options.
 
 Dependencies
 --------------------------------------------------------------------------------

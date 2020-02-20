@@ -1,9 +1,9 @@
 Lint JS Ingredient
 ================================================================================
 
-A JavaScript Linting Task.
+A JavaScript Lint Task.
 
-Lints all `.js` files in `src/js`. 
+- Lints all `.js` files in `src/js`.
 
 Usage
 --------------------------------------------------------------------------------
@@ -35,7 +35,7 @@ Includes
 --------------------------------------------------------------------------------
 
 - Additional Configuration for JS sources in `src/js`.
-- A `lintJs` Task.
+- A default `lintJs` Task.
 
 Dependencies
 --------------------------------------------------------------------------------

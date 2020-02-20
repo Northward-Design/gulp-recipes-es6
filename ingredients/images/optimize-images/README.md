@@ -3,7 +3,7 @@ Optimize Images Ingredient
 
 An Image Optimization Task.
 
-Optimizes all `.jpg`, `.jpeg`, `.png`, `.gif`, and `.svg` images from `src/images` to `dist/images`.
+- Optimizes all `.jpg`, `.jpeg`, `.png`, `.gif`, and `.svg` images from `src/images` to `dist/images`.
 
 Usage
 --------------------------------------------------------------------------------
@@ -22,7 +22,7 @@ export default function optimizeImg() {
         optimizationLevel: 3, 
         progressive: true
       }),
-      imgmin.jpegtran({
+      imgmin.mozjpeg({
         quality: 75, 
         progressive: true
       }),
@@ -43,7 +43,7 @@ export default function optimizeImg() {
 
 ```
 
-Pre-Optimized Images may increase in size. A work around (moves them from a sub-folder to images folder):
+Pre-Optimized Images may increase in size. A work around (moves pre-optimized files from a sub-folder to images folder):
 ```javascript
 //...
 return pump(
@@ -61,11 +61,12 @@ Installation
 Install the required plugins with `npm`.
 
 `npm install --save-dev gulp @babel/core @babel/register @babel/preset-env pump-promise gulp-imagemin`
-Note: Used `gulp-imagemin@6.2.0`
+Note: Used `gulp-imagemin@7.0.0`
 
 Includes
 --------------------------------------------------------------------------------
 
+- Additional Configuration for Image sources in `src/images`.
 - A default `optimizeImg` Task.
 
 Dependencies

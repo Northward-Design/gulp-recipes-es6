@@ -1,6 +1,6 @@
 import { resolve } from 'path';
 
-import { src, dest, series, watch } from 'gulp';
+import { src, dest, series, watch as watchfiles } from 'gulp';
 import { default as pump } from 'pump-promise';
 
 import htmllint from 'gulp-htmllint';
@@ -35,6 +35,7 @@ config.plugins.htmllint = {};
 config.plugins.htmllint.failOnError = true;
 config.plugins.htmlmin = {};
 config.plugins.htmlmin.collapseWhitespace = true;
+config.plugins.htmlmin.removeComments = true;
 
 export function lintHtml() {
   return pump(
@@ -53,10 +54,10 @@ export function buildHtml() {
 
 export const html = series(lintHtml, buildHtml);
 
-export function watchHtml() {
-  watch(config.src.html, html);
+export function watch() {
+  watchfiles(config.src.html, html);
 }
 
-export const buildAndWatchHtml = series(html, watchHtml);
+export const all = series(html, watch);
 
-export default buildAndWatchHtml;
+export default all;

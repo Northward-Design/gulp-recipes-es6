@@ -3,7 +3,7 @@ Compile TS Ingredient
 
 A Typescript Compilation Task.
 
-- Compiles all `.ts` files in `src/ts`, with [gulp-typescript](https://www.npmjs.com/package/gulp-typescript).
+- Compiles all `.ts` files from `src/ts` to `dist/scripts`.
 
 Usage
 --------------------------------------------------------------------------------
@@ -18,7 +18,7 @@ export default function buildTs() {
   return pump(
     src('src/ts/**/*.ts'),
     typescript(),
-    dest('dst/scripts')
+    dest('dist/scripts')
    );
 }
 ```
@@ -35,6 +35,7 @@ Includes
 
 - Additional Configuration for TS sources in `src/ts`.
 - A default `buildTs` Task.
+- A `tsconfig.json` file for configuring TS compiling options.
 
 Dependencies
 --------------------------------------------------------------------------------

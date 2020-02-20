@@ -3,7 +3,7 @@ Browserify JS Ingredient
 
 A Browserify JS Task.
 
-- Bundles `index.js` in `src/js` with required files to `dist/styles` using [browserify](https://www.npmjs.com/package/browserify).
+- Bundles `index.js` from `src/js` with required files to `dist/styles`.
 
 Usage
 --------------------------------------------------------------------------------

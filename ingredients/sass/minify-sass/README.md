@@ -3,8 +3,8 @@ Minify SASS Ingredient
 
 A SASS Compilation and Minification Task.
 
-- Compiles and Minifies SCSS files from `src/sass` to `dist/styles` using [gulp-sass](https://www.npmjs.com/package/gulp-sass).
-- Renames files to `*.min.css` using [gulp-rename](https://www.npmjs.com/package/gulp-rename).
+- Compiles and Minifies all `.scss` files from `src/sass` to `dist/styles`.
+- Renames files to `*.min.css`.
 
 Usage
 --------------------------------------------------------------------------------

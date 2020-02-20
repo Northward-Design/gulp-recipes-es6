@@ -1,13 +1,13 @@
-BrowserSync JS
+BrowserSync JS Ingredient
 ================================================================================
 
-A JS BrowserSync, Watch, Lint, Browserify, Babelify, and Minify Task with Source Maps.
+A JS BrowserSync, Watch, Lint, Browserify, Babelify, and Minification Task with Source Maps.
 
-- Synchronizes the Browser to `dist/scripts` and updates on any change. 
+- Synchronizes the browser to `dist/scripts` and updates on any change.
 - Watches all `.js` files in `src/js`.
 - Lints, Bundles, Transpiles and Minifies all `.js` files from `src/js` to `dist/scripts`.
 - Renames file to `*.min.js` 
-- Creates an in-line Source Map in the `.js` file.
+- Creates an in-line Source Map in the `.min.js` file.
 
 Usage
 --------------------------------------------------------------------------------

@@ -3,9 +3,9 @@ Critical CSS Ingredient
 
 A Critical CSS Task
 
-- Compares selectors in all `.html` files from `src/html` with a(ll) `.css` file(s) in `dist/css`.
+- Compares selectors in all `.html` files from `src/html` with `dist/styles/index.css`.
 - Copies critical-path (above the fold) CSS and In-lines it into the `.html` files.
-- Generates a script in all `.html` files to asynchronously load external `.css` file(s).
+- Generates a script in all `.html` files to asynchronously load external `.css` file.
 - Outputs all `.html` files to `dist`.
 
 Usage
@@ -41,7 +41,7 @@ Includes
 --------------------------------------------------------------------------------
 
 - Additional Configuration for HTML sources in `src/html`.
-- Additional Configuration for CSS sources in `dist/html`.
+- Additional Configuration for CSS sources in `dist/styles`.
 - A default `critical` Task.
 
 Dependencies

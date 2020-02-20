@@ -1,9 +1,9 @@
 Compile SASS Ingredient
 ================================================================================
 
-An SASS Compilation Task.
+A SASS Compilation Task.
 
-- Compiles all `.scss` files from `src/sass` to `dist/styles` using [gulp-sass](https://www.npmjs.com/package/gulp-sass).
+- Compiles all `.scss` files from `src/sass` to `dist/styles`.
 
 Usage
 --------------------------------------------------------------------------------

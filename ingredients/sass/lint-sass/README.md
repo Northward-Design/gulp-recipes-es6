@@ -1,9 +1,9 @@
-Lint SASS
+Lint SASS Ingredient
 ================================================================================
 
-An SASS Lint Task.
+A SASS Lint Task.
 
-- Lints all `.scss` files in `src/sass` with [gulp-stylelint](https://www.npmjs.com/package/stylelint).
+- Lints all `.scss` files in `src/sass`.
 
 Usage
 --------------------------------------------------------------------------------
@@ -18,13 +18,17 @@ export default function lintSass() {
   return pump(
     src('src/sass/**/*.scss'),
     stylelint({
-    	reporters: [
-    		{formatter: 'verbose', console: true}
-			]
+      reporters: [{
+        formatter: 'verbose',
+        console: true
+      }]
 		})
    );
 }
 ```
+
+Notes:
+- Errors or warnings reported by Stylelint will not halt remaining tasks in a series.
 
 Installation
 --------------------------------------------------------------------------------

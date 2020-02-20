@@ -1,10 +1,10 @@
-Autoprefix CSS with Sourcemaps
+Autoprefix CSS Ingredient with Source Maps
 ================================================================================
 
-An CSS Autoprefixer task with Sourcemaps.
+An CSS Autoprefixer Task with Source Maps.
 
-Prefixes all `.css` files in `src/css` and pipes them to `dist/styles` with [gulp-autoprefixer](https://www.npmjs.com/package/gulp-autoprefixer).
-Creates an in-line Source Map in each `.css` file.
+- Prefixes all `.css` files from `src/css` to `dist/styles`.
+- Creates an in-line Source Map in each `.css` file.
 
 Usage
 --------------------------------------------------------------------------------

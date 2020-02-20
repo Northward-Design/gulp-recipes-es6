@@ -3,7 +3,7 @@ Sitemap Generation Ingredient
 
 A Sitemap Creation Task.
 
-Creates a `sitemap.xml` file in the `dist` folder based on the `.html` files in `src/html`.
+- Creates a `sitemap.xml` file in the `dist` folder based on the `.html` files in `dist`.
 
 Usage
 --------------------------------------------------------------------------------
@@ -16,7 +16,7 @@ import sitemap from 'gulp-sitemap';
 
 export default function buildSitemap() {
   return pump(
-    src('src/html/**/*.html', { read: false }),
+    src('dist/*.html', { read: false }),
     sitemap({siteUrl: 'http://www.example-site.com'}),
     dest('dist')
   );
@@ -33,7 +33,7 @@ Install the required plugins with `npm`.
 Includes
 --------------------------------------------------------------------------------
 
-- Additional Configuration for HTML sources in `src/html`.
+- Additional Configuration for HTML sources in `dist`.
 - A default `buildSitemap` Task.
 
 Dependencies

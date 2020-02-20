@@ -1,4 +1,4 @@
-Minify TS
+Minify TS Ingredient
 ================================================================================
 
 A TypesScript Compilation and Minification Task.
@@ -40,6 +40,7 @@ Includes
 
 - Additional Configuration for TS sources in `src/ts`.
 - A default `buildTs` Task.
+- A `tsconfig.json` file for configuring TS compiling options.
 
 Dependencies
 --------------------------------------------------------------------------------

@@ -34,7 +34,7 @@ config.clean.dist = config.dist.root;
 config.plugins = {};
 config.plugins.inject = {};
 config.plugins.inject.removeTags = true;
-config.plugins.inject.transform = function(filePath, file) {
+config.plugins.inject.transform = (filePath, file) => {
   return file.contents.toString();
 };
 

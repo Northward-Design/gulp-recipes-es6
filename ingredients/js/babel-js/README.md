@@ -3,7 +3,7 @@ Babel JS Ingredient
 
 A Babel JS Task.
 
-- Converts all ES6+ to ES5 `js` files, from `src/js` to `dist/styles`.
+- Converts all ES6+ `js` files to ES5, from `src/js` to `dist/styles`.
 
 Usage
 --------------------------------------------------------------------------------

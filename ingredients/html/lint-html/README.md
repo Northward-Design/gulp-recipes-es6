@@ -1,7 +1,9 @@
-Lint HTML
+Lint HTML Ingredient
 ================================================================================
 
-Lints all `.html` files in `src/html`.
+An HTML Lint Task.
+
+- Lints all `.html` files in `src/html`.
 
 Usage
 --------------------------------------------------------------------------------

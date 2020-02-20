@@ -33,8 +33,8 @@ Install the required plugins with `npm`.
 Includes
 --------------------------------------------------------------------------------
 
-### Tasks
-
+- Additional Configuration for CSS sources in `src/css`.
+- Additional Configuration for HTML sources in `src/html`.
 - A default `thePurge` Task.
 
 Dependencies

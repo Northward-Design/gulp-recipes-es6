@@ -1,12 +1,12 @@
 Watch SASS Ingredient
 ================================================================================
 
-A SASS Watch, Lint, Compile, Autoprefix and Minify Task with Source Maps.
+A SASS Watch, Lint, Compile, Autoprefix and Minification Task with Source Maps.
 
 - Watches all `.scss` files in `src/sass`.
 - Lints, Compiles, Autoprefixes, and Minifies all `.scss` files from `src/sass` to `dist/styles`.
-- Renames files to `*.min.css` using [gulp-rename](https://www.npmjs.com/package/gulp-rename).
-- Creates an in-line Source Map in the `.css` file.
+- Renames files to `*.min.css`.
+- Creates an in-line Source Map in the `.min.css` file.
 
 Usage
 --------------------------------------------------------------------------------
@@ -27,9 +27,10 @@ export function lintSass() {
   return pump(
     src('src/sass/**/*.scss'),
     stylelint({
-      reporters: [
-        {formatter: 'verbose', console: true}
-      ]
+      reporters: [{
+        formatter: 'verbose',
+        console: true
+      }]
     })
   );
 }
@@ -53,6 +54,9 @@ export const all = series(sassy, watch);
 export default all;
 ```
 
+Notes:
+- Errors or warnings reported by Stylelint will not halt remaining tasks in a series.
+
 Installation
 --------------------------------------------------------------------------------
 
@@ -69,7 +73,7 @@ Includes
 - A `sassy` Task that uses `lintSass` and `buildSass`.
 - A `watch` Task.
 - A default `all` Task that uses `sassy`, and `watch`.
-- An `.stylelintrc.yaml` file for configuring `stylelint`.
+- A `.stylelintrc.yaml` file for configuring `stylelint`.
 
 Dependencies
 --------------------------------------------------------------------------------

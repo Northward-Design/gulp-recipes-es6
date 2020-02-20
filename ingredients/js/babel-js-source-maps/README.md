@@ -3,8 +3,8 @@ Babel JS Ingredient with Source Maps
 
 A Babel JS Task with Source Maps.
 
-- Converts all ES6+ to ES5 `js` files, from `src/js` to `dist/styles`.
-- Creates an in-line Source Map in the .js files.
+- Converts all ES6+ `js` files to ES5, from `src/js` to `dist/styles`.
+- Creates an in-line Source Map in each `.js` file.
 
 Usage
 --------------------------------------------------------------------------------

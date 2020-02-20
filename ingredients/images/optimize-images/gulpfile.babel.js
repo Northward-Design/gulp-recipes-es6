@@ -32,13 +32,13 @@ config.clean.dist = config.dist.root;
 config.plugins = {};
 config.plugins.imgmin = [
   imgmin.gifsicle({optimizationLevel: 3, progressive: true}),
-  imgmin.jpegtran({quality: 75, progressive: true}),
+  imgmin.mozjpeg({quality: 75, progressive: true}),
   imgmin.optipng({optimizationLevel: 5}),
   imgmin.svgo({
     plugins:[{removeViewBox: true}]
   })
-]
-config.plugins.imgmin.verbose = {verbose: true} 
+];
+config.plugins.imgmin.verbose = {verbose: true}; 
 
 export default function optimizeImg() {
   return pump(

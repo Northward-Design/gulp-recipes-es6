@@ -3,7 +3,7 @@ Gzip CSS Ingredient
 
 A CSS Compression Task.
 
-- Compresses and Minifies all `.CSS` files from `src/css` to `dist/styles`.
+- Compresses and Minifies all `.css` files from `src/css` to `dist/styles`.
 - Creates a minified copy, and a compressed and minified copy with the extension `.gz`.
 - Will not create compressed copy if it is larger than minified version.
 - Deletes previous version of `.gz` file if it did not create new compressed copy.

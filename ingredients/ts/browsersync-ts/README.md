@@ -1,13 +1,13 @@
-BrowserSync TS
+BrowserSync TS Ingredient
 ================================================================================
 
-A TS BrowserSync, Watch, Lint, Bundle, Compile and Minify Task with Source Maps.
+A TS BrowserSync, Watch, Lint, Bundle, Compile and Minification Task with Source Maps.
 
 - Synchronizes the Browser to `dist/scripts`, and updates on any change. 
 - Watches all `.ts` files in `src/ts`.
 - Lints, Bundles, Compiles, and Minifies files from `src/ts` to `dist/scripts`.
 - Renames file as `*.min.js`.
-- Creates an in-line Source Map in the `.js` file.
+- Creates an in-line Source Map in the `.min.js` file.
 
 Usage
 --------------------------------------------------------------------------------
@@ -93,7 +93,7 @@ Includes
 - A `watch` Task.
 - A default `all` Task that uses `ts`, `serve` and `watch`.
 - A `tslint.yaml` file for configuring `tslint`.
-- A `tsconfig.json` file to indicate the root directory for TypeScript. 
+- A `tsconfig.json` file for configuring TS compiling options.
 
 Dependencies
 --------------------------------------------------------------------------------

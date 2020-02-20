@@ -1,7 +1,7 @@
 Watch TS Ingredient
 ================================================================================
 
-A Typescript Watch, Lint, Bundle, Compile and Minify Task with Sourcemaps.
+A Typescript Watch, Lint, Bundle, Compile and Minification Task with Source Maps.
 
 - Watches all `.ts` files in `src/ts`.
 - Lints, Bundles, Compiles and Minifies files from `src/ts` to `dist/scripts`.
@@ -76,7 +76,7 @@ Includes
 - A `watch` Task
 - A default `all` Task that uses `ts` and `watch`.
 - A `tslint.yaml` file for configuring `tslint`.
-- A `tsconfig.json` file to indicate the root directory for TypeScript. 
+- A `tsconfig.json` file for configuring TS compiling options.
 
 Dependencies
 --------------------------------------------------------------------------------
