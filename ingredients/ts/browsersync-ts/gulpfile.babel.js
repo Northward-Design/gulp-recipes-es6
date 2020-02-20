@@ -33,6 +33,7 @@ config.src.tsEntry = resolve(config.src.root, 'ts/index.ts');
 
 config.dist = {};
 config.dist.root = resolve(config.root, 'dist');
+config.dist.dir = config.dist.root;
 config.dist.ts = resolve(config.dist.root, 'scripts');
 
 config.clean = {};
@@ -51,7 +52,7 @@ config.plugins.rename = {suffix: '.min'};
 config.plugins.sourcemaps = {};
 config.plugins.sourcemaps.loadMaps = true;
 config.plugins.browsersync.server = {};
-config.plugins.browsersync.server.baseDir = config.dist.root;
+config.plugins.browsersync.server.baseDir = config.dist.dir;
 
 const sync = browsersync.create();
 const refresh = browsersync.reload();

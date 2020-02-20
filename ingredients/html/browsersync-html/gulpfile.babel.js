@@ -27,6 +27,7 @@ config.src.html = resolve(config.src.root, 'html/**/*.html');
 config.dist = {};
 config.dist.root = resolve(config.root, 'dist');
 config.dist.html = config.dist.root;
+config.dist.dir = config.dist.root;
 config.dist.watch = resolve(config.dist.root, '*.html');
 
 config.clean = {};
@@ -40,7 +41,7 @@ config.plugins.htmlmin.collapseWhitespace = true;
 config.plugins.htmlmin.removeComments = true;
 config.plugins.browsersync = {};
 config.plugins.browsersync.server = {};
-config.plugins.browsersync.server.baseDir = 'dist';
+config.plugins.browsersync.server.baseDir = config.dist.dir;
 
 const sync = browsersync.create();
 const refresh = browsersync.reload();

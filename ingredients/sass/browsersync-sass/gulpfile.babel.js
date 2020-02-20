@@ -29,6 +29,7 @@ config.src.sass = resolve(config.src.root, 'sass/**/*.scss');
 
 config.dist = {};
 config.dist.root = resolve(config.root, 'dist');
+config.dist.dir = config.dist.root;
 config.dist.sass = resolve(config.dist.root, 'styles');
 
 config.clean = {};
@@ -46,7 +47,7 @@ config.plugins.autoprefixer = {};
 config.plugins.rename = {suffix: '.min'};
 config.plugins.browsersync = {};
 config.plugins.browsersync.server = {};
-config.plugins.browsersync.server.baseDir = 'dist';
+config.plugins.browsersync.server.baseDir = config.dist.dir;
 
 const sync = browsersync.create();
 const refresh = browsersync.reload();

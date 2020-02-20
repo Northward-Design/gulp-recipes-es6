@@ -33,6 +33,7 @@ config.src.jsEntry = resolve(config.src.root, 'js/index.js');
 
 config.dist = {};
 config.dist.root = resolve(config.root, 'dist');
+config.dist.dir = config.dist.root;
 config.dist.js = resolve(config.dist.root, 'scripts');
 
 config.clean = {};
@@ -50,7 +51,7 @@ config.plugins.sourcemaps = {};
 config.plugins.sourcemaps.loadMaps = true;
 config.plugins.browsersync = {};
 config.plugins.browsersync.server = {};
-config.plugins.browsersync.server.baseDir = 'dist';
+config.plugins.browsersync.server.baseDir = config.dist.dir;
 
 const sync = browsersync.create();
 const refresh = browsersync.reload();

@@ -29,6 +29,7 @@ config.src.css = resolve(config.src.root, 'css/**/*.css');
 
 config.dist = {};
 config.dist.root = resolve(config.root, 'dist');
+config.dist.dir = config.dist.root;
 config.dist.css = resolve(config.dist.root, 'styles');
 
 config.clean = {};
@@ -45,7 +46,7 @@ config.plugins.cleancss.compatibility = 'ie8';
 config.plugins.rename = {suffix: '.min'};
 config.plugins.browsersync = {};
 config.plugins.browsersync.server = {};
-config.plugins.browsersync.server.baseDir = 'dist';
+config.plugins.browsersync.server.baseDir = config.dist.dir;
 
 const sync = browsersync.create();
 const refresh = browsersync.reload();
