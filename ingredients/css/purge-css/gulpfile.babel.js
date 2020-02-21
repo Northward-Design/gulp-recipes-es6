@@ -33,7 +33,7 @@ config.clean.dist = config.dist.root;
 config.plugins = {};
 config.plugins.purgecss = {};
 config.plugins.purgecss.content = [config.src.html];
-
+config.plugins.purgecss.whitelist = ['', ''];
 
 export default function thePurge() {
   return pump(

@@ -5,6 +5,7 @@ A Purge CSS Task
 
 - Removes unused selectors from all `.css` files from `src/css` to `dist/styles`.
 - It does this by comparing them to to all `.html` files in `src/html`.
+- White list option keeps selectors not currently in `src/html` from being removed.
 
 Usage
 --------------------------------------------------------------------------------
@@ -18,7 +19,10 @@ import purge from 'gulp-purgecss';
 export default function thePurge() {
   return pump(
     src('src/css/**/*.css'),
-    purge({content: ['src/html/**/*.html']}),
+    purge({
+      content: ['src/html/**/*.html'],
+      whitelist: ['class', 'id', 'other selectors']
+    }),
     dest('dist/styles')
   );
 }
