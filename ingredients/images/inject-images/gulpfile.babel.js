@@ -5,6 +5,8 @@ import { default as pump } from 'pump-promise';
 
 import inject from 'gulp-inject';
 
+import strings from './htmlstrings.js';
+
 const config = {};
 
 config.root = resolve(__dirname);
@@ -30,55 +32,49 @@ config.dist.html = config.dist.root;
 config.clean = {};
 config.clean.dist = config.dist.root;
 
+// Choose Image Sizes (px) And Alt Tags
+const mini = '10';
+const sm = '800';
+const md = '1200';
+const lg = '1600';
+const alt = [
+  'Alt Tag For First Image',
+  'Alt Tag For Second Image',
+  'add another string for each Image'
+]
+
+// Choose ONE String to use (0 - 5) from array below
+const selectString = 5;
+
+// Strings from .htmlstrings.js
+const stringSet = [
+strings.smSrcset,   // 0
+strings.mdSrcset,   // 1
+strings.lgSrcset,   // 2
+strings.smLazy,     // 3
+strings.autoLazy,   // 4
+strings.lgLazy      // 5
+]
+
+let imgcount = 0;
+let altcount = -1;
+
 config.plugins = {};
-config.plugins.srcset = {};
-config.plugins.srcset.mini = '50';
-config.plugins.srcset.sm = '800';
-config.plugins.srcset.md = '1200';
-config.plugins.srcset.lg = '1600';
-config.plugins.srcset.imgcount = 0;
 config.plugins.inject = {};
 config.plugins.inject.ignorePath = '../';
 config.plugins.inject.relative = true;
 config.plugins.inject.removeTags = true;
+
 config.plugins.inject.starttag = () => {
-  config.plugins.srcset.imgcount++;
-  return `<!-- inject:img${config.plugins.srcset.imgcount} -->`;
+  imgcount++;
+  return `<!-- inject:img${imgcount} -->`;
 };
+
 config.plugins.inject.transform = (filepath) => {
-  let fileName = filepath.substring(0, filepath.lastIndexOf('.'));
-  return `
-    <picture>
-      <source media="(min-width: ${config.plugins.srcset.lg}px)"
-        data-srcset="
-          ${fileName}-${config.plugins.srcset.lg}w.webp,
-          ${fileName}-${config.plugins.srcset.lg}w@2x.webp 2x"
-        type="image/webp">
-      <source media="(min-width: ${config.plugins.srcset.md}px)"
-        data-srcset="
-          ${fileName}-${config.plugins.srcset.md}w.webp, 
-          ${fileName}-${config.plugins.srcset.md}w@2x.webp 2x"
-        type="image/webp">
-      <source
-        data-srcset="
-          ${fileName}-${config.plugins.srcset.sm}w.webp, 
-          ${fileName}-${config.plugins.srcset.sm}w@2x.webp 2x"
-        type="image/webp">
-      <source media="(min-width: ${config.plugins.srcset.lg}px)"
-        data-srcset="
-          ${fileName}-${config.plugins.srcset.lg}w.jpg,
-          ${fileName}-${config.plugins.srcset.lg}w@2x.jpg 2x">
-      <source media="(min-width: ${config.plugins.srcset.md}px)"
-        data-srcset="
-          ${fileName}-${config.plugins.srcset.md}w.jpg, 
-          ${fileName}-${config.plugins.srcset.md}w@2x.jpg 2x">
-      <img class="lazy"
-        data-srcset="
-          ${fileName}-${config.plugins.srcset.sm}w.jpg,
-          ${fileName}-${config.plugins.srcset.sm}w@2x.jpg 2x" 
-        data-src="${fileName}-${config.plugins.srcset.mini}w.jpg"
-      alt="my images">
-    </picture>`;
+  altcount++;
+  let pathName = filepath.substring(0, filepath.lastIndexOf('.'));
+  let name = pathName.substring(pathName.lastIndexOf('/')+1);
+  return stringSet[selectString](pathName, name, mini, sm, md, lg, alt[altcount]);
 };
 
 export default function injection() {

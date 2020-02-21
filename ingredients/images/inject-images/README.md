@@ -4,8 +4,9 @@ Inject Images Ingredient
 An Inject Image Task.
 
 - Copies `.jpg` and `.jpeg` file names from `src/images`.
-- Interpolates file names and image widths in a large string.
+- Interpolates file paths, names, alt and image widths in a large string.
 - Injects string(s) (based on the number of image files) into `.html` from `src/html` to `dist`.
+- Strings can be srcset or Lazy Load srcset, read below for Lazy Load requirements.
 
 Usage
 --------------------------------------------------------------------------------
@@ -31,21 +32,22 @@ export default function injection() {
           return `<!-- inject:img${imgcount} -->`;
         },
         transform: (filepath) => {
-          let fileName = filepath.substring(0, filepath.lastIndexOf('.'));
+          let pathName = filepath.substring(0, filepath.lastIndexOf('.'));
+          let name = pathName.substring(pathName.lastIndexOf('/')+1);
           return `
             <picture>
-              <source media="(min-width: 1600px)"
+              <source media="(min-width: ${lg}px)"
                 data-srcset="
-                  ${fileName}-1600w.webp,
-                  ${fileName}-1600w@2x.webp 2x"
+                  ${pathName}-${lg}w.webp,
+                  ${pathName}-${lg}w@2x.webp 2x"
                 type="image/webp">
               ...
-              <img class="lazy"
+              <img class="lazy ${name}"
                 data-srcset="
-                  ${fileName}-800w.jpg,
-                  ${fileName}-800w@2x.jpg 2x" 
-                data-src="${fileName}-50w.jpg"
-              alt="my images">
+                  ${pathName}-${sm}w.jpg,
+                  ${pathName}-${sm}w@2x.jpg 2x"
+                data-src="${pathName}-${mini}w.jpg"
+              alt="${alt[0]}">
             </picture>`;
         }
       ),      
@@ -55,7 +57,11 @@ export default function injection() {
 ```
 Notes:
 - `removeTags` setting not required when using [gulp-htmlmin](https://www.npmjs.com/package/gulp-htmlmin).
-- inject categorizes files A-Z then a-z. Files in `src/images` should be renamed to upper OR lower case names. 
+- Gulp Inject categorizes files A-Z then a-z. Files in `src/images` should be renamed to upper OR lower case names.
+- Image path and names are copied from `src/images`, but group of images used should be located in `dist/images`.
+- Settings for Image Sizes, Alt Tags and String Selection are located in `gulpfile.babel.js`
+- Six example Strings are located in `htmlstrings.js`
+- [Vanilla LazyLoad](https://www.npmjs.com/package/vanilla-lazyload) settings are required for Lazy Loading Strings.
 
 Include comments in your `.html` files (one set of for each `.jpg` and `jpeg`).
 
@@ -79,8 +85,10 @@ Includes
 --------------------------------------------------------------------------------
 
 - Additional Configuration for Image sources in `src/images`.
+- Additional Configuration for Image sources in `dist/images`.
 - Additional Configuration for HTML sources in `src/html`.
 - A default `injection` Task.
+- An `htmlstrings.js` file, containing 3 srcset and 3 [Vanilla LazyLoad](https://www.npmjs.com/package/vanilla-lazyload) srcset Interpolated HTML Strings.
 
 Dependencies
 --------------------------------------------------------------------------------
