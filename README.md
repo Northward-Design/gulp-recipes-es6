@@ -38,7 +38,7 @@ Index
 
 ### Recipes
 
-- [Basic Web (HTML, CSS, and JS)]()
+- [Basic Web (HTML, CSS, JS, and Basic Images)](recipes/basic-web)
 - [Modern Web (HTML, SCSS, and TS)]()
 
 ### Ingredients
