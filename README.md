@@ -102,6 +102,7 @@ Index
 	- [Optimize Images](ingredients/images/optimize-images)
 	- [Responsive Images](ingredients/images/responsive-images)
 	- [Inject Images](ingredients/images/inject-images)
+	- [Inject Responsive Images](ingredients/images/inject-responsive-images)
 	- [Data URL Images](ingredients/images/data-url-images)
 	- [Watch Images](ingredients/images/watch-images)
 - [Sitemap Generator](ingredients/sitemap-generator)
