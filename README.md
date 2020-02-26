@@ -39,7 +39,8 @@ Index
 ### Recipes
 
 - [Basic Web (HTML, CSS, JS, and Basic Images)](recipes/basic-web)
-- [Modern Web (HTML, SCSS, and TS)]()
+- [Sassy Web (HTML, SASS, JS, and Basic Images)](recipes/sassy-web)
+- [Modern Web (HTML, SASS, and TS)]()
 
 ### Ingredients
 
