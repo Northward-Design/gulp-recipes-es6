@@ -163,7 +163,7 @@ export function serve(done) {
 export function watch() {
 	watchfiles('src/html/**/*.html', html);
   watchfiles('src/css/**/*.css', css);
-  watchfiles('src/js/**/*/js', js);
+  watchfiles('src/js/**/*.js', js);
   watchfiles('src/images/**/*.{png,gif,jpg,jpeg,svg}', optimizeImg);
 	watchfiles('dist', refresh);
 }

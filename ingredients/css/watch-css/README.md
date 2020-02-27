@@ -45,7 +45,7 @@ export function buildCss() {
 }
 
 export function watch() {
-  watchfiles('src/**/*.css', css);
+  watchfiles('src/css/**/*.css', css);
 }
 
 export const all = series(css, watch);

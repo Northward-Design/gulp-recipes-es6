@@ -61,7 +61,7 @@ export function serve(done) {
 }
 
 export function watch() {
-  watchfiles('src/**/*.css', css);
+  watchfiles('src/css/**/*.css', css);
   watchfiles('dist/styles', refresh);
 }
 

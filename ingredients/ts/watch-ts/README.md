@@ -51,7 +51,7 @@ export function buildTs() {
 }
 
 export function watch(){
-    watchfiles('ts/**/*.ts', ts);
+    watchfiles('src/ts/**/*.ts', ts);
 }
 
 export const all = series(ts, watch);

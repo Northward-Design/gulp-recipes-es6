@@ -21,9 +21,9 @@ let imgcount = 0;
 
 export default function injection() {
   return pump(
-    src('src/html/**/*'),
+    src('src/html/**/*.html'),
     inject(
-      src(['images/**/*.{jpg,jpeg}']),
+      src(['src/images/**/*.{jpg,jpeg}']),
         ignorePath: '../',
         relative = true,
         removeTags = true,

@@ -19,7 +19,7 @@ import { default as changed } from 'gulp-changed';
 
 export function optimizeImg() {
   return pump(
-    src('images/**/*.{png,gif,jpg,jpeg,svg}'),
+    src('src/images/**/*.{png,gif,jpg,jpeg,svg}'),
     changed('dist/images'),
     imgmin([
       imgmin.gifsicle({
@@ -46,7 +46,7 @@ export function optimizeImg() {
 }
 
 export function watch() {
-    watchfiles('images/**/*.{png,gif,jpg,jpeg,svg}', optimizeImg);
+    watchfiles('src/images/**/*.{png,gif,jpg,jpeg,svg}', optimizeImg);
 }
 
 export const all = series(optimizeImg, watch);

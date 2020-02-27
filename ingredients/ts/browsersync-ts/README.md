@@ -66,7 +66,7 @@ export function serve(done) {
 }
 
 export function watch(){
-  watchfiles('ts/**/*.ts', ts);
+  watchfiles('src/ts/**/*.ts', ts);
   watchfiles('dist/scripts', refresh);
 }
 

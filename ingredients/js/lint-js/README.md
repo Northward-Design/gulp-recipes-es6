@@ -16,7 +16,7 @@ import { default as eslint } from 'gulp-eslint';
 
 export default function lintJs() {
   return pump(
-    src(config.src.js),
+    src('src/js/**/*.js'),
     eslint(),
     eslint.formatEach(),
     eslint.failAfterError()

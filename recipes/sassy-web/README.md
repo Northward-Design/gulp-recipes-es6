@@ -166,7 +166,7 @@ export function optimizeImg() {
 export function watch() {
 	watchfiles('src/html/**/*.html', html);
   watchfiles('src/sass/**/*.scss', sassy);
-  watchfiles('src/js/**/*/js', js);
+  watchfiles('src/js/**/*.js', js);
   watchfiles('src/images/**/*.{png,gif,jpg,jpeg,svg}', optimizeImg);
 	watchfiles('dist', refresh);
 }

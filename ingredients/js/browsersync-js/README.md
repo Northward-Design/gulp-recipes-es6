@@ -33,7 +33,7 @@ export const js = series(lintJs, buildJs);
 
 export function lintJs() {
   return pump(
-    src('js/**/*.js'),
+    src('src/js/**/*.js'),
     eslint(),
     eslint.formatEach(),
     eslint.failAfterError()
@@ -66,7 +66,7 @@ export function serve(done) {
 }
 
 export function watch() {
-  watchfiles('src/js/**/*/js', js);
+  watchfiles('src/js/**/*.js', js);
   watchfiles('dist/scripts', refresh);
 }
 

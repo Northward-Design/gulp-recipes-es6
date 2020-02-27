@@ -28,7 +28,7 @@ export const js = series(lintJs, buildJs);
 
 export function lintJs() {
   return pump(
-    src('js/**/*.js'),
+    src('src/js/**/*.js'),
     eslint(),
     eslint.formatEach(),
     eslint.failAfterError()
@@ -52,7 +52,7 @@ export function buildJs() {
 }
 
 export function watch() {
-  watchfiles(config.src.js, js);
+  watchfiles('src/js/**/*.js', js);
 }
 
 export const all = series(js, watch);

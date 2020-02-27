@@ -46,7 +46,7 @@ export function buildSass() {
 }
 
 export function watch() {
-  watchfiles(config.src.sass, sassy);
+  watchfiles('src/sass/**/*.scss', sassy);
 }
 
 export const all = series(sassy, watch);

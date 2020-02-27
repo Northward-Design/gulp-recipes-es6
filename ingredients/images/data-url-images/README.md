@@ -17,7 +17,7 @@ import base64 from 'gulp-base64-inline';
 export default function inlineImg() {
   return pump(
     src('src/html/**/*.html'),
-    base64('../images', {
+    base64('src/images', {
       prefix: "",
       suffix: ""
     }),
