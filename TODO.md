@@ -4,11 +4,11 @@ To Do
 Recipes
 --------------------------------------------------------------------------------
 
-- [x] [Basic Web (HTML, CSS, JS, with Basic Images)](https://github.com/itrusler/gulp-recipes-es6/issues/142)
-- [x] [Sassy Web (HTML, SASS, JS, with Basic Images)](https://github.com/itrusler/gulp-recipes-es6/issues/144)
-- [ ] [Modern Web (HTML, SASS, TS, with Basic Images)]()
-- [ ] [Advanced Sassy Web (HTML, SASS, JS, with Critical CSS, Inject JS, and Inject Responsive Images)]()
-- [ ] [Advanced Modern Web (HTML, SASS, TS, with Critical CSS, Inject JS, and Inject Responsive Images)]()
+- [x] [Basic Web (HTML, CSS, and JS with Basic Images)](https://github.com/itrusler/gulp-recipes-es6/issues/142)
+- [x] [Sassy Web (HTML, SASS, and JS with Basic Images)](https://github.com/itrusler/gulp-recipes-es6/issues/144)
+- [x] [Modern Web (HTML, SASS, and TS with Basic Images)](https://github.com/itrusler/gulp-recipes-es6/issues/146)
+- [ ] [Advanced Sassy Web (HTML, SASS, and JS, with Critical CSS, Inject JS, and Inject Responsive Images)]()
+- [ ] [Advanced Modern Web (HTML, SASS, and TS, with Critical CSS, Inject JS, and Inject Responsive Images)]()
 
 Ingredients
 --------------------------------------------------------------------------------
