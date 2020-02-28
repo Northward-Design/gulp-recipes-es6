@@ -12,11 +12,11 @@ A Recipe to Lint, Build, Optimize, Watch, Sync and Clean: HTML, CSS, JS, and Ima
 - Renames files to `*.min.css`.
 
 - Lints, Bundles, Transpiles and Minifies all `.js` files from `src/js` to `dist/scripts`.
-- Renames file to `*.min.js` 
-- Creates an in-line Source Map in the `.min.js` and the `.min.css` file.
+- Renames file to `*.min.js`.
+- Creates an in-line Source Map in the `.min.js` and the `.min.css` files.
 
 - Optimizes all `.jpg`, `.jpeg`, `.png`, `.gif`, and `.svg` images from `src/images` to `dist/images`.
-- Only newly added or changed files will be optimized when 'watched'. 
+- Only newly added or changed images will be optimized when 'watched'.
 
 - Removes `dist`.
 
@@ -196,7 +196,7 @@ export default all;
 
 Notes:
 - Errors and warnings reported by Stylelint will not halt remaining processes in a task or series.
-- Pre-Optimized Images may increase in size. use the images sub-folder `src/images/optimized`
+- Pre-Optimized Images may increase in size. Use the images sub-folder `src/images/optimized`
 
 Installation
 --------------------------------------------------------------------------------
