@@ -49,6 +49,7 @@ export function optimizeImg() {
     changed(config.dist.img),
     imgmin(config.plugins.imgmin, config.plugins.imgmin.verbose),
     src(config.src.optimized),
+    changed(config.dist.img),
     dest(config.dist.img)
   );
 }

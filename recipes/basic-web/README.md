@@ -147,6 +147,7 @@ export function optimizeImg() {
     {verbose: true}
     ),
     src('src/images/optimized/**/*.{png,gif,jpg,jpeg,svg}'),
+    changed('dist/images'),
     dest('dist/images')
   );
 }

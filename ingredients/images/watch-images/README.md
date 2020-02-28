@@ -41,6 +41,7 @@ export function optimizeImg() {
     ],
     {verbose: true}
     ),
+    changed('dist/images'),
     dest('dist/images')
   );
 }
