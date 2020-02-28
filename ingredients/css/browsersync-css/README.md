@@ -71,7 +71,7 @@ export default all;
 ```
 
 Notes:
-- Errors or warnings reported by Stylelint will not halt remaining tasks in a series.
+- Errors and warnings reported by Stylelint will not halt remaining processes in a task or series.
 
 Installation
 --------------------------------------------------------------------------------
