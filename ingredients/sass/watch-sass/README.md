@@ -4,7 +4,7 @@ Watch SASS Ingredient
 A SASS Watch, Lint, Compile, Autoprefix and Minification Task with Source Maps.
 
 - Watches all `.scss` files in `src/sass`.
-- Lints, Compiles, Autoprefixes, and Minifies all `.scss` files from `src/sass` to `dist/styles`.
+- Lints, Compiles, Prefixes, and Minifies all `.scss` files from `src/sass` to `dist/styles`.
 - Renames files to `*.min.css`.
 - Creates an in-line Source Map in the `.min.css` file.
 
