@@ -23,7 +23,7 @@ export default function buildTs() {
     })
     .plugin(tsify)
     .bundle(),
-    source('index.ts'),
+    source('index.js'),
     dest('dist/scripts')
   );
 }
