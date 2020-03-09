@@ -38,9 +38,44 @@ Index
 
 ### Recipes
 
-- [Basic Web (HTML, CSS, and JS with Basic Images)](recipes/basic-web)
-- [Sassy Web (HTML, SASS, and JS with Basic Images)](recipes/sassy-web)
-- [Modern Web (HTML, SASS, and TS with Basic Images)](recipes/modern-web)
+##### With Essential Ingredients
+
+- [Basic Web (HTML, CSS, and JS)](recipes/basic-web)
+	- Clean, Watch, and Sync Browser.
+	- HTML: Lint and Minify.
+	- CSS: Lint, Prefix, and Minify with Source Maps.
+	- JS: Lint, Bundle, Transpile, and Minify with Source Maps.
+	- Images: Optimize (jpg/jpeg, png, svg, gif).
+
+- [Sassy Web (HTML, SASS, and JS)](recipes/sassy-web)
+	- Clean, Watch, and Sync Browser.
+	- HTML: Lint and Minify.
+	- SASS: Lint, Compile, Prefix, and Minify with Source Maps.
+	- JS: Lint, Bundle, Transpile, and Minify with Source Maps.
+	- Images: Optimize (jpg/jpeg, png, svg, gif).
+
+- [Modern Web (HTML, SASS, and TS)](recipes/modern-web)
+	- Clean, Watch, and Sync Browser.
+	- HTML: Lint and Minify.
+	- SASS: Lint, Compile, Prefix, and Minify with Source Maps.
+	- TS: Lint, Bundle, Compile, and Minify with Source Maps.
+	- Images: Optimize (jpg/jpeg, png, svg, gif).
+
+##### With Advanced Ingredients (Development/Production)
+
+- [Advanced Sassy Web (HTML, SASS, and JS)]()
+	- Sassy Web Recipe +:
+	- HTML: Gzip (with injected JS).
+	- CSS: Purge, Critical, and Gzip.
+	- JS: Inject.
+	- Generate Sitemap.
+
+##### With Advanced Images (Development/Production)
+
+- [Sassy Web Responsive Images (HTML, SASS, and JS with Inject Responsive Images)]()
+	- Advanced Sassy Web Recipe +:
+	- HTML: Inject Image Strings.
+	- Images: Responsive.
 
 ### Ingredients
 
