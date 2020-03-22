@@ -7,8 +7,8 @@ Recipes
 - [x] [Basic Web (HTML, CSS, and JS with Basic Images)](https://github.com/itrusler/gulp-recipes-es6/issues/142)
 - [x] [Sassy Web (HTML, SASS, and JS with Basic Images)](https://github.com/itrusler/gulp-recipes-es6/issues/144)
 - [x] [Modern Web (HTML, SASS, and TS with Basic Images)](https://github.com/itrusler/gulp-recipes-es6/issues/146)
-- [ ] [Advanced Sassy Web (HTML, SASS, and JS, with Critical CSS, Inject JS, and Inject Responsive Images)]()
-- [ ] [Advanced Modern Web (HTML, SASS, and TS, with Critical CSS, Inject JS, and Inject Responsive Images)]()
+- [x] [Advanced Sassy Web (HTML, SASS, and JS, with Advanced Ingredients + Development/Production)](https://github.com/itrusler/gulp-recipes-es6/issues/160)
+- [ ] [Advanced Modern Web (HTML, SASS, and TS, with Advanced Ingredients + Development/Production)]()
 
 Ingredients
 --------------------------------------------------------------------------------
