@@ -38,7 +38,7 @@ Index
 
 ### Recipes
 
-##### Essential Ingredients
+#### Essential Ingredients
 
 - [Basic Web (HTML, CSS, and JS)](recipes/basic-web)
 	- Clean, Watch, and Sync Browser.
@@ -61,16 +61,21 @@ Index
 	- TS: Lint, Bundle, Compile, and Minify with Source Maps.
 	- Images: Optimize (jpg/jpeg, png, svg, gif).
 
-##### Advanced Ingredients (Development/Production)
+#### Advanced Ingredients (Development/Production)
 
 - [Advanced Sassy Web (HTML, SASS, and JS)](recipes/advanced-sassy-web)
 	- Includes Sassy Web Recipe with:
-	- HTML: Gzip (with injected JS).
+	- HTML: Injected JS, and Gzip.
 	- CSS: Purge, Critical, PostCSS Assets, and Gzip.
-	- JS: Inject.
 	- Generate Sitemap.
 
-##### Advanced Images (Development/Production)
+- [Advanced Modern Web (HTML, SASS, and TS)](recipes/advanced-modern-web)
+	- Includes Modern Web Recipe with:
+	- HTML: Injected JS, and Gzip.
+	- CSS: Purge, Critical, PostCSS Assets, and Gzip.
+	- Generate Sitemap.
+
+#### Advanced Images (Development/Production)
 
 - [Sassy Web Responsive Images (HTML, SASS, and JS with Inject Responsive Images)]()
 	- Includes Advanced Sassy Web Recipe with:
