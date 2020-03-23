@@ -147,3 +147,4 @@ Index
 	- [Data URL Images](ingredients/images/data-url-images)
 	- [Watch Images](ingredients/images/watch-images)
 - [Sitemap Generator](ingredients/sitemap-generator)
+- [If Conditional](ingredients/if-conditional)

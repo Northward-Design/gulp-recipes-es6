@@ -76,4 +76,5 @@ Ingredients
 	- [x] [Data URL Images](https://github.com/itrusler/gulp-recipes-es6/issues/117)
 	- [x] [Watch Images](https://github.com/itrusler/gulp-recipes-es6/issues/89)
 - [x] [Sitemap Generator](https://github.com/itrusler/gulp-recipes-es6/issues/103)
+- [x] [If Conditional](https://github.com/itrusler/gulp-recipes-es6/issues/166)
 
