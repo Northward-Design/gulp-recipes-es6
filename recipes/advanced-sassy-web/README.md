@@ -168,7 +168,7 @@ export function buildSass() {
     autoprefixer(),
     rename({suffix: '.min'}),
     gulpif( NODE_ENV == 'production', purge({
-      content: ['src/**/*.html'],
+      content: ['src/html/**/*.html'],
       whitelist: ['some', 'js', 'created', 'class']
       })
     ),
@@ -336,7 +336,7 @@ Installation
 
 Install the required plugins with `npm`.
 
-`npm install --save-dev gulp @babel/core @babel/register @babel/preset-env pump-promise browser-sync gulp-htmlmin gulp-htmllint gulp-sass stylelint-scss gulp-stylelint stylelint stylelint-config-standard stylelint-order gulp-autoprefixer gulp-rename gulp-eslint eslint-plugin-import browserify babelify vinyl-source-stream vinyl-buffer gulp-uglify gulp-sourcemaps gulp-imagemin gulp-changed del gulp-if critical gulp-purge-css gulp-inject gulp-postcss postcss-assets gulp-gzip gulp-sitemap`
+`npm install --save-dev gulp @babel/core @babel/register @babel/preset-env pump-promise browser-sync gulp-htmlmin gulp-htmllint gulp-sass stylelint-scss gulp-stylelint stylelint stylelint-config-standard stylelint-order gulp-autoprefixer gulp-rename gulp-eslint eslint-plugin-import browserify babelify vinyl-source-stream vinyl-buffer gulp-uglify gulp-sourcemaps gulp-imagemin gulp-changed del gulp-if critical gulp-purgecss gulp-inject gulp-postcss postcss-assets gulp-gzip gulp-sitemap`
 - Used `gulp-imagemin@7.0.0`
 
 Includes
@@ -383,7 +383,7 @@ Production:
 ### Files
 
 - An `.htmllintrc` file for configuring `htmllint`.
-- An `.stylelintrc.yaml` file for configuring `stylelint`.
+- A `.stylelintrc.yaml` file for configuring `stylelint`.
 - An `.eslintrc.yaml` file for configuring `eslint`.
 
 Dependencies
@@ -418,7 +418,7 @@ Dependencies
 - [del](https://www.npmjs.com/package/del)
 - [gulp-if](https://www.npmjs.com/package/gulp-if)
 - [critical](https://www.npmjs.com/package/critical)
-- [gulp-purge-css](https://www.npmjs.com/package/gulp-purge-css)
+- [gulp-purgecss](https://www.npmjs.com/package/gulp-purgecss)
 - [gulp-inject](https://www.npmjs.com/package/gulp-inject)
 - [gulp-postcss](https://www.npmjs.com/package/gulp-postcss)
 - [postcss-assets](https://www.npmjs.com/package/postcss-assets)
