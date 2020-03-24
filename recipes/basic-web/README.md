@@ -118,7 +118,8 @@ export function buildJs() {
     uglify(),
     rename({suffix: '.min'}),
     sourcemaps.init({loadMaps: true}),
-    dest('dist/scripts', {sourcemaps: true})
+    dest('dist/scripts', {sourcemaps: true}),
+    sync.stream()    
   );
 }
 
@@ -148,7 +149,8 @@ export function optimizeImg() {
     ),
     src('src/images/optimized/**/*.{png,gif,jpg,jpeg,svg}'),
     changed('dist/images'),
-    dest('dist/images')
+    dest('dist/images'),
+    sync.stream()    
   );
 }
 

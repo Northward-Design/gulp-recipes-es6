@@ -160,7 +160,8 @@ export function optimizeImg() {
     ),
     src('src/images/optimized/**/*.{png,gif,jpg,jpeg,svg}'),
     changed('dist/images'),
-    dest('dist/images')
+    dest('dist/images'),
+    sync.stream()
   );
 }
 
@@ -236,7 +237,7 @@ Includes
 - A `cleanTs` Task.
 
 - An `html` Task that uses `cleanHtml`, `lintHtml` and `buildHtml`.
-- A `sass` Task that uses `cleanSass`, `lintSass` and `buildSass`.
+- A `sassy` Task that uses `cleanSass`, `lintSass` and `buildSass`.
 - A `ts` Task that uses `cleanTS`, `lintTs` and `buildTs`.
 - A `lint` Task that uses `lintHtml`, `lintSass` and `lintTs`.
 - A `build` Task that uses `clean`, `buildHtml`, `buildSass`, `buildTs` and `optimizeImg`.

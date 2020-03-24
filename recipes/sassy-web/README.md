@@ -130,7 +130,8 @@ export function buildJs() {
     uglify(),
     rename({suffix: '.min'}),
     sourcemaps.init({loadMaps: true}),
-    dest('dist/scripts', {sourcemaps: true})
+    dest('dist/scripts', {sourcemaps: true}),
+    sync.stream()
   );
 }
 
@@ -160,7 +161,8 @@ export function optimizeImg() {
     ),
     src('src/images/optimized/**/*.{png,gif,jpg,jpeg,svg}'),
     changed('dist/images'),
-    dest('dist/images')
+    dest('dist/images'),
+    sync.stream()
   );
 }
 
@@ -236,7 +238,7 @@ Includes
 - A `cleanJs` Task.
 
 - An `html` Task that uses `cleanHtml`, `lintHtml` and `buildHtml`.
-- A `sass` Task that uses `cleanSass`, `lintSass` and `buildSass`.
+- A `sassy` Task that uses `cleanSass`, `lintSass` and `buildSass`.
 - A `js` Task that uses `cleanJS`, `lintJs` and `buildJs`.
 - A `lint` Task that uses `lintHtml`, `lintSass` and `lintJs`.
 - A `build` Task that uses `clean`, `buildHtml`, `buildSass`, `buildJs` and `optimizeImg`.
