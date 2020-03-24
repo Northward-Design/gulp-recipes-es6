@@ -302,6 +302,11 @@ Notes:
 - Errors and warnings reported by Stylelint will not halt remaining processes in a task or series.
 - Pre-Optimized Images may increase in size. Use the images sub-folder `src/images/optimized`
 
+Setting `NODE_ENV` in your terminal:
+- iOS/Linux: `export NODE_ENV=production`.
+- Windows: `SET NODE_ENV=production`.
+
+
 Gulp-Inject: Include in your `.html` files before the closing `</body>` tag.
 
 ```html
