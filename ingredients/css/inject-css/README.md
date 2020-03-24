@@ -20,16 +20,15 @@ export default function injection() {
     inject(src(['dist/styles/index.css']), {
     	removeTags: true,
         transform: (filePath, file) => {
-    		return file.contents.toString();
+            return '<style>'+file.contents.toString()+'</style>';
     	};
     }),
     dest('dist')
   );
 }
 ```
-Note: `removeTags` setting not required when using [gulp-htmlmin](https://www.npmjs.com/package/gulp-htmlmin).
 
-Include in your `.html` files between `<style>` tags.
+Include in your `.html` files between the `<head>` tags.
 
 ```html
 <!-- inject:css -->

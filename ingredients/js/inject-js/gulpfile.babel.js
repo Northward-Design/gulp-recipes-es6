@@ -35,7 +35,7 @@ config.plugins = {};
 config.plugins.inject = {};
 config.plugins.inject.removeTags = true;
 config.plugins.inject.transform = (filePath, file) => {
-  return file.contents.toString();
+  return '<script>'+file.contents.toString()+'</script>';
 };
 
 export default function injection() {

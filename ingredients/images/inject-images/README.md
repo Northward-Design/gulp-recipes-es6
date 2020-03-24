@@ -56,14 +56,13 @@ export default function injection() {
 }
 ```
 Notes:
-- `removeTags` setting not required when using [gulp-htmlmin](https://www.npmjs.com/package/gulp-htmlmin).
 - Gulp Inject categorizes files A-Z then a-z. Files in `src/images` should be renamed to upper OR lower case names.
 - Image path and names are copied from `src/images`, but group of images used should be located in `dist/images`.
 - Settings for Image Sizes, Alt Tags and String Selection are located in `gulpfile.babel.js`
 - Six example Strings are located in `htmlstrings.js`
 - [Vanilla LazyLoad](https://www.npmjs.com/package/vanilla-lazyload) settings are required for Lazy Loading Strings.
 
-Include comments in your `.html` files (one set of for each `.jpg` and `jpeg`).
+Include comments in your `.html` files (one set for each `.jpg` and `jpeg`).
 
 ```html
 <!-- inject:img1 -->

@@ -120,14 +120,13 @@ export const all = parallel(responsiveImg, injection);
 export default all;
 ```
 Notes:
-- `removeTags` setting not required when using [gulp-htmlmin](https://www.npmjs.com/package/gulp-htmlmin).
 - Gulp Inject categorizes files A-Z then a-z. Files in `src/images` should be renamed to upper OR lower case names. 
 - Settings for Image Sizes, break points, Alt Tags and String Selection are located in `gulpfile.babel.js`
 - Six example Strings are located in `htmlstrings.js`.
 - Six sets of corresponding Image Resizing settings accompany each example string.
 - [Vanilla LazyLoad](https://www.npmjs.com/package/vanilla-lazyload) settings are required for Lazy Loading Strings.
 
-Include comments in your `.html` files (one set of for each `.jpg` and `jpeg`).
+Include comments in your `.html` files (one set for each `.jpg` and `jpeg`).
 
 ```html
 <!-- inject:img1 -->

@@ -43,7 +43,6 @@ export default function injection() {
 }
 ```
 Notes:
-- `removeTags` setting not required when using [gulp-htmlmin](https://www.npmjs.com/package/gulp-htmlmin).
 - Partials used, require the same name as `name` setting (unless changed) for gulp-inject: `head.html`, `header.html`, and `footer.html`.
 
 Include in your `.html` files between `<head>`, `<header>` and `<footer>` tags.

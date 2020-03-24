@@ -20,16 +20,15 @@ export default function injection() {
     inject(src(['dist/scripts/index.js']), {
       removeTags: true,
       transform: (filePath, file) => {
-      	return file.contents.toString();
+        return '<script>'+file.contents.toString()+'</script>';
       };
     }),
     dest('dist')
   );
 }
 ```
-Note: `removeTags` setting not required when using [gulp-htmlmin](https://www.npmjs.com/package/gulp-htmlmin).
 
-Include in your `.html` files between `<script>` tags.
+Include in your `.html` files before the closing `</body>` tag.
 
 ```html
 <!-- inject:js -->
