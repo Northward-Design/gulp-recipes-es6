@@ -332,7 +332,7 @@ Installation
 Install the required plugins with `npm`.
 
 `npm install --save-dev gulp @babel/core @babel/register @babel/preset-env pump-promise browser-sync gulp-htmlmin gulp-htmllint gulp-sass stylelint-scss gulp-stylelint stylelint stylelint-config-standard stylelint-order gulp-autoprefixer gulp-rename gulp-eslint eslint-plugin-import browserify babelify vinyl-source-stream vinyl-buffer gulp-uglify gulp-sourcemaps gulp-imagemin gulp-changed del gulp-if critical gulp-purge-css gulp-inject gulp-postcss postcss-assets gulp-gzip gulp-sitemap`
-Used `gulp-imagemin@7.0.0`
+- Used `gulp-imagemin@7.0.0`
 
 Includes
 --------------------------------------------------------------------------------
