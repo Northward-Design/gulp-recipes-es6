@@ -275,7 +275,7 @@ export function clean() {
 }
 
 export function cleanHtml() {
-  return del('dist/**/*.html');
+  return del('dist/*.html');
 }
 
 export function cleanSass() {

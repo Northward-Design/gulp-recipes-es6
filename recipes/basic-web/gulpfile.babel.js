@@ -56,7 +56,7 @@ config.dist.img = resolve(config.dist.root, 'images');
 
 config.clean = {};
 config.clean.dist = config.dist.root;
-config.clean.html = resolve(config.clean.dist, '**/*.html');
+config.clean.html = resolve(config.clean.dist, '*.html');
 config.clean.css = resolve(config.clean.dist, 'styles');
 config.clean.js = resolve(config.clean.dist, 'scripts');
 
