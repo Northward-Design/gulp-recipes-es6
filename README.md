@@ -77,10 +77,11 @@ Index
 
 #### Advanced Images (Development/Production)
 
-- [Sassy Web Responsive Images (HTML, SASS, and JS with Inject Responsive Images)]()
+- [Responsive Sassy Web (HTML, SASS, and JS with Inject Responsive Images)](recipes/responsive-sassy-web)
 	- Includes Advanced Sassy Web Recipe with:
-	- HTML: Inject Image Strings.
-	- Images: Responsive.
+	- HTML: Inject Image Strings, in-line base64 miniature images.
+	- JS: Concatenate.
+	- Images: Responsive Image Sets.
 
 ### Ingredients
 
