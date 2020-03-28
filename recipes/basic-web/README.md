@@ -215,7 +215,6 @@ Includes
 - Additional Configuration for CSS sources in `src/css`.
 - Additional Configuration for JS sources in `src/js`.
 - Additional Configuration for Image sources in `src/images` and `src/images/optimized`.
-- Additional Configuration for the location of `dist`.
 
 ### Tasks
 

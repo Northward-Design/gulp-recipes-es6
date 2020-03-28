@@ -217,7 +217,6 @@ Includes
 - Additional Configuration for SASS sources in `src/sass`.
 - Additional Configuration for TS sources in `src/ts`.
 - Additional Configuration for Image sources in `src/images` and `src/images/optimized`.
-- Additional Configuration for the location of `dist`.
 
 ### Tasks
 

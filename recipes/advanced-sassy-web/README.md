@@ -314,7 +314,7 @@ Gulp-Inject: Include in your `.html` files before the closing `</body>` tag.
 <!-- endinject -->
 ```
 
-Critical: Include in your `.html` files a link to your `.css`.
+Critical: Include a link to your `.css` in your `.html` files.
 
 ```html
 <link rel="stylesheet" href="styles/index.min.css">
@@ -346,7 +346,6 @@ Includes
 - Additional Configuration for SASS sources in `src/sass`.
 - Additional Configuration for JS sources in `src/js`.
 - Additional Configuration for Image sources in `src/images` and `src/images/optimized`.
-- Additional Configuration for the location of `dist`.
 
 ### Tasks
 
