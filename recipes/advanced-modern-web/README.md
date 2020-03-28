@@ -27,7 +27,7 @@ In Production (NODE_ENV == 'production'): A Recipe to Compile, Minify, Optimize,
 
 - Bundles, Compiles and Minifies all `.ts` files from `src/ts` to `dist/scripts`.
 
-- Minifies all `.html` files from `src/html` to `dist`, and Injects Contents from `dist/scripts/index.js`.
+- Injects Contents from `dist/scripts/index.js` into all `.html` files from `src/html` to `dist`.
 
 - Compiles, Prefixes, Purges, adds Selected Images relative paths and sizes, and Minifies all `.scss` files from `src/sass` to `dist/styles`.
 - Renames file to `*.min.css`.
@@ -35,7 +35,7 @@ In Production (NODE_ENV == 'production'): A Recipe to Compile, Minify, Optimize,
 
 - Copies critical-path (above the fold) CSS and In-lines it into the `.html` files in `dist`.
 - Generates a script in all `.html` files to asynchronously load external `.css` file.
-- Creates a duplicate Gzip file `*.html.gz` if it is smaller than the original.
+- Minifies all `.html` files and Creates a duplicate Gzip file `*.html.gz` if they are smaller than the originals.
 
 - Creates a `sitemap.xml` file in the `dist` folder based on the `.html` files in `dist`.
 
@@ -111,11 +111,7 @@ export function buildHtml() {
         return '<script>'+file.contents.toString()+'</script>';
       };
     })),
-    gulpif( NODE_ENV == 'production', htmlmin({
-      collapseWhitespace: true,
-      removeComments: true
-    }),
-		dest('dist'),
+    dest('dist'),
     sync.stream()
 	);
 }
@@ -128,6 +124,10 @@ export function critHtml() {
       inline: true,
       ignore: {atrule: ['@font-face']},
       dimensions: [{height: 1440, width: 2560}]
+    }),
+    htmlmin({
+      collapseWhitespace: true,
+      removeComments: true
     }),
     dest('dist'),
     gzip({

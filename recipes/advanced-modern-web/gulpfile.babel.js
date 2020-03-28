@@ -157,7 +157,6 @@ export function buildHtml() {
     src(config.src.html),
     inject(src([config.dist.jsEntry]), 
     gulpif(config.env.development, config.plugins.injectJs, config.plugins.injectJsProd)),
-    gulpif(!config.env.development, htmlmin(config.plugins.htmlmin)),
     dest(config.dist.html),
     sync.stream()
   );
@@ -168,6 +167,7 @@ export function critHtml() {
   return pump(
     src(config.dist.htmlSrc),
     crit.stream(config.plugins.critical),
+    htmlmin(config.plugins.htmlmin),
     dest(config.dist.html),
     gzip(config.plugins.gzip),
     dest(config.dist.html)
