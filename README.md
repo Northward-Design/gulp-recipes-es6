@@ -125,6 +125,7 @@ Index
 	- [Babel JS with Source Maps](ingredients/js/babel-js-source-maps)
 	- [Browserify and Babelify JS](ingredients/js/browserify-babelify-js)
 	- [Concatenate JS](ingredients/js/concatenate-js)
+	- [Concatenate JS with Source Maps](ingredients/js/concatenate-js-source-maps)
 	- [Inject JS](ingredients/js/inject-js)
 	- [Gzip JS](ingredients/js/gzip-js)
 	- [Watch JS](ingredients/js/watch-js)
