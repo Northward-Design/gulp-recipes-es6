@@ -1,4 +1,4 @@
-Concat JS Ingredient
+Concatenate JS Ingredient
 ================================================================================
 
 A JS Concatenation Task.
