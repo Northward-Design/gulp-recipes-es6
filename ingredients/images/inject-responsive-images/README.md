@@ -21,6 +21,8 @@ import { default as pump } from 'pump-promise';
 import { default as responsive } from 'gulp-responsive';
 import inject from 'gulp-inject';
 
+import strimg from './string-img-sets.js';
+
 export default function responsiveImg() {
   return pump(
     src('src/images/**/*.{jpg,jpeg}'),
@@ -77,6 +79,7 @@ export default function injection() {
     src('src/html/**/*.html'),
     inject(
       src(['src/images/**/*.{jpg,jpeg}']),
+      {
         ignorePath: '../',
         relative = true,
         removeTags = true,
@@ -88,29 +91,30 @@ export default function injection() {
           let pathName = filepath.substring(0, filepath.lastIndexOf('.'));
           let name = pathName.substring(pathName.lastIndexOf('/')+1);
           return //example string
-          ` <picture>
-              <source
-                srcset="
-                  ${path}-${xs}w.webp ${xs}w,
-                  ${path}-${sm}w.webp ${sm}w,
-                  ${path}-${md}w.webp ${md}w,
-                  ${path}-${lg}w.webp ${lg}w,
-                  ${path}-${xl}w.webp ${xl}w,
-                  ${path}-${xs}w@3x.webp ${xs * 3}w,
-                  ...
-              <img class="${name}"
-                srcset="
-                  ...
-                  ${path}-${md}w@2x.jpeg ${md * 2}w,
-                  ${path}-${lg}w@2x.jpeg ${lg * 2}w,
-                  ${path}-${xl}w@2x.jpeg ${xl * 2}w,
-                  ${path}-${md}w@4x.jpeg ${md * 4}w"
-                sizes="${xsScrn}"
-                src="${path}-${lg}w.jpg"
-              alt="${alt}">
-            </picture>`;
+            ` <picture>
+                <source
+                  srcset="
+                    ${path}-${xs}w.webp ${xs}w,
+                    ${path}-${sm}w.webp ${sm}w,
+                    ${path}-${md}w.webp ${md}w,
+                    ${path}-${lg}w.webp ${lg}w,
+                    ${path}-${xl}w.webp ${xl}w,
+                    ${path}-${xs}w@3x.webp ${xs * 3}w,
+                    ...
+                <img class="${name}"
+                  srcset="
+                    ...
+                    ${path}-${md}w@2x.jpeg ${md * 2}w,
+                    ${path}-${lg}w@2x.jpeg ${lg * 2}w,
+                    ${path}-${xl}w@2x.jpeg ${xl * 2}w,
+                    ${path}-${md}w@4x.jpeg ${md * 4}w"
+                  sizes="${xsScrn}"
+                  src="${path}-${lg}w.jpg"
+                alt="${alt}">
+              </picture>`;
         }
-      ),      
+      }
+    ),      
     dest('dist')
   );
 }
@@ -121,8 +125,8 @@ export default all;
 ```
 Notes:
 - Gulp Inject categorizes files A-Z then a-z. Files in `src/images` should be renamed to upper OR lower case names. 
-- Settings for Image Sizes, break points, Alt Tags and String Selection are located in `gulpfile.babel.js`
-- Six example Strings are located in `htmlstrings.js`.
+- Settings for Image Sizes, break points, Alt Tags and String Selection are located in `gulpfile.babel.js`.
+- Six example Strings are located in `string-img-sets.js`.
 - Six sets of corresponding Image Resizing settings accompany each example string.
 - [Vanilla LazyLoad](https://www.npmjs.com/package/vanilla-lazyload) settings are required for Lazy Loading Strings.
 
@@ -148,13 +152,11 @@ Includes
 --------------------------------------------------------------------------------
 
 - Additional Configuration for Image sources in `src/images`.
-- Additional Configuration for Image sources in `dist/images`.
 - Additional Configuration for HTML sources in `src/html`.
 - A `responsiveImg` Task.
 - A `injection` Task.
 - A default `all` Task that uses `injection` and `responsiveImg`.
-- An `htmlstrings.js` file, containing 3 srcset and 3 [Vanilla LazyLoad](https://www.npmjs.com/package/vanilla-lazyload) Interpolated HTML Strings.
-- The same file contains settings to resize a set of images for each of the strings.
+- A `string-img-sets.js` file for configuring responsive Strings and Images.
 
 Dependencies
 --------------------------------------------------------------------------------
