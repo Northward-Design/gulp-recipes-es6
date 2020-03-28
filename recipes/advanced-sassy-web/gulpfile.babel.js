@@ -153,24 +153,17 @@ export function lintHtml() {
 }
 
 export function buildHtml() {
+  config.plugins.gzip.deleteMode = config.dist.html;
   return pump(
     src(config.src.html),
     inject(src([config.dist.jsEntry]), 
     gulpif(config.env.development, config.plugins.injectJs, config.plugins.injectJsProd)),
+    gulpif(!config.env.development, crit.stream(config.plugins.critical)),
+    gulpif(!config.env.development, htmlmin(config.plugins.htmlmin)),
     dest(config.dist.html),
+    gulpif(!config.env.development, gzip(config.plugins.gzip)),
+    gulpif(!config.env.development, dest(config.dist.html)),
     sync.stream()
-  );
-}
-
-export function critHtml() {
-  config.plugins.gzip.deleteMode = config.dist.html;
-  return pump(
-    src(config.dist.htmlSrc),
-    crit.stream(config.plugins.critical),
-    htmlmin(config.plugins.htmlmin),
-    dest(config.dist.html),
-    gzip(config.plugins.gzip),
-    dest(config.dist.html)
   );
 }
 
@@ -273,8 +266,8 @@ export function cleanJs() {
 export const lint = series(lintHtml, lintSass, lintJs);
 
 export const build = gulpif(config.env.development,
-  series(clean, optimizeImg, buildJs, buildHtml, buildSass),
-  series(clean, optimizeImg, buildJs, buildHtml, buildSass, critHtml, buildSitemap, cleanJs));
+  series(clean, optimizeImg, buildJs, buildSass, buildHtml),
+  series(clean, optimizeImg, buildJs, buildSass, buildHtml, buildSitemap, cleanJs));
 
 export const all = gulpif(config.env.development,
   series(lint, build, serve, watch), build);

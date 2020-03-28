@@ -27,12 +27,11 @@ In Production (NODE_ENV == 'production'): A Recipe to Compile, Minify, Optimize,
 
 - Bundles, Transpiles and Minifies all `.js` files from `src/js` to `dist/scripts`.
 
-- Injects Contents from `dist/scripts/index.js` into all `.html` files from `src/html` to `dist`.
-
 - Compiles, Prefixes, Purges, adds Selected Images relative paths and sizes, and Minifies all `.scss` files from `src/sass` to `dist/styles`.
 - Renames file to `*.min.css`.
 - Creates a duplicate Gzip file `*.min.css.gz` if it is smaller than the original.
 
+- Injects Contents from `dist/scripts/index.js` into all `.html` files from `src/html` to `dist`.
 - Copies critical-path (above the fold) CSS and In-lines it into the `.html` files in `dist`.
 - Generates a script in all `.html` files to asynchronously load external `.css` file.
 - Minifies all `.html` files and Creates a duplicate Gzip file `*.html.gz` if they are smaller than the originals.
@@ -168,7 +167,7 @@ export function buildHtml() {
       }
     ),      
     inject(src(['dist/scripts/index.min.js']),
-    gulpif( NODE_ENV !== 'production', {
+    gulpif( process.env.NODE_ENV !== 'production', {
       removeTags: true,
       ignorePath: 'dist',
       addRootSlash: false,
@@ -182,38 +181,34 @@ export function buildHtml() {
       prefix: "",
       suffix: ""
     }),
-		dest('dist'),
+		gulpif( process.env.NODE_ENV == 'production',
+      crit.stream({
+        css: ['dist/styles/index.min.css'],
+        inline: true,
+        ignore: {atrule: ['@font-face']},
+        dimensions: [{height: 1440, width: 2560}]
+    })),
+    gulpif( process.env.NODE_ENV == 'production',
+      htmlmin({
+        collapseWhitespace: true,
+        removeComments: true,
+        minifyJS: true,
+        customAttrCollapse: /srcset|sizes|data-srcset|data-sizes/
+    })),
+    dest('dist'),
+    gulpif( process.env.NODE_ENV == 'production', 
+      gzip({
+        deleteMode: 'dist',
+        append: true,
+        skipGrowingFiles: true,
+        gzipOptions: {
+          level: 9,
+          memLevel: 9
+        }
+    })),
+    gulpif( process.env.NODE_ENV == 'production', dest('dist')),
     sync.stream()
 	);
-}
-
-export function critHtml() {
-  return pump(
-    src('dist/*.html'),
-    crit.stream({
-      css: ['dist/styles/index.min.css'],
-      inline: true,
-      ignore: {atrule: ['@font-face']},
-      dimensions: [{height: 1440, width: 2560}]
-    }),
-    htmlmin({
-      collapseWhitespace: true,
-      removeComments: true,
-      minifyJS: true,
-      customAttrCollapse: /srcset|sizes|data-srcset|data-sizes/
-    }),
-    dest('dist'),
-    gzip({
-      deleteMode: 'dist',
-      append: true,
-      skipGrowingFiles: true,
-      gzipOptions: {
-        level: 9,
-        memLevel: 9
-      }
-    }),
-    dest('dist')
-  );
 }
 
 export const sassy = series(cleanSass, lintSass, buildSass);
@@ -233,14 +228,14 @@ export function lintSass() {
 export function buildSass() {
   return pump(
     src('src/sass/**/*.scss'),
-    gulpif( NODE_ENV !== 'production', sourcemaps.init({loadMaps: true})),
+    gulpif( process.env.NODE_ENV !== 'production', sourcemaps.init({loadMaps: true})),
     sass({
       errorLogToConsole: true,
       outputStyle: 'compressed'
     }),
     autoprefixer(),
     rename({suffix: '.min'}),
-    gulpif( NODE_ENV == 'production', purge({
+    gulpif( process.env.NODE_ENV == 'production', purge({
       content: ['src/html/**/*.html'],
       whitelist: ['some', 'js', 'created', 'class']
       })
@@ -251,8 +246,8 @@ export function buildSass() {
         relative: 'dist/styles'
       })
     ]),
-    dest('dist/styles', gulpif( NODE_ENV !== 'production', {sourcemaps: true})),
-    gulpif( NODE_ENV == 'production', gzip({
+    dest('dist/styles', gulpif( process.env.NODE_ENV !== 'production', {sourcemaps: true})),
+    gulpif( process.env.NODE_ENV == 'production', gzip({
       deleteMode: 'dist/styles',
       append: true,
       skipGrowingFiles: true,
@@ -261,7 +256,7 @@ export function buildSass() {
         memLevel: 9
       }
     })),
-    gulpif( NODE_ENV == 'production', dest('dist/styles')),
+    gulpif( process.env.NODE_ENV == 'production', dest('dist/styles')),
     sync.stream()
   );
 }
@@ -290,8 +285,8 @@ export function buildJs() {
     concat('index.js'),
     uglify(),
     rename({suffix: '.min'}),
-    gulpif( NODE_ENV !== 'production', sourcemaps.init({loadMaps: true})),
-    dest('dist/scripts', gulpif( NODE_ENV !== 'production', {sourcemaps: true})),
+    gulpif( process.env.NODE_ENV !== 'production', sourcemaps.init({loadMaps: true})),
+    dest('dist/scripts', gulpif( process.env.NODE_ENV !== 'production', {sourcemaps: true})),
     sync.stream()
   );
 }
@@ -430,11 +425,11 @@ export function cleanJs() {
 
 export const lint = series(lintHtml, lintSass, lintJs);
 
-export const build = gulpif( NODE_ENV !== 'production',
-  series(clean, img, buildJs, buildHtml, buildSass),
-  series(clean, img, buildJs, buildHtml, buildSass, critHtml, buildSitemap, cleanJs));
+export const build = gulpif( process.env.NODE_ENV !== 'production',
+  series(clean, img, buildJs, buildSass, buildHtml),
+  series(clean, img, buildJs, buildSass, buildHtml, buildSitemap, cleanJs));
 
-export const all = gulpif( NODE_ENV !== 'production',
+export const all = gulpif( process.env.NODE_ENV !== 'production',
   series(lint, build, serve, watch), build);
 
 export default all;
@@ -528,7 +523,6 @@ Includes
 - A `lintSass` Task.
 - A `lintJs` Task.
 - A `buildHtml` Task.
-- A `critHtml` Task.
 - A `buildSass` Task.
 - A `buildJs` Task.
 - An `optimizeImg` Task.
@@ -545,11 +539,11 @@ Includes
 - A `lint` Task that uses `lintHtml`, `lintSass` and `lintJs`.
 
 Development:
-- A `build` Task that uses `clean`, `img`, `buildJs`, `buildHtml`, and `buildSass`.
+- A `build` Task that uses `clean`, `img`, `buildJs`, `buildSass`, and `buildHtml`.
 - A default `all` Task that uses `lint`, `build`, `serve` and `watch`.
 
 Production:
-- A `build` Task that uses `clean`, `img`, `buildJs`, `buildHtml`, `buildSass`, `critHtml`, `buildSitemap`, and `cleanJs`.
+- A `build` Task that uses `clean`, `img`, `buildJs`, `buildSass`, `buildHtml`, `buildSitemap`, and `cleanJs`.
 - A default `all` Task that uses `build`.
 
 ### Files
