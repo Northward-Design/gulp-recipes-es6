@@ -156,6 +156,7 @@ config.plugins.base64 = {
 config.plugins.cache = {}
 config.plugins.cache.optimizeMemory = true;
 
+// INJECT RESPONSIVE IMAGE SETTINGS
 // Choose ONE String and Image Set to use (0 - 5)
 // 0 = simple SRCSET string and Images
 // 1 = wide SRCSET 
@@ -183,7 +184,7 @@ const mdBrkpt = '992';
 const lgBrkpt = '1200';
 const xlBrkpt = '1600';
 
-// Choose Image Widths for breakpoints
+// Choose Image Widths for breakpoints (can use any unit, vw is best practice)
 const xsScrn = '100vw';
 const smScrn = '75vw';
 const mdScrn = '50vw';
@@ -197,6 +198,8 @@ const alt = [
   'Alt Tag For Second Image',
   'add another string for each Image'
 ]
+
+config.clean.miniImg = resolve(config.clean.dist, `images/*-${mini}w.jpg`);
 
 config.plugins.resp = {};
 config.plugins.resp.options = {
@@ -224,6 +227,7 @@ config.plugins.inject.starttag = () => {
   imgcount++;
   return `<!-- inject:img${imgcount} -->`;
 };
+
 config.plugins.inject.transform = (filepath) => {
   altcount++;
   let pathName = filepath.substring(0, filepath.lastIndexOf('.'));
@@ -373,11 +377,15 @@ export function cleanJs() {
   return del(config.clean.js);
 }
 
+export function cleanMini() {
+  return gulpif(dataUrl, del(config.clean.miniImg));
+}
+
 export const lint = series(lintHtml, lintSass, lintJs);
 
 export const build = gulpif(config.env.development,
   series(clean, img, buildJs, buildSass, buildHtml),
-  series(clean, img, buildJs, buildSass, buildHtml, buildSitemap, cleanJs));
+  series(clean, img, buildJs, buildSass, buildHtml, buildSitemap, cleanJs, cleanMini));
 
 export const all = gulpif(config.env.development,
   series(lint, build, serve, watch), build);

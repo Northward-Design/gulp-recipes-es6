@@ -52,6 +52,7 @@ In Production (NODE_ENV == 'production'): A Recipe to Compile, Minify, Optimize,
 - Concatenates all `.js` files from `src/js/plugins` into the bundled `.js` file mentioned above.
 - In Development: Only newly added or changed images will be optimized when 'watched'.
 - WARNING: Do not edit images intended for responsive directly in `src/images` while being watched. Copy into folder instead.
+- In Production: Cleans very small `.jpg` images if they were converted to Base64.
 
 Usage
 --------------------------------------------------------------------------------
@@ -423,11 +424,15 @@ export function cleanJs() {
   return del('dist/scripts');
 }
 
+export function cleanMini() {
+  return gulpif( dataUrl == true, del(`dist/images/*-${mini}.jpg`));
+}
+
 export const lint = series(lintHtml, lintSass, lintJs);
 
 export const build = gulpif( process.env.NODE_ENV !== 'production',
   series(clean, img, buildJs, buildSass, buildHtml),
-  series(clean, img, buildJs, buildSass, buildHtml, buildSitemap, cleanJs));
+  series(clean, img, buildJs, buildSass, buildHtml, buildSitemap, cleanJs, cleanMini));
 
 export const all = gulpif( process.env.NODE_ENV !== 'production',
   series(lint, build, serve, watch), build);
@@ -531,6 +536,7 @@ Includes
 - A `cleanHtml` Task.
 - A `cleanSass` Task.
 - A `cleanJs` Task.
+- A `cleanMini` Task.
 
 - An `html` Task that uses `cleanHtml`, `lintHtml` and `buildHtml`.
 - A `sassy` Task that uses `cleanSass`, `lintSass` and `buildSass`.
@@ -543,7 +549,7 @@ Development:
 - A default `all` Task that uses `lint`, `build`, `serve` and `watch`.
 
 Production:
-- A `build` Task that uses `clean`, `img`, `buildJs`, `buildSass`, `buildHtml`, `buildSitemap`, and `cleanJs`.
+- A `build` Task that uses `clean`, `img`, `buildJs`, `buildSass`, `buildHtml`, `buildSitemap`, `cleanJs`, and `cleanMini`.
 - A default `all` Task that uses `build`.
 
 ### Files
