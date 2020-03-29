@@ -48,7 +48,7 @@ In Production (NODE_ENV == 'production'): A Recipe to Compile, Minify, Optimize,
 - Resizes all `.jpg` and `.jpeg` images from `src/images` to `dist/images`.
 - Creates a set of multiple sizes with the same width settings mentioned before, and suffixes them.
 - Converts `.jpg` and `.jpeg` to `.jpg` and `.webp` formats. Reduces only, does not enlarge.
-- Option to convert very small `.jpg` images for Lazy Load to Base64 are in-lined into `.html`.
+- Option to convert very small `.jpg` images for Lazy Load to Base64 and in-lined into `.html`.
 - Concatenates all `.js` files from `src/js/plugins` into the bundled `.js` file mentioned above.
 - In Development: Only newly added or changed images will be optimized when 'watched'.
 - WARNING: Do not edit images intended for responsive directly in `src/images` while being watched. Copy into folder instead.
@@ -248,14 +248,15 @@ export function buildSass() {
       })
     ]),
     dest('dist/styles', gulpif( process.env.NODE_ENV !== 'production', {sourcemaps: true})),
-    gulpif( process.env.NODE_ENV == 'production', gzip({
-      deleteMode: 'dist/styles',
-      append: true,
-      skipGrowingFiles: true,
-      gzipOptions: {
-        level: 9,
-        memLevel: 9
-      }
+    gulpif( process.env.NODE_ENV == 'production', 
+      gzip({
+        deleteMode: 'dist/styles',
+        append: true,
+        skipGrowingFiles: true,
+        gzipOptions: {
+          level: 9,
+          memLevel: 9
+        }
     })),
     gulpif( process.env.NODE_ENV == 'production', dest('dist/styles')),
     sync.stream()

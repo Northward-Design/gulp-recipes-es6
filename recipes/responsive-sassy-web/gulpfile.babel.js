@@ -101,6 +101,7 @@ config.plugins.babel = {};
 config.plugins.browserify = {};
 config.plugins.browserify.entries = [config.src.jsEntry];
 config.plugins.source = 'index.js';
+config.plugins.concat = 'index.js';
 config.plugins.uglify = {};
 config.plugins.sourcemaps = {};
 config.plugins.sourcemaps.loadMaps = true;
@@ -314,7 +315,7 @@ export function buildJs() {
     source(config.plugins.source),
     buffer(),
     src(config.src.jsPlugins),
-    concat(config.plugins.source),
+    concat(config.plugins.concat),
     uglify(config.plugins.uglify),
     rename(config.plugins.rename),
     gulpif(config.env.development, sourcemaps.init(config.plugins.sourcemaps)),
