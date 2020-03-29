@@ -83,6 +83,12 @@ Index
 	- JS: Concatenate.
 	- Images: Responsive Image Sets.
 
+- [Responsive Modern Web (HTML, SASS, and TS with Inject Responsive Images)](recipes/responsive-modern-web)
+	- Includes Advanced Modern Web Recipe with:
+	- HTML: Inject Image Strings, in-line base64 miniature images.
+	- TS: Concatenates JS Plugins.
+	- Images: Responsive Image Sets.
+
 ### Ingredients
 
 - [Base](ingredients/base)

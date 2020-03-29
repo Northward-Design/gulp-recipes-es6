@@ -10,6 +10,7 @@ Recipes
 - [x] [Advanced Sassy Web (HTML, SASS, and JS, with Advanced Ingredients + Development/Production)](https://github.com/itrusler/gulp-recipes-es6/issues/160)
 - [x] [Advanced Modern Web (HTML, SASS, and TS, with Advanced Ingredients + Development/Production)](https://github.com/itrusler/gulp-recipes-es6/issues/164)
 - [x] [Responsive Sassy Web (HTML, SASS, and JS, with Inject Responsive Images)](https://github.com/itrusler/gulp-recipes-es6/issues/180)
+- [x] [Responsive Modern Web (HTML, SASS, and TS, with Inject Responsive Images)](https://github.com/itrusler/gulp-recipes-es6/issues/196)
 
 Ingredients
 --------------------------------------------------------------------------------
