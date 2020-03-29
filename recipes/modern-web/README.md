@@ -136,7 +136,7 @@ export function buildTs() {
 
 export function optimizeImg() {
   return pump(
-    src(['src/images/**/*.{png,gif,jpg,jpeg,svg}', '!src/images/optimized/**/*']),
+    src(['src/images/**/*.{png,gif,jpg,jpeg,svg}', '!src/images/pre-op/**/*']),
     changed('dist/images'),
     imgmin([
       imgmin.gifsicle({
@@ -158,7 +158,7 @@ export function optimizeImg() {
     ],
     {verbose: true}
     ),
-    src('src/images/optimized/**/*.{png,gif,jpg,jpeg,svg}'),
+    src('src/images/pre-op/**/*.{png,gif,jpg,jpeg,svg}'),
     changed('dist/images'),
     dest('dist/images'),
     sync.stream()
@@ -200,7 +200,7 @@ export default all;
 
 Notes:
 - Errors and warnings reported by Stylelint will not halt remaining processes in a task or series.
-- Pre-Optimized Images may increase in size. Use the images sub-folder `src/images/optimized`
+- Previously Optimized Images may increase in size. Use an images sub-folder `src/images/pre-op`
 
 Installation
 --------------------------------------------------------------------------------

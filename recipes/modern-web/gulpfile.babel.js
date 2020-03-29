@@ -42,8 +42,8 @@ config.src.sass = resolve(config.src.root, 'sass/**/*.scss');
 config.src.ts = resolve(config.src.root, 'ts/**/*.ts');
 config.src.tsEntry = resolve(config.src.root, 'ts/index.ts');
 config.src.img = resolve(config.src.root, 'images/**/*.{png,gif,jpg,jpeg,svg}');
-config.src.negateOptimized = '!src/images/optimized/**/*';
-config.src.optimized = resolve(config.src.root, 'images/optimized/**/*.{png,gif,jpg,jpeg,svg}');
+config.src.negatePreOp = '!src/images/pre-op/**/*';
+config.src.preOp = resolve(config.src.root, 'images/pre-op/**/*.{png,gif,jpg,jpeg,svg}');
 
 config.dist = {};
 config.dist.root = resolve(config.root, 'dist');
@@ -169,10 +169,10 @@ export function buildTs() {
 
 export function optimizeImg() {
   return pump(
-    src([config.src.img, config.src.negateOptimized]),
+    src([config.src.img, config.src.negatePreOp]),
     changed(config.dist.img),
     imgmin(config.plugins.imgmin, config.plugins.imgmin.verbose),
-    src(config.src.optimized),
+    src(config.src.preOp),
     changed(config.dist.img),
     dest(config.dist.img),
     sync.stream()

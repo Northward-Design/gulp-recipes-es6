@@ -34,7 +34,7 @@ In Production (NODE_ENV == 'production'): A Recipe to Compile, Minify, Optimize,
 - Injects Contents from `dist/scripts/index.js` into all `.html` files from `src/html` to `dist`.
 - Copies critical-path (above the fold) CSS and In-lines it into the `.html` files in `dist`.
 - Generates a script in all `.html` files to asynchronously load external `.css` file.
-- Minifies all `.html` files and Creates a duplicate Gzip file `*.html.gz` if they are smaller than the originals.
+- Minifies all `.html` files and Creates duplicate Gzip files: `*.html.gz` for each that is smaller than its original.
 
 - Creates a `sitemap.xml` file in the `dist` folder based on the `.html` files in `dist`.
 
