@@ -12,15 +12,16 @@ Usage
 --------------------------------------------------------------------------------
 
 ```javascript
-import { src, dest } from 'gulp';
+import gulp from 'gulp';
+const { src, dest } = gulp;
 import { default as pump } from 'pump-promise';
 
-import crit from 'critical';
+import {generate} from 'critical';
 
-export default function critical() {
+export default function crit() {
   return pump(
     src('src/html/**/*.html'),
-    crit({
+    generate.stream({
     	css: [ 'dist/styles/index.css' ],
     	inline: true;
     	ignore: { atrule: [ '@font-face' ]},
@@ -35,21 +36,22 @@ Installation
 
 Install the required plugins with `npm`.
 
-`npm install --save-dev gulp @babel/core @babel/register @babel/preset-env pump-promise critical`
+`npm install --save-dev gulp pump-promise critical`
+
+Add this line to your `package.json` after the opening bracket.
+
+`"type": "module",`
 
 Includes
 --------------------------------------------------------------------------------
 
 - Additional Configuration for HTML sources in `src/html`.
 - Additional Configuration for CSS sources in `dist/styles`.
-- A default `critical` Task.
+- A default `crit` Task.
 
 Dependencies
 --------------------------------------------------------------------------------
 
 - [gulp](https://www.npmjs.com/package/gulp)
-- [@babel/core](https://www.npmjs.com/package/@babel/core)
-- [@babel/register](https://www.npmjs.com/package/@babel/register)
-- [@babel/preset-env](https://www.npmjs.com/package/@babel/preset-env)
 - [pump-promise](https://www.npmjs.com/package/pump-promise)
 - [critical](https://www.npmjs.com/package/critical)

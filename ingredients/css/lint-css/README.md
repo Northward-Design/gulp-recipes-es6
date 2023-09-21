@@ -9,10 +9,11 @@ Usage
 --------------------------------------------------------------------------------
 
 ```javascript
-import { src } from 'gulp';
+import gulp from 'gulp';
+const { src } = gulp;
 import { default as pump } from 'pump-promise';
 
-import stylelint from 'gulp-stylelint';
+import stylelint from '@ronilaukkarinen/gulp-stylelint';
 
 export default function lintCss() {
   return pump(
@@ -27,15 +28,18 @@ export default function lintCss() {
 }
 ```
 
-Notes:
-- Errors and warnings reported by Stylelint will not halt remaining processes in a task or series.
-
 Installation
 --------------------------------------------------------------------------------
 
 Install the required plugins with `npm`.
 
-`npm install --save-dev gulp @babel/core @babel/register @babel/preset-env pump-promise gulp-stylelint stylelint stylelint-config-standard stylelint-order`
+`gulp-stylelint` doesn't work with new version of stylelint at the moment, use `@ronilaukkarinen/gulp-stylelint` instead
+
+`npm install --save-dev gulp pump-promise @ronilaukkarinen/gulp-stylelint stylelint stylelint-config-standard stylelint-order `
+
+Add this line to your `package.json` after the opening bracket.
+
+`"type": "module",`
 
 Includes
 --------------------------------------------------------------------------------
@@ -48,11 +52,8 @@ Dependencies
 --------------------------------------------------------------------------------
 
 - [gulp](https://www.npmjs.com/package/gulp)
-- [@babel/core](https://www.npmjs.com/package/@babel/core)
-- [@babel/register](https://www.npmjs.com/package/@babel/register)
-- [@babel/preset-env](https://www.npmjs.com/package/@babel/preset-env)
 - [pump-promise](https://www.npmjs.com/package/pump-promise)
-- [gulp-stylelint](https://www.npmjs.com/package/gulp-stylelint)
+- [@ronilaukkarinen/gulp-stylelint](https://github.com/ronilaukkarinen/gulp-stylelint)
 - [stylelint](https://www.npmjs.com/package/stylelint)
 - [stylelint-config-standard](https://www.npmjs.com/package/stylelint-config-standard)
 - [stylelint-order](https://www.npmjs.com/package/stylelint-order)

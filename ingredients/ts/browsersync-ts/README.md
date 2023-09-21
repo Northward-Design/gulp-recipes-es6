@@ -13,7 +13,8 @@ Usage
 --------------------------------------------------------------------------------
 
 ```javascript
-import { src, dest, series, watch as watchfiles } from 'gulp';
+import gulp from 'gulp';
+const { src, dest, series, watch } = gulp;
 import { default as pump } from 'pump-promise';
 import { default as sourcemaps } from 'gulp-sourcemaps';
 import rename from 'gulp-rename';
@@ -65,12 +66,12 @@ export function serve(done) {
   done();
 }
 
-export function watch(){
-  watchfiles('src/ts/**/*.ts', ts);
-  watchfiles('dist/scripts', refresh);
+export function watchFiles(){
+  watch('src/ts/**/*.ts', ts);
+  watch('dist/scripts', refresh);
 }
 
-export const all = series(ts, serve, watch);
+export const all = series(ts, serve, watchFiles);
 
 export default all
 ```
@@ -80,7 +81,11 @@ Installation
 
 Install the required plugins with `npm`.
 
-`npm install --save-dev gulp @babel/core @babel/register @babel/preset-env browser-sync pump-promise gulp-tslint tslint typescript gulp-uglify vinyl-source-stream vinyl-buffer browserify tsify gulp-rename gulp-sourcemaps`
+`npm install --save-dev gulp browser-sync pump-promise gulp-tslint tslint typescript gulp-uglify vinyl-source-stream vinyl-buffer browserify tsify gulp-rename gulp-sourcemaps`
+
+Add this line to your `package.json` after the opening bracket.
+
+`"type": "module",`
 
 Includes
 --------------------------------------------------------------------------------
@@ -90,8 +95,8 @@ Includes
 - A `buildTs` Task.
 - A `ts` Task that uses `lintTs` and `buildTs`.
 - A `serve` Task.
-- A `watch` Task.
-- A default `all` Task that uses `ts`, `serve` and `watch`.
+- A `watchFiles` Task.
+- A default `all` Task that uses `ts`, `serve` and `watchFiles`.
 - A `tslint.yaml` file for configuring `tslint`.
 - A `tsconfig.json` file for configuring TS compiling options.
 
@@ -99,9 +104,6 @@ Dependencies
 --------------------------------------------------------------------------------
 
 - [gulp](https://www.npmjs.com/package/gulp)
-- [@babel/core](https://www.npmjs.com/package/@babel/core)
-- [@babel/register](https://www.npmjs.com/package/@babel/register)
-- [@babel/preset-env](https://www.npmjs.com/package/@babel/preset-env)
 - [pump-promise](https://www.npmjs.com/package/pump-promise)
 - [browser-sync](https://www.npmjs.com/package/browser-sync)
 - [gulp-tslint](https://www.npmjs.com/package/gulp-tslint)

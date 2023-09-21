@@ -10,7 +10,8 @@ Usage
 --------------------------------------------------------------------------------
 
 ```javascript
-import { src, dest, series, watch as watchfiles } from 'gulp';
+import gulp from 'gulp';
+const { src, dest, watch, series } = gulp;
 import { default as pump } from 'pump-promise';
 
 import htmllint from 'gulp-htmllint';
@@ -36,11 +37,11 @@ export function buildHtml() {
 
 export const html = series(lintHtml, buildHtml);
 
-export function watch() {
-	watchfiles('src/html/**/*.html', html);
+export function watchFiles() {
+	watch('src/html/**/*.html', html);
 }
 
-export const all = series(html, watch);
+export const all = series(html, watchFiles);
 
 export default all;
 ```
@@ -50,7 +51,11 @@ Installation
 
 Install the required plugins with `npm`.
 
-`npm install --save-dev gulp @babel/core @babel/register @babel/preset-env pump-promise gulp-htmlmin gulp-htmllint`
+`npm install --save-dev gulp pump-promise gulp-htmlmin gulp-htmllint`
+
+Add this line to your `package.json` after the opening bracket.
+
+`"type": "module",`
 
 Includes
 --------------------------------------------------------------------------------
@@ -59,17 +64,14 @@ Includes
 - A `lintHtml` Task.
 - A `buildHtml` Task.
 - An `html` Task that uses `lintHtml` and `buildHtml`.
-- A `watch` Task.
-- A default `all` Task that uses `html` and `watch`.
+- A `watchFiles` Task.
+- A default `all` Task that uses `html` and `watchFiles`.
 - An `.htmllintrc` file for configuring `htmllint`.
 
 Dependencies
 --------------------------------------------------------------------------------
 
 - [gulp](https://www.npmjs.com/package/gulp)
-- [@babel/core](https://www.npmjs.com/package/@babel/core)
-- [@babel/register](https://www.npmjs.com/package/@babel/register)
-- [@babel/preset-env](https://www.npmjs.com/package/@babel/preset-env)
 - [pump-promise](https://www.npmjs.com/package/pump-promise)
 - [gulp-htmlmin](https://www.npmjs.com/package/gulp-htmlmin)
 - [gulp-htmllint](https://www.npmjs.com/package/gulp-htmllint)

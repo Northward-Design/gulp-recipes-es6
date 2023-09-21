@@ -9,7 +9,8 @@ Usage
 --------------------------------------------------------------------------------
 
 ```javascript
-import { src } from 'gulp';
+import gulp from 'gulp';
+const { src } = gulp;
 import { default as pump } from 'pump-promise';	
 
 import { default as eslint } from 'gulp-eslint';
@@ -29,7 +30,11 @@ Installation
 
 Install the required plugins with `npm`.
 
-`npm install --save-dev gulp @babel/core @babel/register @babel/preset-env pump-promise gulp-eslint eslint-plugin-import`
+`npm install --save-dev gulp pump-promise gulp-eslint eslint-plugin-import`
+
+Add this line to your `package.json` after the opening bracket.
+
+`"type": "module",`
 
 Includes
 --------------------------------------------------------------------------------
@@ -41,9 +46,6 @@ Dependencies
 --------------------------------------------------------------------------------
 
 - [gulp](https://www.npmjs.com/package/gulp)
-- [@babel/core](https://www.npmjs.com/package/@babel/core)
-- [@babel/register](https://www.npmjs.com/package/@babel/register)
-- [@babel/preset-env](https://www.npmjs.com/package/@babel/preset-env)
 - [pump-promise](https://www.npmjs.com/package/pump-promise)
 - [gulp-eslint](https://www.npmjs.com/package/gulp-eslint)
 - [eslint-plugin-import](https://www.npmjs.com/package/eslint-plugin-import)

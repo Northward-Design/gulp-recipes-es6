@@ -15,7 +15,8 @@ Usage
 --------------------------------------------------------------------------------
 
 ```javascript
-import { src, dest } from 'gulp';
+import gulp from 'gulp';
+const { src } = gulp;
 import { default as pump } from 'pump-promise';
 
 import { default as responsive } from 'gulp-responsive';
@@ -23,7 +24,7 @@ import inject from 'gulp-inject';
 
 import strimg from './string-img-sets.js';
 
-export default function responsiveImg() {
+export function responsiveImg() {
   return pump(
     src('src/images/**/*.{jpg,jpeg}'),
     responsive({'*.{jpg,jpeg}': [ //example settings
@@ -64,6 +65,7 @@ export default function responsiveImg() {
     {
       progressive: true,
       quality: 60,
+      compressionLevel: 9,
       errorOnUnusedConfig: false,
       errorOnUnusedImage: false,
       errorOnEnlargement: false
@@ -124,8 +126,8 @@ export const all = parallel(responsiveImg, injection);
 export default all;
 ```
 Notes:
-- Gulp Inject categorizes files A-Z then a-z. Files in `src/images` should be renamed to upper OR lower case names. 
-- Settings for Image Sizes, break points, Alt Tags and String Selection are located in `gulpfile.babel.js`.
+- Gulp Inject categorizes image file names A-Z then a-z (AB then Aa). Files in `src/images` could be renamed to upper OR lower case.  
+- Settings for Image Sizes, break points, Alt Tags and String Selection are located in `gulpfile.js`.
 - Six example Strings are located in `string-img-sets.js`.
 - Six sets of corresponding Image Resizing settings accompany each example string.
 - [Vanilla LazyLoad](https://www.npmjs.com/package/vanilla-lazyload) settings are required for Lazy Loading Strings.
@@ -146,7 +148,13 @@ Installation
 
 Install the required plugins with `npm`.
 
-`npm install --save-dev gulp @babel/core @babel/register @babel/preset-env pump-promise gulp-inject gulp-responsive`
+`npm install --save-dev gulp pump-promise gulp-inject gulp-responsive`
+
+If gulp-responsive doesn't install try `aidanmontare/gulp-responsive`
+
+Add this line to your `package.json` after the opening bracket.
+
+`"type": "module",`
 
 Includes
 --------------------------------------------------------------------------------
@@ -162,9 +170,8 @@ Dependencies
 --------------------------------------------------------------------------------
 
 - [gulp](https://www.npmjs.com/package/gulp)
-- [@babel/core](https://www.npmjs.com/package/@babel/core)
-- [@babel/register](https://www.npmjs.com/package/@babel/register)
-- [@babel/preset-env](https://www.npmjs.com/package/@babel/preset-env)
 - [pump-promise](https://www.npmjs.com/package/pump-promise)
 - [gulp-inject](https://www.npmjs.com/package/gulp-inject)
 - [gulp-responsive](https://www.npmjs.com/package/gulp-responsive)
+Alternative:
+- [aidanmontare/gulp-responsive](https://github.com/AidanMontare/gulp-responsive)
