@@ -8,17 +8,22 @@ extends:
 env:
   node: true
   es6: true
+  browser: true
+  # Uncomment above to stop no-undef warning or use in code:
+  # Before: /* eslint-disable no-undef */ 
+  # After: /* eslint-enable no-undef */
 
 parserOptions:
   sourceType: module
   ecmaVersion: 6
 
 rules:
+  no-extra-boolean-cast: 1
   max-len: [1, 99, 2]
   semi: [2, "always"]
   curly: [2, "multi-line"]
   comma-dangle: [2, always-multiline]
-  eqeqeq: [2, "allow-null"]
+  eqeqeq: [1, "allow-null"]
   no-shadow: 1
   quotes:
     - 2

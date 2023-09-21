@@ -1,23 +1,23 @@
-module.exports.stringSet = [
-simpleSrcString,
+export const stringSet = [
+smallSrcString,
 wideSrcString,
 productSrcString,
-simpleLazyString,
+smallLazyString,
 autoLazyString,
 productLazyString
 ]
 
-module.exports.imgSet = [
-simpleSrcImg,
+export const imgSet = [
+smallSrcImg,
 wideSrcImg,
 productSrcImg,
-simpleLazyImg,
+smallLazyImg,
 autoLazyImg,
 productLazyImg
 ]
 
 // Small Srcset
-function simpleSrcString(dataUrl, path, name, mini, xs, sm, md, lg, xl, xsBrkpt, smBrkpt, mdBrkpt, lgBrkpt, xlBrkpt, xsScrn, smScrn, mdScrn, lgScrn, xlScrn, xxlScrn, alt) {
+function smallSrcString(dataUrl, path, name, mini, xs, sm, md, lg, xl, xsBrkpt, smBrkpt, mdBrkpt, lgBrkpt, xlBrkpt, xsScrn, smScrn, mdScrn, lgScrn, xlScrn, xxlScrn, alt) {
   return `
     <picture>
       <source
@@ -54,7 +54,7 @@ function simpleSrcString(dataUrl, path, name, mini, xs, sm, md, lg, xl, xsBrkpt,
     </picture>`;
 }
 
-function simpleSrcImg(mini, xs, sm, md, lg, xl) {
+function smallSrcImg(mini, xs, sm, md, lg, xl) {
   return {'*.{jpg,jpeg}': [
     { 
       width: xs,
@@ -90,7 +90,7 @@ function simpleSrcImg(mini, xs, sm, md, lg, xl) {
   ]}
 }
 
-// Medium Srcset with Multiple webP Sources
+// Wide Srcset
 function wideSrcString(dataUrl, path, name, mini, xs, sm, md, lg, xl, xsBrkpt, smBrkpt, mdBrkpt, lgBrkpt, xlBrkpt, xsScrn, smScrn, mdScrn, lgScrn, xlScrn, xxlScrn, alt) {
   return `
     <picture>
@@ -192,7 +192,7 @@ function wideSrcImg(mini, xs, sm, md, lg, xl) {
   ]}
 }
 
-// Large Srcset with Multiple webP & Jpg Sources
+// Product Srcset
 function productSrcString(dataUrl, path, name, mini, xs, sm, md, lg, xl, xsBrkpt, smBrkpt, mdBrkpt, lgBrkpt, xlBrkpt, xsScrn, smScrn, mdScrn, lgScrn, xlScrn, xxlScrn, alt) {
   return `
     <picture>
@@ -307,7 +307,7 @@ function productSrcImg(mini, xs, sm, md, lg, xl) {
 let miniImg;
 
 // Small Lazy Load Srcset
-function simpleLazyString(dataUrl, path, name, mini, xs, sm, md, lg, xl, xsBrkpt, smBrkpt, mdBrkpt, lgBrkpt, xlBrkpt, xsScrn, smScrn, mdScrn, lgScrn, xlScrn, xxlScrn, alt) {
+function smallLazyString(dataUrl, path, name, mini, xs, sm, md, lg, xl, xsBrkpt, smBrkpt, mdBrkpt, lgBrkpt, xlBrkpt, xsScrn, smScrn, mdScrn, lgScrn, xlScrn, xxlScrn, alt) {
   dataUrl ? miniImg = `inline('${path}-${mini}w.jpg')` : miniImg = `${path}-${mini}w.jpg`;
   return `
     <picture>
@@ -345,7 +345,7 @@ function simpleLazyString(dataUrl, path, name, mini, xs, sm, md, lg, xl, xsBrkpt
     </picture>`;
 }
 
-function simpleLazyImg(mini, xs, sm, md, lg, xl) {
+function smallLazyImg(mini, xs, sm, md, lg, xl) {
   return {'*.{jpg,jpeg}': [
     { 
       width: mini,
@@ -384,7 +384,7 @@ function simpleLazyImg(mini, xs, sm, md, lg, xl) {
   ]}
 }
 
-// Small Lazy Load Srcset with Auto Sizes
+// Wide (auto) Lazy Load Srcset
 function autoLazyString(dataUrl, path, name, mini, xs, sm, md, lg, xl, xsBrkpt, smBrkpt, mdBrkpt, lgBrkpt, xlBrkpt, xsScrn, smScrn, mdScrn, lgScrn, xlScrn, xxlScrn, alt) {
   dataUrl ? miniImg = `inline('${path}-${mini}w.jpg')` : miniImg = `${path}-${mini}w.jpg`;
   return `
@@ -402,6 +402,7 @@ function autoLazyString(dataUrl, path, name, mini, xs, sm, md, lg, xl, xsBrkpt, 
           ${path}-${xl}w@2x.webp ${xl * 2}w,
           ${path}-${md}w@4x.webp ${md * 4}w"
         data-sizes="auto"
+        sizes=""
         type="image/webp">
       <img class="lazy ${name}"
         data-srcset="
@@ -491,7 +492,7 @@ function autoLazyImg(mini, xs, sm, md, lg, xl) {
   ]}
 }
 
-// Large Lazy Load Srcset
+// Product Lazy Load Srcset
 function productLazyString(dataUrl, path, name, mini, xs, sm, md, lg, xl, xsBrkpt, smBrkpt, mdBrkpt, lgBrkpt, xlBrkpt, xsScrn, smScrn, mdScrn, lgScrn, xlScrn, xxlScrn, alt) {
   dataUrl ? miniImg = `inline('${path}-${mini}w.jpg')` : miniImg = `${path}-${mini}w.jpg`;
   return `

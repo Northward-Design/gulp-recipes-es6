@@ -1,17 +1,22 @@
 import { resolve } from 'path';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
-import { src, dest, series, watch as watchfiles } from 'gulp';
-import { default as pump } from 'pump-promise';
+import gulp from 'gulp';
+const { src, dest, series, watch } = gulp;
+import pump from 'pump-promise';
 
 import htmllint from 'gulp-htmllint';
 import htmlmin from 'gulp-htmlmin';
-import sass from 'gulp-sass';
-import stylelint from 'gulp-stylelint';
+import gulpSass from 'gulp-sass';
+import * as dartSass from 'sass';
+const sass = gulpSass(dartSass);
+import stylelint from '@ronilaukkarinen/gulp-stylelint';
 import { default as eslint } from 'gulp-eslint';
 import { default as browserify } from 'browserify';
 import babel from 'babelify';
 import uglify from 'gulp-uglify';
-import { default as imgmin } from 'gulp-imagemin';
+import imagemin, {gifsicle, mozjpeg, optipng, svgo } from 'gulp-imagemin';
 
 import { default as autoprefixer } from 'gulp-autoprefixer';
 import { default as source } from 'vinyl-source-stream';
@@ -20,11 +25,10 @@ import { default as sourcemaps } from 'gulp-sourcemaps';
 import rename from 'gulp-rename';
 import { default as changed } from 'gulp-changed';
 import browsersync from 'browser-sync';
-import { default as del } from 'del';
+import { deleteAsync as del } from 'del';
 
 const config = {};
-
-config.root = resolve(__dirname);
+config.root = path.dirname(fileURLToPath(import.meta.url));
 
 config.env = {};
 config.env.development = process.env.NODE_ENV !== 'production';
@@ -67,8 +71,9 @@ config.plugins.htmlmin = {};
 config.plugins.htmlmin.collapseWhitespace = true;
 config.plugins.htmlmin.removeComments = true;
 config.plugins.stylelint = {};
+config.plugins.stylelint.customSyntax = 'postcss-scss';
 config.plugins.stylelint.reporters = [
-  {formatter: 'verbose', console: true}
+  {formatter: 'string', console: true}
 ];
 config.plugins.sass = {};
 config.plugins.sass.errorLogToConsole = true;
@@ -86,15 +91,15 @@ config.plugins.sourcemaps.loadMaps = true;
 config.plugins.browsersync = {};
 config.plugins.browsersync.server = {};
 config.plugins.browsersync.server.baseDir = config.dist.dir;
-config.plugins.imgmin = [
-  imgmin.gifsicle({optimizationLevel: 3, progressive: true}),
-  imgmin.mozjpeg({quality: 75, progressive: true}),
-  imgmin.optipng({optimizationLevel: 5}),
-  imgmin.svgo({
-    plugins:[{removeViewBox: true}]
+config.plugins.imagemin = [
+  gifsicle({optimizationLevel: 3, interlaced: true}),
+  mozjpeg({quality: 75, progressive: true}),
+  optipng({optimizationLevel: 5}),
+  svgo({
+    plugins:[{name: 'removeViewBox', active: true}]
   })
 ];
-config.plugins.imgmin.verbose = {verbose: true} ;
+config.plugins.imagemin.verbose = {verbose: true};
 
 const sync = browsersync.create();
 const refresh = browsersync.reload();
@@ -172,7 +177,7 @@ export function optimizeImg() {
   return pump(
     src([config.src.img, config.src.negatePreOp]),
     changed(config.dist.img),
-    imgmin(config.plugins.imgmin, config.plugins.imgmin.verbose),
+    imagemin(config.plugins.imagemin, config.plugins.imagemin.verbose),
     src(config.src.preOp),
     changed(config.dist.img),
     dest(config.dist.img),
@@ -180,12 +185,12 @@ export function optimizeImg() {
   );
 }
 
-export function watch()  {
-  watchfiles(config.src.html, html);
-  watchfiles(config.src.sass, sassy);
-  watchfiles(config.src.js, js);
-  watchfiles(config.src.img, optimizeImg);
-  watchfiles(config.dist.watch, refresh);
+export function watchFiles()  {
+  watch(config.src.html, html);
+  watch(config.src.sass, sassy);
+  watch(config.src.js, js);
+  watch(config.src.img, optimizeImg);
+  watch(config.dist.watch, refresh);
 }
 
 export function clean() {
@@ -208,6 +213,6 @@ export const lint = series(lintHtml, lintSass, lintJs);
 
 export const build = series(clean, buildHtml, buildSass, buildJs, optimizeImg);
 
-export const all = series(lint, build, serve, watch);
+export const all = series(lint, build, serve, watchFiles);
 
 export default all;

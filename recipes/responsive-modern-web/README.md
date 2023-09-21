@@ -58,18 +58,21 @@ Usage
 --------------------------------------------------------------------------------
 
 ```javascript
-import { src, dest, series, parallel, watch as watchfiles } from 'gulp';
-import { default as pump } from 'pump-promise';
+import gulp from 'gulp';
+const { src, dest, series, watch } = gulp;
+import pump from 'pump-promise';
 
 import htmllint from 'gulp-htmllint';
 import htmlmin from 'gulp-htmlmin';
-import sass from 'gulp-sass';
-import stylelint from 'gulp-stylelint';
+import gulpSass from 'gulp-sass';
+import * as dartSass from 'sass';
+const sass = gulpSass(dartSass);
+import stylelint from '@ronilaukkarinen/gulp-stylelint';
 import { default as tslint } from 'gulp-tslint';
 import { default as browserify } from 'browserify';
 import tsify from 'tsify';
 import uglify from 'gulp-uglify';
-import { default as imgmin } from 'gulp-imagemin';
+import imagemin, {gifsicle, mozjpeg, optipng, svgo } from 'gulp-imagemin';
 
 import { default as autoprefixer } from 'gulp-autoprefixer';
 import { default as source } from 'vinyl-source-stream';
@@ -78,10 +81,10 @@ import { default as sourcemaps } from 'gulp-sourcemaps';
 import rename from 'gulp-rename';
 import { default as changed } from 'gulp-changed';
 import browsersync from 'browser-sync';
-import { default as del } from 'del';
+import { deleteAsync as del } from 'del';
 
 import gulpif from 'gulp-if';
-import crit from 'critical';
+import {generate} from 'critical';
 import purge from 'gulp-purgecss';
 import inject from 'gulp-inject';
 import postcss from 'gulp-postcss';
@@ -93,7 +96,7 @@ import { default as responsive } from 'gulp-responsive';
 import base64 from 'gulp-base64-inline';
 import cache from 'gulp-cached';
 
-import strimg from './string-img-sets.js';
+import { stringSet, imgSet } from './string-img-sets.js';
 
 const sync = browsersync.create();
 const refresh = browsersync.reload();
@@ -120,6 +123,8 @@ export function lintHtml() {
 }
 
 export function buildHtml() {
+  imgcount = 0;
+  altcount = -1;
 	return pump(
 		src('src/html/**/*.html'),
     inject(
@@ -181,7 +186,7 @@ export function buildHtml() {
       suffix: ""
     }),
     gulpif( process.env.NODE_ENV == 'production',
-      crit.stream({
+      generate.stream({
         css: ['dist/styles/index.min.css'],
         inline: true,
         ignore: {atrule: ['@font-face']},
@@ -217,9 +222,10 @@ export function lintSass() {
     src('src/sass/**/*.scss'),
     stylelint({
       reporters: [{
-        formatter: 'verbose',
+        formatter: 'string',
         console: true
-      }]
+      }],
+      customSyntax = 'postcss-scss';
     })
   );
 }
@@ -296,21 +302,22 @@ export function optimizeImg() {
   return pump(
     src('src/images/optimize/**/*.{png,gif,jpg,jpeg,svg}'),
     changed('dist/images'),
-    imgmin([
-      imgmin.gifsicle({
+    imagemin([
+      gifsicle({
         optimizationLevel: 3, 
-        progressive: true
+        interlaced: true
       }),
-      imgmin.mozjpeg({
+      mozjpeg({
         quality: 75, 
         progressive: true
       }),
-      imgmin.optipng({
+      optipng({
         optimizationLevel: 5
       }),
-      imgmin.svgo({
+      svgo({
         plugins:[{
-            removeViewBox: true
+          name: 'removeViewBox',
+          active: true
         }]
       })
     ],
@@ -374,6 +381,7 @@ export default function responsiveImg() {
     {
       progressive: true,
       quality: 60,
+      compressionLevel: 9,
       errorOnUnusedConfig: false,
       errorOnUnusedImage: false,
       errorOnEnlargement: false
@@ -392,18 +400,18 @@ export function buildSitemap() {
   );
 }
 
-export function watch() {
-	watchfiles('src/html/**/*.html', html);
-  watchfiles('src/sass/**/*.scss', sassy);
-  watchfiles('src/ts/**/*.ts', ts);
-  watchfiles([
+export function watchFiles() {
+	watch('src/html/**/*.html', html);
+  watch('src/sass/**/*.scss', sassy);
+  watch('src/ts/**/*.ts', ts);
+  watch([
     'src/images/**/*.{jpg,jpeg}',
     'src/images/optimize/**/*.{png,gif,jpg,jpeg,svg}',
     'src/images/pre-op/**/*.{png,gif,jpg,jpeg,svg}'
     ],
     series(img, sassy, html)
   );
-	watchfiles('dist', refresh);
+	watch('dist', refresh);
 }
 
 export function clean() {
@@ -433,14 +441,14 @@ export const build = gulpif( process.env.NODE_ENV !== 'production',
   series(clean, img, buildTs, buildSass, buildHtml, buildSitemap, cleanTs, cleanMini));
 
 export const all = gulpif( process.env.NODE_ENV !== 'production',
-  series(lint, build, serve, watch), build);
+  series(lint, build, serve, watchFiles), build);
 
 export default all;
 ```
 
 #### Responsive Images Notes:
-- Gulp Inject categorizes files A-Z then a-z. Files in `src/images` should be renamed to upper OR lower case names. 
-- Settings for Image Sizes, break points, Alt Tags and String Selection are located in `gulpfile.babel.js`
+- Gulp Inject categorizes image file names A-Z then a-z (AB then Aa). Files in `src/images` could be renamed to upper OR lower case.
+- Settings for Image Sizes, break points, Alt Tags and String Selection are located in `gulpfile.js`
 - Six example Strings are located in `string-img-sets.js`.
 - Six sets of corresponding Image Resizing settings accompany each example string.
 - [Vanilla LazyLoad](https://www.npmjs.com/package/vanilla-lazyload) settings are required for Lazy Loading Strings.
@@ -448,7 +456,7 @@ export default all;
 - include `lazyload.js`, and `intersection-observer.js` in `src/js/plugins`.
 - WARNING: Do not edit images intended for responsive directly in `src/images` while being watched. Copy into folder instead.
 
-As only one image string can be used per run, for multiple image types:
+As only one type of image string can be used per run, for multiple image types:
 - Copy preferred `.html` image or picture tags from `dist` into the source `.html`.
 - Copy matching preferred Image 'sets' into `src/images/pre-op`.
 
@@ -477,7 +485,6 @@ Include comments in your `.html` files (one set for each `.jpg` and `jpeg`).
 ```
 
 #### Other Notes:
-- Errors and warnings reported by Stylelint will not halt remaining processes in a task or series.
 - Previously Optimized Images may increase in size. Use an images sub-folder `src/images/pre-op`
 
 Setting `NODE_ENV` in your terminal:
@@ -506,8 +513,14 @@ Installation
 
 Install the required plugins with `npm`.
 
-`npm install --save-dev gulp @babel/core @babel/register @babel/preset-env pump-promise browser-sync gulp-htmlmin gulp-htmllint gulp-sass stylelint-scss gulp-stylelint stylelint stylelint-config-standard stylelint-order gulp-autoprefixer gulp-rename gulp-tslint tslint typescript browserify tsify vinyl-source-stream vinyl-buffer gulp-uglify gulp-sourcemaps gulp-imagemin gulp-changed del gulp-if critical gulp-purgecss gulp-inject gulp-postcss postcss-assets gulp-gzip gulp-sitemap gulp-responsive gulp-base64-inline gulp-cached gulp-concat`
-- Used `gulp-imagemin@7.0.0`
+`gulp-stylelint` doesn't work with new version of stylelint at the moment, use `@ronilaukkarinen/gulp-stylelint` instead
+`gulp-responsive` doesn't install for some reason, Use `aidanmontare/gulp-responsive` instead
+
+`npm install --save-dev gulp pump-promise browser-sync gulp-htmlmin gulp-htmllint gulp-sass sass postcss-scss stylelint-scss @ronilaukkarinen/gulp-stylelint stylelint stylelint-config-standard stylelint-order gulp-autoprefixer gulp-rename gulp-tslint tslint typescript browserify tsify vinyl-source-stream vinyl-buffer gulp-uglify gulp-sourcemaps gulp-imagemin gulp-changed del gulp-if critical gulp-purgecss gulp-inject gulp-postcss postcss-assets gulp-gzip gulp-sitemap aidanmontare/gulp-responsive gulp-base64-inline gulp-cached gulp-concat`
+
+Add this line to your `package.json` after the opening bracket.
+
+`"type": "module",`
 
 Includes
 --------------------------------------------------------------------------------
@@ -520,7 +533,7 @@ Includes
 ### Tasks
 
 - A `serve` Task.
-- A `watch` Task.
+- A `watchFiles` Task.
 - A `clean` Task.
 
 - A `lintHtml` Task.
@@ -545,7 +558,7 @@ Includes
 
 Development:
 - A `build` Task that uses `clean`, `img`, `buildTs`, `buildSass`, and `buildHtml`.
-- A default `all` Task that uses `lint`, `build`, `serve` and `watch`.
+- A default `all` Task that uses `lint`, `build`, `serve` and `watchFiles`.
 
 Production:
 - A `build` Task that uses `clean`, `img`, `buildTs`, `buildSass`, `buildHtml`, `buildSitemap`, `cleanTs`, and `cleanMini`.
@@ -563,16 +576,15 @@ Dependencies
 --------------------------------------------------------------------------------
 
 - [gulp](https://www.npmjs.com/package/gulp)
-- [@babel/core](https://www.npmjs.com/package/@babel/core)
-- [@babel/register](https://www.npmjs.com/package/@babel/register)
-- [@babel/preset-env](https://www.npmjs.com/package/@babel/preset-env)
 - [pump-promise](https://www.npmjs.com/package/pump-promise)
 - [browser-sync](https://www.npmjs.com/package/browser-sync)
 - [gulp-htmlmin](https://www.npmjs.com/package/gulp-htmlmin)
 - [gulp-htmllint](https://www.npmjs.com/package/gulp-htmllint)
 - [gulp-sass](https://www.npmjs.com/package/gulp-sass)
+- [sass](https://sass-lang.com/dart-sass)
+- [postcss-scss](https://www.npmjs.com/package/postcss-scss)
 - [stylelint-scss](https://www.npmjs.com/package/stylelint-scss)
-- [gulp-stylelint](https://www.npmjs.com/package/gulp-stylelint)
+- [@ronilaukkarinen/gulp-stylelint](https://github.com/ronilaukkarinen/gulp-stylelint)
 - [stylelint](https://www.npmjs.com/package/stylelint)
 - [stylelint-config-standard](https://www.npmjs.com/package/stylelint-config-standard)
 - [stylelint-order](https://www.npmjs.com/package/stylelint-order)
@@ -600,5 +612,7 @@ Dependencies
 - [gulp-sitemap](https://www.npmjs.com/package/gulp-sitemap)
 - [gulp-concat](https://www.npmjs.com/package/gulp-concat)
 - [gulp-responsive](https://www.npmjs.com/package/gulp-responsive)
+Alternative:
+- [aidanmontare/gulp-responsive](https://github.com/AidanMontare/gulp-responsive)
 - [gulp-base64-inline](https://www.npmjs.com/package/gulp-base64-inline)
 - [gulp-cached](https://www.npmjs.com/package/gulp-cached)
