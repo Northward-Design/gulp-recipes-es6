@@ -1,17 +1,22 @@
 import { resolve } from 'path';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
-import { src, dest, series, parallel, watch as watchfiles } from 'gulp';
-import { default as pump } from 'pump-promise';
+import gulp from 'gulp';
+const { src, dest, series, watch } = gulp;
+import pump from 'pump-promise';
 
 import htmllint from 'gulp-htmllint';
 import htmlmin from 'gulp-htmlmin';
-import sass from 'gulp-sass';
-import stylelint from 'gulp-stylelint';
+import gulpSass from 'gulp-sass';
+import * as dartSass from 'sass';
+const sass = gulpSass(dartSass);
+import stylelint from '@ronilaukkarinen/gulp-stylelint';
 import { default as tslint } from 'gulp-tslint';
 import { default as browserify } from 'browserify';
 import tsify from 'tsify';
 import uglify from 'gulp-uglify';
-import { default as imgmin } from 'gulp-imagemin';
+import imagemin, {gifsicle, mozjpeg, optipng, svgo } from 'gulp-imagemin';
 
 import { default as autoprefixer } from 'gulp-autoprefixer';
 import { default as source } from 'vinyl-source-stream';
@@ -20,10 +25,10 @@ import { default as sourcemaps } from 'gulp-sourcemaps';
 import rename from 'gulp-rename';
 import { default as changed } from 'gulp-changed';
 import browsersync from 'browser-sync';
-import { default as del } from 'del';
+import { deleteAsync as del } from 'del';
 
 import gulpif from 'gulp-if';
-import crit from 'critical';
+import {generate} from 'critical';
 import purge from 'gulp-purgecss';
 import inject from 'gulp-inject';
 import postcss from 'gulp-postcss';
@@ -32,7 +37,7 @@ import gzip from 'gulp-gzip';
 import sitemap from 'gulp-sitemap';
 
 const config = {};
-config.root = resolve(__dirname);
+config.root = path.dirname(fileURLToPath(import.meta.url));
 
 config.env = {};
 config.env.development = process.env.NODE_ENV !== 'production';
@@ -76,8 +81,9 @@ config.plugins.htmlmin = {};
 config.plugins.htmlmin.collapseWhitespace = true;
 config.plugins.htmlmin.removeComments = true;
 config.plugins.stylelint = {};
+config.plugins.stylelint.customSyntax = 'postcss-scss';
 config.plugins.stylelint.reporters = [
-  {formatter: 'verbose', console: true}
+  {formatter: 'string', console: true}
 ];
 config.plugins.sass = {};
 config.plugins.sass.errorLogToConsole = true;
@@ -95,19 +101,15 @@ config.plugins.sourcemaps.loadMaps = true;
 config.plugins.browsersync = {};
 config.plugins.browsersync.server = {};
 config.plugins.browsersync.server.baseDir = config.dist.dir;
-
-const sync = browsersync.create();
-const refresh = browsersync.reload();
-
-config.plugins.imgmin = [
-  imgmin.gifsicle({optimizationLevel: 3, progressive: true}),
-  imgmin.mozjpeg({quality: 75, progressive: true}),
-  imgmin.optipng({optimizationLevel: 5}),
-  imgmin.svgo({
-    plugins:[{removeViewBox: true}]
+config.plugins.imagemin = [
+  gifsicle({optimizationLevel: 3, interlaced: true}),
+  mozjpeg({quality: 75, progressive: true}),
+  optipng({optimizationLevel: 5}),
+  svgo({
+    plugins:[{name: 'removeViewBox', active: true}]
   })
 ];
-config.plugins.imgmin.verbose = {verbose: true} ;
+config.plugins.imagemin.verbose = {verbose: true};
 config.plugins.critical = {};
 config.plugins.critical.css = [config.dist.sass + '/index.min.css'];
 config.plugins.critical.inline = true;
@@ -138,6 +140,9 @@ config.plugins.gzip.gzipOptions.memLevel = 9;
 config.plugins.sitemap = {};
 config.plugins.sitemap.siteUrl = 'http://www.example-site.com';
 
+const sync = browsersync.create();
+const refresh = browsersync.reload();
+
 export function serve(done) {
   sync.init(config.plugins.browsersync);
   done();
@@ -158,7 +163,7 @@ export function buildHtml() {
     src(config.src.html),
     inject(src([config.dist.jsEntry]), 
     gulpif(config.env.development, config.plugins.injectJs, config.plugins.injectJsProd)),
-    gulpif(!config.env.development, crit.stream(config.plugins.critical)),
+    gulpif(!config.env.development, generate.stream(config.plugins.critical)),
     gulpif(!config.env.development, htmlmin(config.plugins.htmlmin)),
     dest(config.dist.html),
     gulpif(!config.env.development, gzip(config.plugins.gzip)),
@@ -222,7 +227,7 @@ export function optimizeImg() {
   return pump(
     src([config.src.img, config.src.negatePreOp]),
     changed(config.dist.img),
-    imgmin(config.plugins.imgmin, config.plugins.imgmin.verbose),
+    imagemin(config.plugins.imagemin, config.plugins.imagemin.verbose),
     src(config.src.preOp),
     changed(config.dist.img),
     dest(config.dist.img),
@@ -238,12 +243,12 @@ export function buildSitemap() {
   );
 }
 
-export function watch()  {
-  watchfiles(config.src.html, html);
-  watchfiles(config.src.sass, sassy);
-  watchfiles(config.src.ts, ts);
-  watchfiles(config.src.img, optimizeImg);
-  watchfiles(config.dist.dir, refresh);
+export function watchFiles()  {
+  watch(config.src.html, html);
+  watch(config.src.sass, sassy);
+  watch(config.src.ts, ts);
+  watch(config.src.img, optimizeImg);
+  watch(config.dist.dir, refresh);
 }
 
 export function clean() {
@@ -269,6 +274,6 @@ export const build = gulpif(config.env.development,
   series(clean, optimizeImg, buildTs, buildSass, buildHtml, buildSitemap, cleanTs));
 
 export const all = gulpif(config.env.development,
-  series(lint, build, serve, watch), build);
+  series(lint, build, serve, watchFiles), build);
 
 export default all;

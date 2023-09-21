@@ -24,18 +24,21 @@ Usage
 --------------------------------------------------------------------------------
 
 ```javascript
-import { src, dest, series, watch as watchfiles } from 'gulp';
-import { default as pump } from 'pump-promise';
+import gulp from 'gulp';
+const { src, dest, series, watch } = gulp;
+import pump from 'pump-promise';
 
 import htmllint from 'gulp-htmllint';
 import htmlmin from 'gulp-htmlmin';
-import stylelint from 'gulp-stylelint';
-import sass from 'gulp-sass';
+import stylelint from '@ronilaukkarinen/gulp-stylelint';
+import gulpSass from 'gulp-sass';
+import * as dartSass from 'sass';
+const sass = gulpSass(dartSass);
 import { default as eslint } from 'gulp-eslint';
 import { default as browserify } from 'browserify';
 import babel from 'babelify';
 import uglify from 'gulp-uglify';
-import { default as imgmin } from 'gulp-imagemin';
+import imagemin, {gifsicle, mozjpeg, optipng, svgo } from 'gulp-imagemin';
 
 import { default as autoprefixer } from 'gulp-autoprefixer';
 import { default as source } from 'vinyl-source-stream';
@@ -44,7 +47,7 @@ import { default as sourcemaps } from 'gulp-sourcemaps';
 import rename from 'gulp-rename';
 import { default as changed } from 'gulp-changed';
 import browsersync from 'browser-sync';
-import { default as del } from 'del';
+import { deleteAsync as del } from 'del';
 
 const sync = browsersync.create();
 const refresh = browsersync.reload();
@@ -86,9 +89,10 @@ export function lintSass() {
     src('src/sass/**/*.scss'),
     stylelint({
       reporters: [{
-        formatter: 'verbose',
+        formatter: 'string',
         console: true
-      }]
+      }],
+      customSyntax = 'postcss-scss';
     })
   );
 }
@@ -96,10 +100,7 @@ export function lintSass() {
 export function buildSass() {
   return pump(
     src('src/sass/**/*.scss', {sourcemaps: true}),
-    sass({
-      errorLogToConsole: true,
-      outputStyle: 'compressed'
-    }),
+    sass({errorLogToConsole: true, outputStyle: 'compressed'}),
     autoprefixer(),
     rename({suffix: '.min'}),
     dest('dist/styles', {sourcemaps: true})
@@ -139,21 +140,22 @@ export function optimizeImg() {
   return pump(
     src(['src/images/**/*.{png,gif,jpg,jpeg,svg}', '!src/images/pre-op/**/*']),
     changed('dist/images'),
-    imgmin([
-      imgmin.gifsicle({
+    imagemin([
+      gifsicle({
         optimizationLevel: 3, 
-        progressive: true
+        interlaced: true
       }),
-      imgmin.mozjpeg({
+      mozjpeg({
         quality: 75, 
         progressive: true
       }),
-      imgmin.optipng({
+      optipng({
         optimizationLevel: 5
       }),
-      imgmin.svgo({
+      svgo({
         plugins:[{
-            removeViewBox: true
+          name: 'removeViewBox',
+          active: true
         }]
       })
     ],
@@ -166,12 +168,12 @@ export function optimizeImg() {
   );
 }
 
-export function watch() {
-	watchfiles('src/html/**/*.html', html);
-  watchfiles('src/sass/**/*.scss', sassy);
-  watchfiles('src/js/**/*.js', js);
-  watchfiles('src/images/**/*.{png,gif,jpg,jpeg,svg}', optimizeImg);
-	watchfiles('dist', refresh);
+export function watchFiles() {
+	watch('src/html/**/*.html', html);
+  watch('src/sass/**/*.scss', sassy);
+  watch('src/js/**/*.js', js);
+  watch('src/images/**/*.{png,gif,jpg,jpeg,svg}', optimizeImg);
+	watch('dist', refresh);
 }
 
 export function clean() {
@@ -194,13 +196,12 @@ export const lint = series(lintHtml, lintSass, lintJs);
 
 export const build = series(clean, buildHtml, buildSass, buildJs, optimizeImg);
 
-export const all = series(lint, build, serve, watch);
+export const all = series(lint, build, serve, watchFiles);
 
 export default all;
 ```
 
 Notes:
-- Errors and warnings reported by Stylelint will not halt remaining processes in a task or series.
 - Previously Optimized Images may increase in size. Use an images sub-folder `src/images/pre-op`
 
 Installation
@@ -208,8 +209,13 @@ Installation
 
 Install the required plugins with `npm`.
 
-`npm install --save-dev gulp @babel/core @babel/register @babel/preset-env pump-promise browser-sync gulp-htmlmin gulp-htmllint gulp-sass stylelint-scss gulp-stylelint stylelint stylelint-config-standard stylelint-order gulp-autoprefixer gulp-rename gulp-eslint eslint-plugin-import browserify babelify vinyl-source-stream vinyl-buffer gulp-uglify gulp-sourcemaps gulp-imagemin gulp-changed del`
-- Used `gulp-imagemin@7.0.0`
+`gulp-stylelint` doesn't work with new version of stylelint at the moment, use `@ronilaukkarinen/gulp-stylelint` instead
+
+`npm install --save-dev gulp @babel/core @babel/preset-env pump-promise browser-sync gulp-htmlmin gulp-htmllint gulp-sass sass postcss-scss stylelint-scss @ronilaukkarinen/gulp-stylelint stylelint stylelint-config-standard stylelint-order gulp-autoprefixer gulp-rename gulp-eslint eslint-plugin-import browserify babelify vinyl-source-stream vinyl-buffer gulp-uglify gulp-sourcemaps gulp-imagemin gulp-changed del`
+
+Add this line to your `package.json` after the opening bracket.
+
+`"type": "module",`
 
 Includes
 --------------------------------------------------------------------------------
@@ -222,7 +228,7 @@ Includes
 ### Tasks
 
 - A `serve` Task.
-- A `watch` Task.
+- A `watchFiles` Task.
 - A `clean` Task.
 
 - A `lintHtml` Task.
@@ -242,7 +248,7 @@ Includes
 - A `lint` Task that uses `lintHtml`, `lintSass` and `lintJs`.
 - A `build` Task that uses `clean`, `buildHtml`, `buildSass`, `buildJs` and `optimizeImg`.
 
-- A default `all` Task that uses `lint`, `build`, `serve` and `watch`.
+- A default `all` Task that uses `lint`, `build`, `serve` and `watchFiles`.
 
 ### Files
 
@@ -255,15 +261,16 @@ Dependencies
 
 - [gulp](https://www.npmjs.com/package/gulp)
 - [@babel/core](https://www.npmjs.com/package/@babel/core)
-- [@babel/register](https://www.npmjs.com/package/@babel/register)
 - [@babel/preset-env](https://www.npmjs.com/package/@babel/preset-env)
 - [pump-promise](https://www.npmjs.com/package/pump-promise)
 - [browser-sync](https://www.npmjs.com/package/browser-sync)
 - [gulp-htmlmin](https://www.npmjs.com/package/gulp-htmlmin)
 - [gulp-htmllint](https://www.npmjs.com/package/gulp-htmllint)
 - [gulp-sass](https://www.npmjs.com/package/gulp-sass)
+- [sass](https://sass-lang.com/dart-sass)
+- [postcss-scss](https://www.npmjs.com/package/postcss-scss)
 - [stylelint-scss](https://www.npmjs.com/package/stylelint-scss)
-- [gulp-stylelint](https://www.npmjs.com/package/gulp-stylelint)
+- [@ronilaukkarinen/gulp-stylelint](https://github.com/ronilaukkarinen/gulp-stylelint)
 - [stylelint](https://www.npmjs.com/package/stylelint)
 - [stylelint-config-standard](https://www.npmjs.com/package/stylelint-config-standard)
 - [stylelint-order](https://www.npmjs.com/package/stylelint-order)

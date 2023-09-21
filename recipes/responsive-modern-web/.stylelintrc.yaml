@@ -3,17 +3,17 @@ plugins:
   - stylelint-order
   - stylelint-scss
 rules:
-  # Custom Rules itrusler
+  # Custom Rules
+  import-notation: null
   at-rule-empty-line-before: null
   rule-empty-line-before: null
   declaration-empty-line-before: null
   at-rule-no-unknown: null
-  number-no-trailing-zeros: null
   color-hex-length: null
+  function-no-unknown: null
   # End Custom Rules
 
   # Wrap lines greater than 120 characters
-  max-line-length: 120
   # Follow best practices
   font-family-name-quotes: always-where-recommended
   # https://stackoverflow.com/a/34383157/467582
@@ -21,7 +21,6 @@ rules:
   # https://www.w3.org/TR/selectors/#attribute-selectors
   # http://stackoverflow.com/q/3851091
   selector-attribute-quotes: always
-  string-quotes: single
   order/order:
     -
       -
