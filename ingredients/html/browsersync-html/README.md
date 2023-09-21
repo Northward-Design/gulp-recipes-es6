@@ -11,7 +11,8 @@ Usage
 --------------------------------------------------------------------------------
 
 ```javascript
-import { src, dest, series, watch as watchfiles } from 'gulp';
+import gulp from 'gulp';
+const { src, dest, watch, series } = gulp;
 import { default as pump } from 'pump-promise';
 
 import htmllint from 'gulp-htmllint';
@@ -22,7 +23,7 @@ import browsersync from 'browser-sync';
 const sync = browsersync.create();
 const refresh = browsersync.reload();
 
-export const html = series(lintHtml, buildHtml);
+export const html = gulp.series(lintHtml, buildHtml);
 
 export function lintHtml() {
 	return pump(
@@ -52,12 +53,12 @@ export function serve(done) {
   done();
 }
 
-export function watch() {
-	watchfiles('src/html/**/*.html', html);
-	watchfiles('dist/*.html', refresh);
+export function watchFiles() {
+	watch('src/html/**/*.html', html);
+	watch('dist/*.html', refresh);
 }
 
-export const all = series(html, serve, watch);
+export const all = series(html, serve, watchFiles);
 
 export default all;
 ```
@@ -67,7 +68,11 @@ Installation
 
 Install the required plugins with `npm`.
 
-`npm install --save-dev gulp @babel/core @babel/register @babel/preset-env pump-promise browser-sync gulp-htmlmin gulp-htmllint`
+`npm install --save-dev gulp pump-promise browser-sync gulp-htmlmin gulp-htmllint`
+
+Add this line to your `package.json` after the opening bracket.
+
+`"type": "module",`
 
 Includes
 --------------------------------------------------------------------------------
@@ -77,17 +82,14 @@ Includes
 - A `buildHtml` Task.
 - A `serve` Task.
 - An `html` Task that uses `lintHtml` and `buildHtml`.
-- A `watch` Task.
-- A default `all` Task that uses `html`, `serve` and `watch`.
+- A `watchFiles` Task.
+- A default `all` Task that uses `html`, `serve` and `watchFiles`.
 - An `.htmllintrc` file for configuring `htmllint`.
 
 Dependencies
 --------------------------------------------------------------------------------
 
 - [gulp](https://www.npmjs.com/package/gulp)
-- [@babel/core](https://www.npmjs.com/package/@babel/core)
-- [@babel/register](https://www.npmjs.com/package/@babel/register)
-- [@babel/preset-env](https://www.npmjs.com/package/@babel/preset-env)
 - [pump-promise](https://www.npmjs.com/package/pump-promise)
 - [browser-sync](https://www.npmjs.com/package/browser-sync)
 - [gulp-htmlmin](https://www.npmjs.com/package/gulp-htmlmin)

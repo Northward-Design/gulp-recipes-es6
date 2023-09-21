@@ -13,7 +13,8 @@ Usage
 --------------------------------------------------------------------------------
 
 ```javascript
-import { src, dest, series, watch as watchfiles } from 'gulp';
+import gulp from 'gulp';
+const { src, dest, series, watch } = gulp;
 import { default as pump } from 'pump-promise';
 import { default as sourcemaps } from 'gulp-sourcemaps';
 import rename from 'gulp-rename';
@@ -52,7 +53,8 @@ export function buildJs() {
     uglify(),
     rename({suffix: '.min'}),
     sourcemaps.init({loadMaps: true}),
-    dest('dist/scripts', {sourcemaps: true})
+    dest('dist/scripts', {sourcemaps: true}),
+    sync.stream()
   );
 }
 
@@ -65,12 +67,12 @@ export function serve(done) {
   done();
 }
 
-export function watch() {
-  watchfiles('src/js/**/*.js', js);
-  watchfiles('dist/scripts', refresh);
+export function watchFiles() {
+  watch('src/js/**/*.js', js);
+  watch('dist/scripts', refresh);
 }
 
-export const all = series(js, serve, watch);
+export const all = series(js, serve, watchFiles);
 
 export default all;
 ```
@@ -80,7 +82,11 @@ Installation
 
 Install the required plugins with `npm`.
 
-`npm install --save-dev gulp @babel/core @babel/register @babel/preset-env pump-promise browser-sync gulp-eslint eslint-plugin-import browserify babelify vinyl-source-stream vinyl-buffer gulp-uglify gulp-rename gulp-sourcemaps`
+`npm install --save-dev gulp @babel/core @babel/preset-env pump-promise browser-sync gulp-eslint eslint-plugin-import browserify babelify vinyl-source-stream vinyl-buffer gulp-uglify gulp-rename gulp-sourcemaps`
+
+Add this line to your `package.json` after the opening bracket.
+
+`"type": "module",`
 
 Includes
 --------------------------------------------------------------------------------
@@ -90,8 +96,8 @@ Includes
 - A `buildJs` Task.
 - A `js` Task that uses `lintJs` and `buildJs`.
 - A `serve` Task.
-- A `watch` Task.
-- A default `all` Task  that uses `js`, `serve`, and `watch`.
+- A `watchFiles` Task.
+- A default `all` Task  that uses `js`, `serve`, and `watchFiles`.
 - An `.eslintrc.yaml` file for configuring `eslint`.
 
 Dependencies
@@ -99,7 +105,6 @@ Dependencies
 
 - [gulp](https://www.npmjs.com/package/gulp)
 - [@babel/core](https://www.npmjs.com/package/@babel/core)
-- [@babel/register](https://www.npmjs.com/package/@babel/register)
 - [@babel/preset-env](https://www.npmjs.com/package/@babel/preset-env)
 - [pump-promise](https://www.npmjs.com/package/pump-promise)
 - [gulp-eslint](https://www.npmjs.com/package/gulp-eslint)

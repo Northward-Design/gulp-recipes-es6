@@ -1,6 +1,6 @@
 {
     "line-end-style": "lf",
-    "line-max-len": 120,
+    "line-max-len": 240,
     "indent-style": "spaces",
     "indent-width": 2,
     "tag-close": true,
@@ -12,7 +12,7 @@
         "b",
         "i"
     ],
-    "doctype-first": true,
+    "doctype-first": false,
     "doctype-html5": true,
     "html-valid-content-model": true,
     "html-req-lang": true,
@@ -31,8 +31,8 @@
         "href",
         "alt"
     ],
-    "attr-req-value": true,
-    "attr-new-line": 3,
+    "attr-req-value": false,
+    "attr-new-line": 5,
     "attr-bans": [
         "align",
         "background",

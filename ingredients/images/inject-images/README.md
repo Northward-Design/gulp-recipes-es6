@@ -12,7 +12,8 @@ Usage
 --------------------------------------------------------------------------------
 
 ```javascript
-import { src, dest } from 'gulp';
+import gulp from 'gulp';
+const { src } = gulp;
 import { default as pump } from 'pump-promise';
 
 import inject from 'gulp-inject';
@@ -24,6 +25,7 @@ export default function injection() {
     src('src/html/**/*.html'),
     inject(
       src(['src/images/**/*.{jpg,jpeg}']),
+      {
         ignorePath: '../',
         relative = true,
         removeTags = true,
@@ -34,32 +36,40 @@ export default function injection() {
         transform: (filepath) => {
           let pathName = filepath.substring(0, filepath.lastIndexOf('.'));
           let name = pathName.substring(pathName.lastIndexOf('/')+1);
-          return `
-            <picture>
-              <source media="(min-width: ${lg}px)"
-                data-srcset="
-                  ${pathName}-${lg}w.webp,
-                  ${pathName}-${lg}w@2x.webp 2x"
-                type="image/webp">
-              ...
-              <img class="lazy ${name}"
-                data-srcset="
-                  ${pathName}-${sm}w.jpg,
-                  ${pathName}-${sm}w@2x.jpg 2x"
-                data-src="${pathName}-${mini}w.jpg"
-              alt="${alt[0]}">
-            </picture>`;
+          return //example string
+            ` <picture>
+                <source
+                  srcset="
+                    ${path}-${xs}w.webp ${xs}w,
+                    ${path}-${sm}w.webp ${sm}w,
+                    ${path}-${md}w.webp ${md}w,
+                    ${path}-${lg}w.webp ${lg}w,
+                    ${path}-${xl}w.webp ${xl}w,
+                    ${path}-${xs}w@3x.webp ${xs * 3}w,
+                    ...
+                <img class="${name}"
+                  srcset="
+                    ...
+                    ${path}-${md}w@2x.jpeg ${md * 2}w,
+                    ${path}-${lg}w@2x.jpeg ${lg * 2}w,
+                    ${path}-${xl}w@2x.jpeg ${xl * 2}w,
+                    ${path}-${md}w@4x.jpeg ${md * 4}w"
+                  sizes="${xsScrn}"
+                  src="${path}-${lg}w.jpg"
+                alt="${alt}">
+              </picture>`;
         }
-      ),      
+      }
+    ),      
     dest('dist')
   );
 }
 ```
 Notes:
-- Gulp Inject categorizes files A-Z then a-z. Files in `src/images` should be renamed to upper OR lower case names.
+- Gulp Inject categorizes image file names A-Z then a-z (AB then Aa). Files in `src/images` could be renamed to upper OR lower case.
 - Image path and names are copied from `src/images`, but group of images used should be located in `dist/images`.
-- Settings for Image Sizes, Alt Tags and String Selection are located in `gulpfile.babel.js`
-- Six example Strings are located in `htmlstrings.js`
+- - Settings for Image Sizes, break points, Alt Tags and String Selection are located in `gulpfile.js`.
+- Six example Strings are located in `string-sets.js`.
 - [Vanilla LazyLoad](https://www.npmjs.com/package/vanilla-lazyload) settings are required for Lazy Loading Strings.
 
 Include comments in your `.html` files (one set for each `.jpg` and `jpeg`).
@@ -78,7 +88,11 @@ Installation
 
 Install the required plugins with `npm`.
 
-`npm install --save-dev gulp @babel/core @babel/register @babel/preset-env pump-promise gulp-inject`
+`npm install --save-dev gulp pump-promise gulp-inject`
+
+Add this line to your `package.json` after the opening bracket.
+
+`"type": "module",`
 
 Includes
 --------------------------------------------------------------------------------
@@ -87,14 +101,11 @@ Includes
 - Additional Configuration for Image sources in `dist/images`.
 - Additional Configuration for HTML sources in `src/html`.
 - A default `injection` Task.
-- An `htmlstrings.js` file, containing 3 srcset and 3 [Vanilla LazyLoad](https://www.npmjs.com/package/vanilla-lazyload) srcset Interpolated HTML Strings.
+A `string-img-sets.js` file for configuring responsive Strings.
 
 Dependencies
 --------------------------------------------------------------------------------
 
 - [gulp](https://www.npmjs.com/package/gulp)
-- [@babel/core](https://www.npmjs.com/package/@babel/core)
-- [@babel/register](https://www.npmjs.com/package/@babel/register)
-- [@babel/preset-env](https://www.npmjs.com/package/@babel/preset-env)
 - [pump-promise](https://www.npmjs.com/package/pump-promise)
 - [gulp-inject](https://www.npmjs.com/package/gulp-inject)

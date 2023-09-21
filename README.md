@@ -12,7 +12,8 @@ Recipes combine multiple Ingredients together, and are designed to be copied int
 
 ### Ingredients
 
-Ingredients complete a single task.
+Most Ingredients complete a single task.
+Watch, Browsersync and some Image Ingredients contain multiple tasks.
 
 ### Configuration
 
@@ -147,7 +148,8 @@ Index
 	- [Watch TS](ingredients/ts/watch-ts)
 	- [BrowserSync TS](ingredients/ts/browsersync-ts)
 - PHP
-	- [Connect and BrowserSync PHP](ingredients/connect-browsersync-php)
+	- [Connect and BrowserSync PHP](ingredients/php/connect-browsersync-php)
+	- [PHP HTML Connect](ingredients/php/php-html-connect)
 - Images
 	- [Optimize Images](ingredients/images/optimize-images)
 	- [Responsive Images](ingredients/images/responsive-images)

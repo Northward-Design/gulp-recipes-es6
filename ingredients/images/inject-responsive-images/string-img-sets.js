@@ -1,23 +1,23 @@
-module.exports.stringSet = [
-simpleSrcString,
+export const stringSet = [
+smallSrcString,
 wideSrcString,
 productSrcString,
-simpleLazyString,
+smallLazyString,
 autoLazyString,
 productLazyString
 ]
 
-module.exports.imgSet = [
-simpleSrcImg,
+export const imgSet = [
+smallSrcImg,
 wideSrcImg,
 productSrcImg,
-simpleLazyImg,
+smallLazyImg,
 autoLazyImg,
 productLazyImg
 ]
 
 // Small Srcset
-function simpleSrcString(path, name, mini, xs, sm, md, lg, xl, xsBrkpt, smBrkpt, mdBrkpt, lgBrkpt, xlBrkpt, xsScrn, smScrn, mdScrn, lgScrn, xlScrn, xxlScrn, alt) {
+function smallSrcString(path, name, mini, xs, sm, md, lg, xl, xsBrkpt, smBrkpt, mdBrkpt, lgBrkpt, xlBrkpt, xsScrn, smScrn, mdScrn, lgScrn, xlScrn, xxlScrn, alt) {
   return `
     <picture>
       <source
@@ -54,7 +54,7 @@ function simpleSrcString(path, name, mini, xs, sm, md, lg, xl, xsBrkpt, smBrkpt,
     </picture>`;
 }
 
-function simpleSrcImg(mini, xs, sm, md, lg, xl) {
+function smallSrcImg(mini, xs, sm, md, lg, xl) {
   return {'*.{jpg,jpeg}': [
     { 
       width: xs,
@@ -90,7 +90,7 @@ function simpleSrcImg(mini, xs, sm, md, lg, xl) {
   ]}
 }
 
-// Medium Srcset with Multiple webP Sources
+// Wide Srcset
 function wideSrcString(path, name, mini, xs, sm, md, lg, xl, xsBrkpt, smBrkpt, mdBrkpt, lgBrkpt, xlBrkpt, xsScrn, smScrn, mdScrn, lgScrn, xlScrn, xxlScrn, alt) {
   return `
     <picture>
@@ -192,7 +192,7 @@ function wideSrcImg(mini, xs, sm, md, lg, xl) {
   ]}
 }
 
-// Large Srcset with Multiple webP & Jpg Sources
+// Product Srcset
 function productSrcString(path, name, mini, xs, sm, md, lg, xl, xsBrkpt, smBrkpt, mdBrkpt, lgBrkpt, xlBrkpt, xsScrn, smScrn, mdScrn, lgScrn, xlScrn, xxlScrn, alt) {
   return `
     <picture>
@@ -305,7 +305,7 @@ function productSrcImg(mini, xs, sm, md, lg, xl) {
 }
 
 // Small Lazy Load Srcset
-function simpleLazyString(path, name, mini, xs, sm, md, lg, xl, xsBrkpt, smBrkpt, mdBrkpt, lgBrkpt, xlBrkpt, xsScrn, smScrn, mdScrn, lgScrn, xlScrn, xxlScrn, alt) {
+function smallLazyString(path, name, mini, xs, sm, md, lg, xl, xsBrkpt, smBrkpt, mdBrkpt, lgBrkpt, xlBrkpt, xsScrn, smScrn, mdScrn, lgScrn, xlScrn, xxlScrn, alt) {
   return `
     <picture>
         <source
@@ -342,7 +342,7 @@ function simpleLazyString(path, name, mini, xs, sm, md, lg, xl, xsBrkpt, smBrkpt
     </picture>`;
 }
 
-function simpleLazyImg(mini, xs, sm, md, lg, xl) {
+function smallLazyImg(mini, xs, sm, md, lg, xl) {
   return {'*.{jpg,jpeg}': [
     { 
       width: mini,
@@ -381,7 +381,7 @@ function simpleLazyImg(mini, xs, sm, md, lg, xl) {
   ]}
 }
 
-// Small Lazy Load Srcset with Auto Sizes
+// Wide (auto) Lazy Load Srcset
 function autoLazyString(path, name, mini, xs, sm, md, lg, xl, xsBrkpt, smBrkpt, mdBrkpt, lgBrkpt, xlBrkpt, xsScrn, smScrn, mdScrn, lgScrn, xlScrn, xxlScrn, alt) {
   return `
     <picture>
@@ -488,7 +488,7 @@ function autoLazyImg(mini, xs, sm, md, lg, xl) {
   ]}
 }
 
-// Large Lazy Load Srcset
+// Product Lazy Load Srcset
 function productLazyString(path, name, mini, xs, sm, md, lg, xl, xsBrkpt, smBrkpt, mdBrkpt, lgBrkpt, xlBrkpt, xsScrn, smScrn, mdScrn, lgScrn, xlScrn, xxlScrn, alt) {
   return `
     <picture>

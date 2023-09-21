@@ -1,4 +1,4 @@
-Watch Images Ingredient
+Watch Optimized Images Ingredient
 ================================================================================
 
 An Image Watch and Optimize Task.
@@ -11,59 +11,60 @@ Usage
 --------------------------------------------------------------------------------
 
 ```javascript
-import { src, dest, series, watch as watchfiles } from 'gulp';
+import gulp from 'gulp';
+const { src, dest, watch, series } = gulp;
 import { default as pump } from 'pump-promise';
 
-import { default as imgmin } from 'gulp-imagemin';
+import imagemin, {gifsicle, mozjpeg, optipng, svgo } from 'gulp-imagemin';
 import { default as changed } from 'gulp-changed';
 
 export function optimizeImg() {
   return pump(
     src('src/images/**/*.{png,gif,jpg,jpeg,svg}'),
-    changed('dist/images'),
-    imgmin([
-      imgmin.gifsicle({
+    imagemin([
+      gifsicle({
         optimizationLevel: 3, 
-        progressive: true
+        interlaced: true
       }),
-      imgmin.mozjpeg({
+      mozjpeg({
         quality: 75, 
         progressive: true
       }),
-      imgmin.optipng({
+      optipng({
         optimizationLevel: 5
       }),
-      imgmin.svgo({
+      svgo({
         plugins:[{
-            removeViewBox: true
+          name: 'removeViewBox',
+          active: true
         }]
       })
     ],
     {verbose: true}
     ),
-    changed('dist/images'),
     dest('dist/images')
   );
 }
 
-export function watch() {
-    watchfiles('src/images/**/*.{png,gif,jpg,jpeg,svg}', optimizeImg);
+export function watchFiles() {
+    watch('src/images/**/*.{png,gif,jpg,jpeg,svg}', optimizeImg);
 }
 
-export const all = series(optimizeImg, watch);
+export const all = series(optimizeImg, watchFiles);
 
 export default all;
 ```
 
-Pre-Optimized Images may increase in size. A work around (moves pre-optimized files from a sub-folder to images folder):
+Images that are already optimized may increase in size due to custom settings. A work around moves pre-optimized files from a sub-folder to images folder:
 ```javascript
 //...
 return pump(
-src(['src/images/**/*.{png,gif,jpg,jpeg,svg}', '!src/images/optimized/**/*']),
-changed('dist/images'),
-imgmin(*OPTIONS*),
-src('src/images/optimized/**/*'),
-dest('dist/images')
+  src(['src/images/**/*.{png,gif,jpg,jpeg,svg}', '!src/images/optimized/**/*']),
+  changed('dist/images'),
+  imgmin(*OPTIONS*),
+  src('src/images/optimized/**/*'),
+  changed('dist/images'),
+  dest('dist/images')
 );
 //...
 ```
@@ -73,24 +74,24 @@ Installation
 
 Install the required plugins with `npm`.
 
-`npm install --save-dev gulp @babel/core @babel/register @babel/preset-env pump-promise gulp-imagemin gulp-changed`
-Note: Used `gulp-imagemin@7.0.0`
+`npm install --save-dev gulp pump-promise gulp-imagemin gulp-changed`
+
+Add this line to your `package.json` after the opening bracket.
+
+`"type": "module",`
 
 Includes
 --------------------------------------------------------------------------------
 
 - Additional Configuration for Image sources in `src/images`.
 - An `optomizeImg` Task.
-- A `Watch` Task.
-- A default `all` Task that uses `optomizeImg` and `Watch`.
+- A `watchFiles` Task.
+- A default `all` Task that uses `optomizeImg` and `watchFiles`.
 
 Dependencies
 --------------------------------------------------------------------------------
 
 - [gulp](https://www.npmjs.com/package/gulp)
-- [@babel/core](https://www.npmjs.com/package/@babel/core)
-- [@babel/register](https://www.npmjs.com/package/@babel/register)
-- [@babel/preset-env](https://www.npmjs.com/package/@babel/preset-env)
 - [pump-promise](https://www.npmjs.com/package/pump-promise)
 - [gulp-imagemin](https://www.npmjs.com/package/gulp-imagemin)
 - [gulp-changed](https://www.npmjs.com/package/gulp-changed)

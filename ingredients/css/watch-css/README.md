@@ -12,11 +12,12 @@ Usage
 --------------------------------------------------------------------------------
 
 ```javascript
-import { src, dest, series, watch as watchfiles } from 'gulp';
+import gulp from 'gulp';
+const { src, dest, watch, series } = gulp;
 import { default as pump } from 'pump-promise';
 import rename from 'gulp-rename';
 
-import stylelint from 'gulp-stylelint';
+import stylelint from '@ronilaukkarinen/gulp-stylelint';
 import { default as cleancss } from 'gulp-clean-css';
 import { default as autoprefixer } from 'gulp-autoprefixer';
 
@@ -44,11 +45,11 @@ export function buildCss() {
   );
 }
 
-export function watch() {
-  watchfiles('src/css/**/*.css', css);
+export function watchFiles() {
+  watch('src/css/**/*.css', css);
 }
 
-export const all = series(css, watch);
+export const all = series(css, watchFiles);
 
 export default all;
 ```
@@ -61,7 +62,13 @@ Installation
 
 Install the required plugins with `npm`.
 
-`npm install --save-dev gulp @babel/core @babel/register @babel/preset-env pump-promise gulp-stylelint stylelint stylelint-config-standard stylelint-order gulp-autoprefixer gulp-clean-css gulp-rename`
+`gulp-stylelint` doesn't work with new version of stylelint at the moment, use `@ronilaukkarinen/gulp-stylelint` instead
+
+`npm install --save-dev gulp pump-promise @ronilaukkarinen/gulp-stylelint stylelint stylelint-config-standard stylelint-order gulp-autoprefixer gulp-clean-css gulp-rename`
+
+Add this line to your `package.json` after the opening bracket.
+
+`"type": "module",`
 
 Includes
 --------------------------------------------------------------------------------
@@ -70,19 +77,16 @@ Includes
 - A `lintCss` Task.
 - A `buildCss` Task.
 - A `css` Task that uses `lintCss` and `buildCss`.
-- A `watch` Task.
-- A default `all` Task that uses `css` and `watch`.
+- A `watchFiles` Task.
+- A default `all` Task that uses `css` and `watchFiles`.
 - An `.stylelintrc.yaml` file for configuring `stylelint`.
 
 Dependencies
 --------------------------------------------------------------------------------
 
 - [gulp](https://www.npmjs.com/package/gulp)
-- [@babel/core](https://www.npmjs.com/package/@babel/core)
-- [@babel/register](https://www.npmjs.com/package/@babel/register)
-- [@babel/preset-env](https://www.npmjs.com/package/@babel/preset-env)
 - [pump-promise](https://www.npmjs.com/package/pump-promise)
-- [gulp-stylelint](https://www.npmjs.com/package/gulp-stylelint)
+- [@ronilaukkarinen/gulp-stylelint](https://github.com/ronilaukkarinen/gulp-stylelint)
 - [stylelint](https://www.npmjs.com/package/stylelint)
 - [stylelint-config-standard](https://www.npmjs.com/package/stylelint-config-standard)
 - [stylelint-order](https://www.npmjs.com/package/stylelint-order)
